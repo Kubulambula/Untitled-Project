@@ -32,7 +32,8 @@ window/stretch/aspect="keep"
 
 [locale]
 
-locale_filter=[ 1, [ "cs", "en" ] ]
+locale_filter=[ 0, 1 ]
+translations=PoolStringArray( "res://Translations/translations.en.translation", "res://Translations/translations.cs.translation" )
 
 [logging]
 
