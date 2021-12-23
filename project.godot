@@ -1,0 +1,53 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=4
+
+[application]
+
+config/name="Untitled-Project - Purkiáda 2022 - © Jakub Janšta & Adam Charvát 2022"
+run/main_scene="res://Scenes/UI/init.tscn"
+boot_splash/image="res://Resources/Misc/Logos/purkiada2022_logo.png"
+boot_splash/bg_color=Color( 0.141176, 0.141176, 0.141176, 1 )
+config/icon="res://Resources/Misc/Icons/icon.png"
+
+[autoload]
+
+WindowOverlay="*res://Scripts/Singletons/window_overlay.gd"
+ResourceQueue="*res://Scripts/Singletons/resource_queue.gd"
+SceneChanger="*res://Scripts/Singletons/scene_changer.gd"
+
+[display]
+
+window/size/width=1280
+window/size/height=720
+window/dpi/allow_hidpi=true
+window/stretch/mode="2d"
+window/stretch/aspect="keep"
+
+[locale]
+
+locale_filter=[ 1, [ "cs", "en" ] ]
+
+[logging]
+
+file_logging/enable_file_logging=true
+
+[physics]
+
+common/enable_pause_aware_picking=true
+
+[rendering]
+
+quality/driver/driver_name="GLES2"
+2d/options/use_nvidia_rect_flicker_workaround=true
+quality/intended_usage/framebuffer_allocation=0
+quality/intended_usage/framebuffer_allocation.mobile=0
+2d/snapping/use_gpu_pixel_snap=true
+vram_compression/import_etc=true
+vram_compression/import_etc2=false

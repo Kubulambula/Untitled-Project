@@ -1,0 +1,20 @@
+screen: 1280x720
+tile: 80x80
+creen tiles: 16x9
+total tiles per screen: 144
+
+ascii map example:
+
+# - wall
+P - player
+E - exit
+
+################
+#              #
+#       E      #
+#    ######    #
+#  #        #  #
+#   #      #   #
+#     ##  #    #
+#P       #     #
+################
