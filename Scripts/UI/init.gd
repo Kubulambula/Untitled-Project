@@ -6,9 +6,10 @@ const next_scene_path = "res://Scenes/UI/main_menu.tscn"
 func _ready():
 	ResourceQueue.register_callback(next_scene_path, "is_ready", funcref(self, "_next_scene_ready"))
 	ResourceQueue.queue_resource(next_scene_path)
-#	if OS.has_feature("release"):
-#		$AnimationPlayer.play("slow_intro")
-	$AnimationPlayer.play("intro_slow")
+	if OS.is_debug_build():
+		$AnimationPlayer.play("intro_middle")
+	else:
+		$AnimationPlayer.play("intro_slow")
 
 
 func _next_scene_ready(resource):
