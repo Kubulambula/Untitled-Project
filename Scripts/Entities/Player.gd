@@ -123,7 +123,6 @@ func _physics_process(delta):
 #			GFX.set_lapse_animation("air")
 #			if is_grounded:
 #				state = LAND
-	print(coyoteTimer.is_stopped())
 	#moving
 	_velocity = move_and_slide_with_snap(_velocity, Vector2.DOWN, Vector2.UP)
 	if was_grounded and not is_grounded() and not jumping:

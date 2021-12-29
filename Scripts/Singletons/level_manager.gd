@@ -15,10 +15,13 @@ var layers = {
 	"walls": ["#"]
 }
 
-var default_tileset = null
+var _default_tilemap = null
 
 func _ready():
-	default_tileset = load("res://Resources/Tiles/bitmap_test.tres")
+	_default_tilemap = TileMap.new()
+	_default_tilemap.cell_size = Vector2(64, 64)
+	_default_tilemap.tile_set = load("res://Resources/Tiles/bitmap_test.tres")
+	add_child(_default_tilemap)
 
 func _open_exe_dir():
 	var exe_dir = Directory.new()
@@ -52,22 +55,23 @@ func read_level_data(level):
 			level_file.close()
 			return content
 
-func _create_tilemap():
+func _create_compatible_tilemap():
 	var tilemap = TileMap.new()
-	tilemap.cell_size = Vector2(64, 64)
-	tilemap.tile_set = default_tileset
+	tilemap.cell_size = _default_tilemap.cell_size
+	tilemap.tile_set = _default_tilemap.tile_set
 	return tilemap
 
 func build_tilemaps(root, map):
 	for key in layers.keys():
 		var mask = layers[key]
-		var tilemap = _create_tilemap()
+		var tilemap = _create_compatible_tilemap()
 		for y in len(map):
 			for x in len(map[y]):
 				var character = map[y][x]
 				if character in mask:
 					tilemap.set_cell(x, y, map_tiles[character])
 					tilemap.update_bitmask_area(Vector2(x, y))
+					tilemap.update_dirty_quadrants()
 		root.add_child(tilemap)
 
 func find_tile(map, tile):
@@ -76,6 +80,9 @@ func find_tile(map, tile):
 			if map[y][x] == tile:
 				return Vector2(x, y)
 	return Vector2(-1, -1)
+
+func get_world_position(map_position):
+	return _default_tilemap.map_to_world(map_position)
 
 func parse_level_data(content: String):
 	var section = "Global"
