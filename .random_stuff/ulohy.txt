@@ -1,0 +1,18 @@
+1. Zacyklené dveře - musí se v configu nastavit jiný level
+2. Musíš změnit mapu, abys překonal propast - postavíš si most
+3. Musíš posunout hráčem a nebo exitem - zdi jsou uzamčeny
+4. měníš staty hráči, nebo něčemu, abys vyhrál hru
+5. Změn význam bloků - "P" a "K" budou třeba oboje krabice a ty musíš z "P" udělat hráče (nebudeš moct editovat mapu)
+6. posere se screen resolution a ty neuvidíš kam jdeš. V game settings (file) změníš parametry, aby okno bylo dost velký
+7. změň velikost okna tak, aby ses někam dostal? Budeš chodit po okraji okna
+8. hra se bude bránit vypnutí
+9. Jestli uživatelé budou mít jméno účtu jako jejich jméno, tak je hra může oslovit jménem
+10. Hra může referencovat dohlížející
+11. Hra může "crashnout"
+12. hra může referencovat, jak přišli do školy a byly v jídelně
+13. hra random přepne jazyk
+14. můsíš v configu změnit dialog file s NPC, nebo tak nějak a najít heslo k zámku
+15. hra těsně před vypnutím zapne python proccess, který ji znovu zapne po pár vteřinách
+16. hra bude mít odpočet kdy bude končit čas purkiády a bude ti říkat jak máš málo času
+17. musí se blok přidat / oddělat, aby byla cesta
+18. "corrupted" .png, co bude ve skutečnosti .txt a budou v něm data potřebná k pokračování 

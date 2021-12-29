@@ -1,0 +1,22 @@
+; Available blocks can be placed anywhere
+; Locked blocks will cause an error if moved, deleted or added
+; Any other blocks will become air
+;
+;
+; Available blocks:
+; # - wall
+;   - air
+;
+; Locked blocks:
+; P - player
+; E - exit
+
+################
+#              #
+#       E      #
+#    ######    #
+#  #        #  #
+#   #      #   #
+#     ##  #    #
+#P       #     #
+################

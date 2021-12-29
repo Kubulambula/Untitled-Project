@@ -18,3 +18,9 @@ E - exit
 #     ##  #    #
 #P       #     #
 ################
+
+
+
+použít někde 
+OS.alert()
+OS.execute() (můžeme pingovat server)
