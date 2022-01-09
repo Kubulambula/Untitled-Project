@@ -8,7 +8,10 @@ var map_tiles = {
 }
 
 var map_entities = {
-	"player": "P"
+	"P": {
+		"max": 1,
+		"resource": "Player.tscn"
+	}
 }
 
 var layers = {
@@ -74,6 +77,18 @@ func build_tilemaps(root, map):
 					tilemap.update_dirty_quadrants()
 		root.add_child(tilemap)
 
+func spawn_entities(root, entities):
+	var scenes = []
+	for entity_data in entities:
+		var resource_path = entity_data["resource"]
+		if not resource_path.begins_with("res://"):
+			resource_path = "res://Scenes/Entities/" + resource_path
+		var entity = load(resource_path).instance()
+		entity.set_global_position(get_world_position(entity_data["position"]))
+		scenes.append(entity)
+		root.add_child(entity)
+	return scenes
+
 func find_tile(map, tile):
 	for y in len(map):
 		for x in len(map[y]):
@@ -99,9 +114,24 @@ func parse_level_data(content: String):
 		if section == "Map" and map_row_index != map_height:
 			map.append(line.substr(0, map_width))
 			map_row_index += 1
+	var entities = []
+	var entity_count = {}
+	for y in len(map):
+		for x in len(map[y]):
+			var character = map[y][x]
+			if character in map_entities:
+				var entity = map_entities[character]
+				if not character in entity_count:
+					entity_count[character] = 0
+				else:
+					if entity_count[character] >= entity["max"]:
+						continue
+				entities.append({
+					"position": Vector2(x, y),
+					"resource": entity["resource"],
+				})
+				entity_count[character] += 1
 	return {
 		"map": map,
-		"player": {
-			"position": find_tile(map, map_entities["player"])
-		}
+		"entities": entities
 	}
