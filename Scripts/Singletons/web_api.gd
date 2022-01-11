@@ -53,10 +53,10 @@ func get_user_info(callback):
 
 func _on_response(result, code, headers, body):
 	var next_request = _request_queue.pop_front()
-	var response = (JSON.parse(body.get_string_from_utf8()).result)
 	if _callback != null:
-		if _callback["name"] == "login":
+		var response = (JSON.parse(body.get_string_from_utf8()).result)
+		if code == 200 and _callback["name"] == "login":
 			_access_token = response["accessToken"]
-		_callback["function"].call_func(response)
+		_callback["function"].call_func(code, response)
 	if next_request != null:
 		callv(next_request["name"], next_request["args"])
