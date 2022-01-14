@@ -1,0 +1,87 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="Animation" id=1]
+resource_name = "Slide"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("Window:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.25 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -600, 0 ), Vector2( 0, 0 ) ]
+}
+
+[node name="Custom_popup" type="CanvasLayer"]
+layer = 10
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Slide = SubResource( 1 )
+
+[node name="Window" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -600.0
+margin_right = -660.0
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Simple" type="Control" parent="Window"]
+margin_right = 40.0
+margin_bottom = 40.0
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="Window/Simple"]
+margin_right = 300.0
+margin_bottom = 150.0
+color = Color( 1, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Window/Simple"]
+margin_left = 75.0
+margin_top = 30.0
+margin_right = 119.0
+margin_bottom = 44.0
+rect_scale = Vector2( 3, 3 )
+text = "Simple"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Labeled" type="Control" parent="Window"]
+margin_right = 40.0
+margin_bottom = 40.0
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="Window/Labeled"]
+margin_right = 300.0
+margin_bottom = 150.0
+color = Color( 0, 1, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Window/Labeled"]
+margin_left = 75.0
+margin_top = 30.0
+margin_right = 119.0
+margin_bottom = 44.0
+rect_scale = Vector2( 3, 3 )
+text = "Labeled"
+__meta__ = {
+"_edit_use_anchors_": false
+}
