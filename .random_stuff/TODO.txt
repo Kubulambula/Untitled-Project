@@ -1,4 +1,3 @@
 bodíkový systém
 lokální záznam bodíků
 Buckův záznam bodíků
-dialog system (ukrást z Hats a A Game Out Of Control) + udělat to tak, že když se nezvolí defaultní čas, tak se bude čekat dokud hráč nepotvrdí další popup

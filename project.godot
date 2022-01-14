@@ -28,12 +28,13 @@ config/icon="res://Resources/Misc/Icons/icon.png"
 
 [autoload]
 
-WindowOverlay="*res://Scripts/Singletons/window_overlay.gd"
 ResourceQueue="*res://Scripts/Singletons/resource_queue.gd"
-SceneChanger="*res://Scripts/Singletons/scene_changer.gd"
+WindowOverlay="*res://Scripts/Singletons/window_overlay.gd"
 GameState="*res://Scripts/Singletons/game_state.gd"
-LevelManager="*res://Scripts/Singletons/level_manager.gd"
 WebAPI="*res://Scripts/Singletons/web_api.gd"
+SceneChanger="*res://Scripts/Singletons/scene_changer.gd"
+LevelManager="*res://Scripts/Singletons/level_manager.gd"
+PopupBox="*res://Scripts/Singletons/popup_box.gd"
 
 [display]
 

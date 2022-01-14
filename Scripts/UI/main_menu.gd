@@ -17,5 +17,6 @@ func _ready():
 func on_login(code, response):
 	print("GET(" + str(code) + "): " + str(response))
 
+# warning-ignore:unused_argument
 func on_get_user_info(code, response):
 	print("Logged in as '" + response["name"] + "'.")

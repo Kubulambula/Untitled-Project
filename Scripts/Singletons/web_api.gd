@@ -51,6 +51,8 @@ func get_user_info(callback):
 		"https://www.skulaurun.eu/purkiada-jwt-auth/user"
 	)
 
+# warning-ignore:unused_argument
+# warning-ignore:unused_argument
 func _on_response(result, code, headers, body):
 	var next_request = _request_queue.pop_front()
 	if _callback != null:
