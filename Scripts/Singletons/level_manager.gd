@@ -1,8 +1,5 @@
 extends Node
 
-var map_width = 16
-var map_height = 16
-
 var map_tiles = {
 	"#": 0
 }
@@ -22,9 +19,8 @@ var _default_tilemap = null
 
 func _ready():
 	_default_tilemap = TileMap.new()
-	_default_tilemap.cell_size = Vector2(64, 64)
-	_default_tilemap.tile_set = load("res://Resources/Tiles/bitmap_test.tres")
-	add_child(_default_tilemap)
+	_default_tilemap.cell_size = Vector2(64, 64) #Vector2(80,80) # Až budou assety 
+	_default_tilemap.tile_set = load("res://Resources/Tiles/bitmap_test.tres") # Obviously nahradit proper tilemapou
 
 func _open_exe_dir():
 	var exe_dir = Directory.new()
@@ -96,6 +92,7 @@ func find_tile(map, tile):
 				return Vector2(x, y)
 	return Vector2(-1, -1)
 
+# Možná jestli se bude s TileMapou hýbat, tak to bude dělat bordel, ale to se asi nebude (pro jistotu sem píšu ať vím kde hledat)
 func get_world_position(map_position):
 	return _default_tilemap.map_to_world(map_position)
 
@@ -111,8 +108,8 @@ func parse_level_data(content: String):
 		if line.begins_with("[") and line.ends_with("]"):
 			section = line.substr(1, len(line) - 2)
 			continue
-		if section == "Map" and map_row_index != map_height:
-			map.append(line.substr(0, map_width))
+		if section == "Map" and map_row_index != GameState.map_tile_size.y:
+			map.append(line.substr(0, GameState.map_tile_size.x))
 			map_row_index += 1
 	var entities = []
 	var entity_count = {}
