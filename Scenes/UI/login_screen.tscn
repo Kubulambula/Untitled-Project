@@ -1,0 +1,62 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Scripts/UI/login_test.gd" type="Script" id=1]
+
+[sub_resource type="Theme" id=1]
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 1
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 2.031
+anchor_bottom = 1.837
+margin_right = 0.319824
+margin_bottom = 157.36
+color = Color( 0.141176, 0.141176, 0.141176, 1 )
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
+[node name="ColorRect" type="ColorRect" parent="ColorRect"]
+margin_left = 392.0
+margin_top = 127.0
+margin_right = 892.0
+margin_bottom = 623.0
+color = Color( 0.305882, 0.305882, 0.305882, 1 )
+
+[node name="Username" type="LineEdit" parent="."]
+margin_left = 418.0
+margin_top = 158.0
+margin_right = 868.0
+margin_bottom = 244.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Password" type="LineEdit" parent="."]
+margin_left = 418.0
+margin_top = 336.0
+margin_right = 868.0
+margin_bottom = 422.0
+secret = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Submit" type="Button" parent="."]
+margin_left = 418.0
+margin_top = 514.0
+margin_right = 868.0
+margin_bottom = 593.0
+theme = SubResource( 1 )
+text = "Login"
+__meta__ = {
+"_edit_use_anchors_": false
+}
