@@ -35,6 +35,7 @@ WebAPI="*res://Scripts/Singletons/web_api.gd"
 SceneChanger="*res://Scripts/Singletons/scene_changer.gd"
 LevelManager="*res://Scripts/Singletons/level_manager.gd"
 PopupBox="*res://Scripts/Singletons/popup_box.gd"
+GameCode="*res://Scripts/Singletons/game_code.gd"
 
 [display]
 
