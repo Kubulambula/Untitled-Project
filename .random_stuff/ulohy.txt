@@ -16,3 +16,4 @@
 16. hra bude mít odpočet kdy bude končit čas purkiády a bude ti říkat jak máš málo času
 17. musí se blok přidat / oddělat, aby byla cesta
 18. "corrupted" .png, co bude ve skutečnosti .txt a budou v něm data potřebná k pokračování 
+19. roboti

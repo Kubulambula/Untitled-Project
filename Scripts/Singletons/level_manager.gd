@@ -19,8 +19,9 @@ var _default_tilemap = null
 
 func _ready():
 	_default_tilemap = TileMap.new()
-	_default_tilemap.cell_size = Vector2(64, 64) #Vector2(80,80) # Až budou assety 
+	_default_tilemap.cell_size = GameState.tile_unit_size
 	_default_tilemap.tile_set = load("res://Resources/Tiles/bitmap_test.tres") # Obviously nahradit proper tilemapou
+	add_child(_default_tilemap)
 
 func _open_exe_dir():
 	var exe_dir = Directory.new()
