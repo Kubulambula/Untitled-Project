@@ -6,6 +6,8 @@ var _access_token = ""
 var _callback = null
 var _request_queue = []
 
+const API_URL = "https://www.skulaurun.eu/purkiada-jwt-auth"
+
 func _ready():
 	_http = HTTPRequest.new()
 	_http.connect("request_completed", self, "_on_response")
@@ -36,7 +38,7 @@ func login(username, password, callback):
 		"login",
 		[ username, password, callback ],
 		HTTPClient.METHOD_POST,
-		"https://www.skulaurun.eu/purkiada-jwt-auth/user/login",
+		API_URL + "/user/login",
 		to_json({
 			"name": username,
 			"password": password
@@ -48,7 +50,7 @@ func get_user_info(callback):
 		"get_user_info",
 		[ callback ],
 		HTTPClient.METHOD_GET,
-		"https://www.skulaurun.eu/purkiada-jwt-auth/user"
+		API_URL + "/user"
 	)
 
 # warning-ignore:unused_argument
