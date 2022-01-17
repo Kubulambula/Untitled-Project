@@ -4,11 +4,11 @@ const controller_type = 0
 #TODO: coyote timer, slope stopper (raycast collision normal angle?), better ground detection on round edges (testmove to the sides), camera, snap na rampy
 
 #public and editor settings
-export (float, 0.01, 100) var speed_tiles_per_sec = 3
-export (float, 0, 1) var horizontal_lerp_weight = 0.6
-export (float, 0.01, 100) var max_jump_height = 2.2
-export (float, 0.01, 100) var min_jump_height = 0.3
-export (float, 0.01, 60) var sec_jump_duration = 0.4
+export (float, 0.01, 100) var speed_tiles_per_sec = 4
+export (float, 0, 1) var horizontal_lerp_weight = 0.5
+export (float, 0.01, 100) var max_jump_height = 2.25
+export (float, 0.01, 100) var min_jump_height = 0.35
+export (float, 0.01, 60) var sec_jump_duration = 0.37
 export (float, 0, 60) var sec_jump_buffer = 0.12
 export (float, 0, 60) var sec_coyote_time = 0.15
 export (float, 0, 60) var sec_airTime_time = 0.175

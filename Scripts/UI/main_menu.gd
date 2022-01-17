@@ -25,3 +25,8 @@ func on_login(code, response):
 # warning-ignore:unused_argument
 func on_get_user_info(code, response):
 	print("Logged in as '" + response["id"] + "'.")
+
+
+func _on_PLACEHOLDER_DEATH_body_entered(_body):
+	$CanvasLayer/ColorRect.visible = true
+	pass
