@@ -20,7 +20,7 @@ var _default_tilemap = null
 func _ready():
 	_default_tilemap = TileMap.new()
 	_default_tilemap.cell_size = GameState.tile_unit_size
-	_default_tilemap.tile_set = load("res://Resources/Tiles/bitmap_test.tres") # Obviously nahradit proper tilemapou
+	_default_tilemap.tile_set = load("res://Resources/Tiles/bitmap_test_2.tres") # Obviously nahradit proper tilemapou
 	add_child(_default_tilemap)
 
 func _open_exe_dir():
