@@ -15,8 +15,8 @@ func _ready():
 func _next_scene_ready(resource):
 	if $AnimationPlayer.playback_active:
 		yield($AnimationPlayer, "animation_finished")
-	WindowOverlay.dim(true)
+	WindowOverlay.dim(0)
 	yield(get_tree().create_timer(.1), "timeout")
 	# warning-ignore:return_value_discarded
 	get_tree().change_scene_to(ResourceQueue.get_resource(resource))
-	WindowOverlay.undim()
+	WindowOverlay.undim(.3)

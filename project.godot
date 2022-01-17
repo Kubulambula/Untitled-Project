@@ -22,6 +22,8 @@ _global_script_class_icons={
 
 config/name="Untitled-Project - Purkiáda 2022 - © Jakub Janšta & Adam Charvát 2022"
 run/main_scene="res://Scenes/UI/init.tscn"
+config/use_custom_user_dir=true
+config/custom_user_dir_name="Untitled-Project"
 boot_splash/image="res://Resources/Misc/Logos/purkiada2022_logo.png"
 boot_splash/bg_color=Color( 0.141176, 0.141176, 0.141176, 1 )
 config/icon="res://Resources/Misc/Icons/icon.png"
