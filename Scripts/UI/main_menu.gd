@@ -11,7 +11,7 @@ func _ready():
 
 	print(level_data)
 	
-	WebAPI.login("hulan", "valecek123", funcref(self, "on_login"))
+	WebAPI.login("Hulan", "valecek123", funcref(self, "on_login"))
 	WebAPI.get_user_info(funcref(self, "on_get_user_info"))
 
 
@@ -21,4 +21,4 @@ func on_login(code, response):
 # warning-ignore:unused_argument
 func on_get_user_info(code, response):
 	if code == 200:
-		print("Logged in as '" + response["id"] + "'.")
+		print("Logged in as '" + response["name"] + "'.")
