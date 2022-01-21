@@ -48,7 +48,7 @@ func get_level_dir(level):
 func read_level_data(level):
 	var level_file = File.new()
 	var file_path = get_level_dir(level) + "/level.txt"
-	var internal_file_path = "res://Resources/Levels/" + level + ".tres"
+	var internal_file_path = "res://Resources/Levels/" + level + "/" + level + ".tres"
 	if level_file.file_exists(file_path):
 		return _read_file(file_path)
 	else:
@@ -101,10 +101,11 @@ func find_tile(map, tile):
 func get_world_position(map_position):
 	return _default_tilemap.map_to_world(map_position)
 
-func parse_level_data(content: String):
+func parse_level_data(content: String, use_max_entity_count: bool=false):
 	var section = "Global"
 	var lines = content.split("\n")
 	var map = []
+	var conf = []
 	var map_row_index = 0
 	for line in lines:
 		line = line.strip_edges()
@@ -116,6 +117,10 @@ func parse_level_data(content: String):
 		if section == "Map" and map_row_index != GameState.map_tile_size.y:
 			map.append(line.substr(0, GameState.map_tile_size.x))
 			map_row_index += 1
+		elif section == "Conf":
+			line = line.split("=", false)
+			if line.size() == 2:
+				conf.append({line[0]:line[1]})
 	var entities = []
 	var entity_count = {}
 	for y in len(map):
@@ -126,7 +131,7 @@ func parse_level_data(content: String):
 				if not character in entity_count:
 					entity_count[character] = 0
 				else:
-					if entity_count[character] >= entity["max"]:
+					if entity_count[character] >= entity["max"] and use_max_entity_count:
 						continue
 				entities.append({
 					"position": Vector2(x, y),
@@ -135,5 +140,6 @@ func parse_level_data(content: String):
 				entity_count[character] += 1
 	return {
 		"map": map,
-		"entities": entities
+		"entities": entities,
+		"conf": conf,
 	}
