@@ -1,0 +1,3 @@
+[submodule "addons/qrcodetexture"]
+	path = addons/qrcodetexture
+	url = https://github.com/jmb462/qrcodetexture
