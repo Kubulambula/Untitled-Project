@@ -1,6 +1,8 @@
 extends Node
 
 signal _player_request_next
+signal next_button
+signal hidden
 
 var popup = preload("res://Scenes/Singleton_scenes/popup_box.tscn").instance()
 var timer = Timer.new()
@@ -125,14 +127,29 @@ func _show_popup():
 	
 	if item.duration == 0: # No time = use default
 		item.duration = default_popup_duration
+		timer.start()
 	elif item.duration == -1: # Negative time = wait for player input
 		yield(self, "_player_request_next")
 		_timer_timeout()
+	else:
+		timer.wait_time = item.duration
+		timer.start()
 
 
 func _hide_popup():
 	popup.get_node("AnimationPlayer").play_backwards("Slide")
+	emit_signal("hidden")
 
 
 func player_request_next():
 	emit_signal("_player_request_next")
+
+
+func wait_for_next_request():
+	yield(self, "next_button")
+	emit_signal("_player_request_next")
+
+
+func _input(_event):
+	if Input.is_action_just_pressed("ui_accept"):
+		emit_signal("next_button")
