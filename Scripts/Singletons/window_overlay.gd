@@ -39,5 +39,4 @@ func undim(duration:float=0):
 
 
 func _tween_completed():
-	print("completed")
 	emit_signal("complete")

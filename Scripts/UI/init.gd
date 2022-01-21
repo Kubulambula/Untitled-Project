@@ -4,12 +4,15 @@ const next_scene_path = "res://Scenes/UI/main_menu.tscn"
 
 
 func _ready():
+	if WebAPI.is_permitted():
+		WebAPI.initialize()
+	
 	ResourceQueue.register_callback(next_scene_path, "is_ready", funcref(self, "_next_scene_ready"))
 	ResourceQueue.queue_resource(next_scene_path)
 	if OS.is_debug_build():
 		$AnimationPlayer.play("intro_fast")
 	else:
-		$AnimationPlayer.play("intro_middle")
+		$AnimationPlayer.play("intro_slow")
 
 
 func _next_scene_ready(resource):
