@@ -8,6 +8,10 @@ var map_entities = {
 	"P": {
 		"max": 1,
 		"resource": "Player.tscn"
+	},
+	"D": {
+		"max": 1,
+		"resource": "Door.tscn"
 	}
 }
 
