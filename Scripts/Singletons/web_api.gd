@@ -8,10 +8,17 @@ var _request_queue = []
 
 const API_URL = "https://www.skulaurun.eu/untitled-project/api"
 
-func _ready():
+
+func initialize():
 	_http = HTTPRequest.new()
 	_http.connect("request_completed", self, "_on_response")
 	add_child(_http)
+
+func is_permitted():
+	return (OS.has_feature("Purkiada") or OS.has_feature("editor"))
+
+func is_available():
+	return is_permitted() #and (check if server is available)
 
 func generic_request(handler_name, args, method, url, data = ""):
 	if _http.get_http_client_status() == HTTPClient.STATUS_DISCONNECTED:
