@@ -1,3 +1,6 @@
 bodíkový systém
 lokální záznam bodíků
 Buckův záznam bodíků
+
+
+lincenses + credits 
