@@ -67,7 +67,7 @@ func recalculate_movement_settings():
 func _physics_process(delta):
 	#Test move 1 unit down to determine if the player is grounded
 #	is_grounded = true if move_and_collide(Vector2.DOWN, false, true, true) else false
-	direction = -Input.get_action_strength("move_left") + Input.get_action_strength("move_right")
+	direction = int(GameState.player_can_move) * (-Input.get_action_strength("move_left") + Input.get_action_strength("move_right"))
 	
 	_velocity.x = lerp(_velocity.x, _speed * direction, _lerp_weight)
 	#flip sprite
@@ -77,7 +77,7 @@ func _physics_process(delta):
 		GFX.flip_h = false
 	
 	#activate jumpBuffer
-	if Input.is_action_just_pressed("move_jump"):
+	if Input.is_action_just_pressed("move_jump") and GameState.player_can_move:
 		jumpBufferTimer.start()
 		jumping = true
 	#jump if jumpBuffer is active
@@ -99,7 +99,6 @@ func _physics_process(delta):
 		_velocity.y = _min_jump_velocity
 	
 
-	#Garbaj
 #	match state:
 #		IDLE:
 #			if $Timer.is_stopped():

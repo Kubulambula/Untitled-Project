@@ -8,16 +8,6 @@
 
 config_version=4
 
-_global_script_classes=[ {
-"base": "Node",
-"class": "MapReader",
-"language": "GDScript",
-"path": "res://Scripts/Classes/map_reader.gd"
-} ]
-_global_script_class_icons={
-"MapReader": ""
-}
-
 [application]
 
 config/name="Untitled-Project - Purkiáda 2022 - © Jakub Janšta & Adam Charvát 2022"
@@ -27,6 +17,7 @@ config/custom_user_dir_name="Untitled-Project"
 boot_splash/image="res://Resources/Misc/Logos/purkiada2022_logo.png"
 boot_splash/bg_color=Color( 0.141176, 0.141176, 0.141176, 1 )
 config/icon="res://Resources/Misc/Icons/icon.png"
+config/windows_native_icon="res://Resources/Misc/Icons/purkiada.ico"
 
 [autoload]
 
@@ -38,6 +29,7 @@ SceneChanger="*res://Scripts/Singletons/scene_changer.gd"
 LevelManager="*res://Scripts/Singletons/level_manager.gd"
 PopupBox="*res://Scripts/Singletons/popup_box.gd"
 GameCode="*res://Scripts/Singletons/game_code.gd"
+EventReporter="*res://Scripts/Singletons/event_reporter.gd"
 
 [display]
 

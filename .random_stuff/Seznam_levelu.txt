@@ -1,0 +1,13 @@
+1. Obyčejný skákání
+2. Díra v zemi
+- díra v zemi, ale nemůžeš hýbat se zdmi
+3. zdi zamčeny - musí se pohnout hráčem, nebo vchodem
+4. zacyklené dveře
+5. base64 obrázek (může to být ta šípka pro dron?)
+6. dron
+7. místo pro drona blokuje místo pro tebe
+7. dialog
+8. edit statů bose
+přidat si entitu (coin), co není v mapě
+.png s .txt koncovkou ve kterým bude heslo
+ceasarova šifra změnou fontu
