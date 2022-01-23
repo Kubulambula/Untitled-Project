@@ -9,6 +9,10 @@ var _request_queue = []
 const API_URL = "https://www.skulaurun.eu/untitled-project/api"
 
 
+func _init():
+	if is_permitted():
+		initialize()
+
 func initialize():
 	_http = HTTPRequest.new()
 	_http.connect("request_completed", self, "_on_response")

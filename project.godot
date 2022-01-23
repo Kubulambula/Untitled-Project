@@ -30,6 +30,7 @@ LevelManager="*res://Scripts/Singletons/level_manager.gd"
 PopupBox="*res://Scripts/Singletons/popup_box.gd"
 GameCode="*res://Scripts/Singletons/game_code.gd"
 EventReporter="*res://Scripts/Singletons/event_reporter.gd"
+QRCode="*res://Scripts/Singletons/qr_code.gd"
 
 [display]
 
