@@ -34,7 +34,7 @@ func _switch_to_next_scene(scene):
 		WindowOverlay.dim(.1)
 	else:
 		WindowOverlay.dim(0)
-	yield(get_tree().create_timer(.1), "timeout")
+	yield(get_tree().create_timer(.15), "timeout")
 	# warning-ignore:return_value_discarded
 	get_tree().change_scene_to(scene)
 	WindowOverlay.undim(.3)
