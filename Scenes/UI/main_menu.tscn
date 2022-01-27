@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Scripts/UI/main_menu.gd" type="Script" id=3]
 
@@ -53,6 +53,13 @@ pressed = true
 [sub_resource type="ShortCut" id=10]
 shortcut = SubResource( 9 )
 
+[sub_resource type="DynamicFontData" id=13]
+font_path = "res://Resources/Fonts/8bitOperator/8bitOperatorPlus-Bold.ttf"
+
+[sub_resource type="DynamicFont" id=12]
+size = 25
+font_data = SubResource( 13 )
+
 [node name="Control" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -63,43 +70,45 @@ __meta__ = {
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 anchor_right = 1.0
+margin_bottom = 672.0
+rect_min_size = Vector2( 1280, 720 )
 __meta__ = {
 "_edit_use_anchors_": true
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
-margin_left = 303.0
-margin_right = 977.0
-margin_bottom = 393.0
+margin_top = 213.0
+margin_right = 1280.0
+margin_bottom = 506.0
 
 [node name="Control" type="Control" parent="CenterContainer/VBoxContainer"]
-margin_right = 674.0
-margin_bottom = 100.0
-rect_min_size = Vector2( 0, 100 )
+margin_right = 1280.0
 
 [node name="Title" type="Label" parent="CenterContainer/VBoxContainer"]
-margin_top = 104.0
-margin_right = 674.0
-margin_bottom = 244.0
+margin_top = 4.0
+margin_right = 1280.0
+margin_bottom = 144.0
+rect_min_size = Vector2( 1280, 0 )
 custom_fonts/font = SubResource( 2 )
 text = "GAMEBOOK 3"
 align = 1
 valign = 1
+autowrap = true
 
 [node name="Control2" type="Control" parent="CenterContainer/VBoxContainer"]
-margin_top = 248.0
-margin_right = 674.0
-margin_bottom = 298.0
+margin_top = 148.0
+margin_right = 1280.0
+margin_bottom = 198.0
 rect_min_size = Vector2( 0, 50 )
 
 [node name="CenterContainer" type="CenterContainer" parent="CenterContainer/VBoxContainer"]
-margin_top = 302.0
-margin_right = 674.0
-margin_bottom = 393.0
+margin_top = 202.0
+margin_right = 1280.0
+margin_bottom = 293.0
 
 [node name="Button" type="Button" parent="CenterContainer/VBoxContainer/CenterContainer"]
-margin_left = 232.0
-margin_right = 442.0
+margin_left = 535.0
+margin_right = 745.0
 margin_bottom = 91.0
 custom_fonts/font = SubResource( 4 )
 custom_styles/hover = SubResource( 6 )
@@ -108,5 +117,44 @@ custom_styles/focus = SubResource( 8 )
 custom_styles/normal = SubResource( 5 )
 shortcut = SubResource( 10 )
 text = "START"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 1280, 720 )
+mouse_filter = 2
+alignment = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 675.0
+margin_right = 1280.0
+margin_bottom = 711.0
+rect_min_size = Vector2( 1280, 0 )
+mouse_filter = 2
+alignment = 2
+
+[node name="Version" type="Label" parent="VBoxContainer/HBoxContainer"]
+margin_left = 1090.0
+margin_right = 1266.0
+margin_bottom = 36.0
+custom_fonts/font = SubResource( 12 )
+text = "Version: 0.0"
+
+[node name="Control" type="Control" parent="VBoxContainer/HBoxContainer"]
+margin_left = 1270.0
+margin_right = 1280.0
+margin_bottom = 36.0
+rect_min_size = Vector2( 10, 0 )
+mouse_filter = 2
+
+[node name="Control" type="Control" parent="VBoxContainer"]
+margin_top = 715.0
+margin_right = 1280.0
+margin_bottom = 720.0
+rect_min_size = Vector2( 0, 5 )
+mouse_filter = 2
 
 [connection signal="pressed" from="CenterContainer/VBoxContainer/CenterContainer/Button" to="." method="_on_Button_pressed"]
