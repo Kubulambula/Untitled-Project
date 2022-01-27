@@ -1,22 +1,25 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Scripts/Entities/Player.gd" type="Script" id=1]
-[ext_resource path="res://Resources/Entities/Player/player.tres" type="SpriteFrames" id=2]
+[ext_resource path="res://Resources/Entities/characters.tres" type="SpriteFrames" id=2]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 15.0
-height = 23.0
+height = 36.0
 
 [node name="Player" type="KinematicBody2D"]
 script = ExtResource( 1 )
 max_jump_height = 2.3
 
 [node name="GFX" type="AnimatedSprite" parent="."]
-scale = Vector2( 0.6, 0.6 )
+scale = Vector2( 0.9, 0.9 )
 frames = ExtResource( 2 )
+animation = "player_idle"
+frame = 1
+playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0, 12 )
+position = Vector2( 0, 3 )
 shape = SubResource( 1 )
 
 [connection signal="animation_finished" from="GFX" to="." method="_on_GFX_animation_finished"]
