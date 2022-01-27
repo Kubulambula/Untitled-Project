@@ -11,7 +11,6 @@ export (float, 0.01, 100) var min_jump_height = 0.35
 export (float, 0.01, 60) var sec_jump_duration = 0.37
 export (float, 0, 60) var sec_jump_buffer = 0.12
 export (float, 0, 60) var sec_coyote_time = 0.15
-export (float, 0, 60) var sec_airTime_time = 0.175
 
 
 #private variables basen on public settings
@@ -24,11 +23,10 @@ var _speed
 
 #script global woking variables
 var _velocity = Vector2(0,0)
-#var _external_forces = Vector2(0,0)
 #var is_grounded = false
 var was_grounded = false
 
-enum{IDLE, WALK, RUN, AIR, JUMP, LAND, DANCE}
+enum{IDLE, WALK, RUN, AIR, JUMP, LAND}
 var state = IDLE
 var direction = 0
 var jumping = false
@@ -37,14 +35,11 @@ var jumping = false
 onready var GFX = $GFX
 onready var coyoteTimer = Timer.new()
 onready var jumpBufferTimer = Timer.new()
-onready var airTimer = Timer.new()
 
 
 func _ready():
 	add_child(coyoteTimer)
 	add_child(jumpBufferTimer)
-	add_child(airTimer)
-	airTimer.connect("timeout", self, "airTimer_timeout")
 	
 	recalculate_movement_settings()
 
@@ -58,10 +53,8 @@ func recalculate_movement_settings():
 	_speed =  speed_tiles_per_sec * GameState.tile_unit_size.x
 	coyoteTimer.wait_time = sec_coyote_time
 	jumpBufferTimer.wait_time = sec_jump_buffer
-	airTimer.wait_time = sec_airTime_time
 	coyoteTimer.one_shot = true
 	jumpBufferTimer.one_shot = true
-	airTimer.one_shot = true
 
 
 func _physics_process(delta):
@@ -72,9 +65,9 @@ func _physics_process(delta):
 	_velocity.x = lerp(_velocity.x, _speed * direction, _lerp_weight)
 	#flip sprite
 	if direction == 1:
-		GFX.flip_h = true
-	elif direction == -1:
 		GFX.flip_h = false
+	elif direction == -1:
+		GFX.flip_h = true
 	
 	#activate jumpBuffer
 	if Input.is_action_just_pressed("move_jump") and GameState.player_can_move:
@@ -99,29 +92,33 @@ func _physics_process(delta):
 		_velocity.y = _min_jump_velocity
 	
 
-#	match state:
-#		IDLE:
-#			if $Timer.is_stopped():
-#				$Timer.start()
-#			GFX.set_lapse_animation("idle")
-#			if direction:
-#				state = WALK
-#			if not is_grounded and airTimer.is_stopped():
-#				airTimer.start()
-#
-#		WALK:
-#			$Timer.stop()
-#			GFX.set_lapse_animation("walk")
-#			if not direction:
-#				state = IDLE
-#			if not is_grounded:
-#				airTimer.start()
-#
-#		AIR:
-#			$Timer.stop()
-#			GFX.set_lapse_animation("air")
-#			if is_grounded:
-#				state = LAND
+	match state:
+		IDLE:
+			GFX.play("player_idle")
+			if direction:
+				state = WALK
+			if not is_grounded():
+				state = AIR
+		
+		WALK:
+			GFX.play("player_run")
+			if not direction:
+				state = IDLE
+			if not is_grounded():
+				state = AIR
+		
+		AIR:
+			GFX.play("player_air")
+			if is_grounded():
+				state = LAND
+				GFX.play("player_land")
+		
+		LAND:
+			GFX.play("player_land")
+		
+		JUMP:
+			GFX.play("player_jump")
+		
 	#moving
 	_velocity = move_and_slide_with_snap(_velocity, Vector2.DOWN, Vector2.UP)
 	if was_grounded and not is_grounded() and not jumping:
@@ -131,19 +128,12 @@ func _physics_process(delta):
 	jumping = not is_grounded()
 
 
-#func _on_GFX_animation_finished():
-#	#dirty fix for animation stutter
-#	if state == JUMP:
-#		GFX.set_lapse_animation("air")
-#		state = AIR
-#	elif state == LAND:
-#		GFX.set_lapse_animation("idle")
-#		state = IDLE
-
-
-func airTimer_timeout():
-	if not is_grounded():
+func _on_GFX_animation_finished():
+	#dirty fix for animation stutter
+	if state == JUMP:
 		state = AIR
+	elif state == LAND:
+		state = IDLE
 
 
 func is_grounded():
