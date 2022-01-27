@@ -9,6 +9,7 @@ var next_scene = null
 
 
 func _ready():
+	EscOverlay.allowed = false
 	ResourceQueue.register_callback(next_scene_path, "is_ready", funcref(self, "_next_scene_ready"))
 	ResourceQueue.queue_resource(next_scene_path)
 	if OS.is_debug_build():

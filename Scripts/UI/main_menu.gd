@@ -9,8 +9,10 @@ const version_format = "Version: %s"
 
 
 func _ready():
-	$VBoxContainer/HBoxContainer/Version.text = version_format % ProjectSettings.get_setting("untitled_project/config/version")
+	EscOverlay.allowed = false
+	$VBoxContainer/HBoxContainer/Version.text = version_format % GameState.version
 
 func _on_Button_pressed():
+	EscOverlay.allowed = true
 	# warning-ignore:return_value_discarded
 	get_tree().change_scene("res://Resources/Levels/Level1/level1.tscn")
