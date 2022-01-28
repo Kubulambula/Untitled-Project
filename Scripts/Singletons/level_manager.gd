@@ -60,6 +60,10 @@ func _load_internal_level_data(level):
 	var internal_level_data = parse_level_data(header + _read_file(internal_file_path))
 	return internal_level_data
 
+func set_map_dimensions(x, y):
+	map_width = x
+	map_height = y
+
 func get_level_dir(level):
 	var exe_dir = _open_exe_dir()
 	if not exe_dir.dir_exists(level):

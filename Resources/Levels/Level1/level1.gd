@@ -9,9 +9,10 @@ func _ready():
 	# warning-ignore:return_value_discarded
 	EventReporter.connect("event_reported", self, "handle_event")
 	
+	LevelManager.set_map_dimensions(16, 9)
 	level_data = LevelManager.parse_level_data(LevelManager.read_level_data(level))
 	
-	level_data = LevelManager.apply_immovable_mask(level_data, ["$"])
+	level_data = LevelManager.apply_immovable_mask(level_data, ["$", "P", "#"])
 	level_data = LevelManager.apply_max_entity_mask(level_data, {"P": 1, "D": 1})
 	
 	# Insert level specific masks/checks here
