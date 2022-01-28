@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Resources/Misc/Icons/icon.png" type="Texture" id=1]
 [ext_resource path="res://Scenes/Entities/PlayerDeathChecker.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scripts/UI/DEBUG.gd" type="Script" id=3]
+[ext_resource path="res://Resources/Tiles/tileset.tres" type="TileSet" id=4]
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 3 )
@@ -41,3 +42,9 @@ __meta__ = {
 [node name="QR" type="Sprite" parent="."]
 position = Vector2( 761, 191 )
 scale = Vector2( 10, 10 )
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource( 4 )
+cell_size = Vector2( 80, 80 )
+format = 1
+tile_data = PoolIntArray( 196601, 0, 262144, 196606, 0, 0, 262135, 0, 262144, 262137, 0, 327680, 262142, 0, 327680, 327670, 0, 262152, 327671, 0, 327687, 327673, 0, 65540, 327674, 0, 262154, 327675, 0, 262150, 327676, 0, 196610, 327677, 0, 196610, 327678, 0, 131075, 393206, 0, 65544, 393207, 0, 327686, 393208, 0, 262150, 393209, 0, 196613, 393210, 0, 131077, 393211, 0, 393227, 458742, 0, 327688, 458743, 0, 393225, 458744, 0, 393227, 458746, 0, 327688, 458747, 0, 393227, 524278, 0, 327688, 524279, 0, 131078, 524280, 0, 196614, 524281, 0, 196610, 524282, 0, 458757, 524283, 0, 196619, 589814, 0, 458760, 589815, 0, 196619 )

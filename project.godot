@@ -37,6 +37,7 @@ EscOverlay="*res://Scripts/Singletons/esc_overlay.gd"
 
 window/size/width=1280
 window/size/height=720
+window/size/fullscreen=true
 window/dpi/allow_hidpi=true
 window/stretch/mode="2d"
 window/stretch/aspect="keep"
