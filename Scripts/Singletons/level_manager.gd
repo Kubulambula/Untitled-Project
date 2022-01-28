@@ -175,7 +175,7 @@ func apply_max_entity_mask(level_data, mask):
 	var entities = level_data["entities"]
 	var entity_count = count_tiles(map)
 	for character in mask:
-		if entity_count[character] > mask[character]:
+		if character in entity_count and entity_count[character] > mask[character]:
 			var difference = entity_count[character] - mask[character]
 			for i in range(len(entities) - 1, -1, -1):
 				if difference == 0: break
