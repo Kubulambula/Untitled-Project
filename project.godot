@@ -22,8 +22,8 @@ config/windows_native_icon="res://Resources/Misc/Icons/purkiada.ico"
 [autoload]
 
 ResourceQueue="*res://Scripts/Singletons/resource_queue.gd"
-WindowOverlay="*res://Scripts/Singletons/window_overlay.gd"
 GameState="*res://Scripts/Singletons/game_state.gd"
+WindowOverlay="*res://Scripts/Singletons/window_overlay.gd"
 WebAPI="*res://Scripts/Singletons/web_api.gd"
 SceneChanger="*res://Scripts/Singletons/scene_changer.gd"
 LevelManager="*res://Scripts/Singletons/level_manager.gd"
@@ -37,10 +37,33 @@ EscOverlay="*res://Scripts/Singletons/esc_overlay.gd"
 
 window/size/width=1280
 window/size/height=720
-window/size/fullscreen=true
 window/dpi/allow_hidpi=true
 window/stretch/mode="2d"
 window/stretch/aspect="keep"
+
+[importer_defaults]
+
+texture={
+"compress/bptc_ldr": 0,
+"compress/hdr_mode": 0,
+"compress/lossy_quality": 0.7,
+"compress/mode": 0,
+"compress/normal_map": 0,
+"detect_3d": true,
+"flags/anisotropic": false,
+"flags/filter": false,
+"flags/mipmaps": false,
+"flags/repeat": 0,
+"flags/srgb": 2,
+"process/HDR_as_SRGB": false,
+"process/fix_alpha_border": true,
+"process/invert_color": false,
+"process/normal_map_invert_y": false,
+"process/premult_alpha": false,
+"size_limit": 0,
+"stream": false,
+"svg/scale": 1.0
+}
 
 [input]
 

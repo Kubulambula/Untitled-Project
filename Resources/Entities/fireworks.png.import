@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/bitmap_test_2.png-4ff0e7a57401864dec895fe736a20c11.stex"
+path="res://.import/fireworks.png-2ebd3a91e533c03656671737f8c0fe42.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Resources/Tiles/bitmap_test_2.png"
-dest_files=[ "res://.import/bitmap_test_2.png-4ff0e7a57401864dec895fe736a20c11.stex" ]
+source_file="res://Resources/Entities/fireworks.png"
+dest_files=[ "res://.import/fireworks.png-2ebd3a91e533c03656671737f8c0fe42.stex" ]
 
 [params]
 
