@@ -1,8 +1,15 @@
+DO DALŠÍ SCHŮZKY:
+
+Následující věci by měl nový LevelManager umět out of the box:
 1. Obyčejný skákání
-2. Díra v zemi
-- díra v zemi, ale nemůžeš hýbat se zdmi
-3. zdi zamčeny - musí se pohnout hráčem, nebo vchodem
-4. zacyklené dveře
+2. Díra v zemi, nelze hýbat se zdmi
+3. Zdi zamčeny - musí se pohnout hráčem, nebo vchodem
+
+Zde se musí asi přidat kontrola jestli zadali validní level:
+4. Zacyklené dveře
+
+TO SE JEDNOU UDĚLÁ:
+
 5. base64 obrázek (může to být ta šípka pro dron?)
 6. dron
 7. místo pro drona blokuje místo pro tebe
