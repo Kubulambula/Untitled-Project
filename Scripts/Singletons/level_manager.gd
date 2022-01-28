@@ -145,10 +145,14 @@ func apply_immovable_mask(level_data, mask, replace_with=" "):
 			entities.append(entity)
 	return level_data
 
+# TODO: Write this if needed or make one function for tiles and entities
+func apply_max_tile_mask(level_data, mask, replace_with=" "):
+	return level_data
+
 func apply_max_entity_mask(level_data, mask, replace_with=" "):
 	var map = level_data["map"]
 	var entities = level_data["entities"]
-	var entity_count = level_data["entity_count"]
+	var entity_count = level_data["character_count"]
 	for character in mask:
 		if entity_count[character] > mask[character]:
 			var difference = entity_count[character] - mask[character]
@@ -167,6 +171,8 @@ func parse_level_data(content: String):
 	var lines = content.split("\n")
 	var map = []
 	var conf = []
+	var entities = []
+	var character_count = {}
 	var map_row_index = 0
 	var level_name = lines[0].substr(1)
 	for line in lines:
@@ -183,26 +189,24 @@ func parse_level_data(content: String):
 			line = line.split("=", false)
 			if line.size() == 2:
 				conf.append({line[0]:line[1]})
-	var entities = []
-	var entity_count = {}
 	for y in len(map):
 		for x in len(map[y]):
 			var character = map[y][x]
+			if not character in character_count:
+				character_count[character] = 0
+			character_count[character] += 1
 			if character in map_entities:
-				if not character in entity_count:
-					entity_count[character] = 0
 				entities.append({
 					"character": character,
 					"position": Vector2(x, y),
 					"resource": map_entities[character],
 				})
-				entity_count[character] += 1
 	return {
 		"level": level_name,
 		"map": map,
 		"conf": conf,
 		"entities": entities,
-		"entity_count": entity_count
+		"character_count": character_count
 	}
 	
 func write_level_data(level, serialized_level_data):
