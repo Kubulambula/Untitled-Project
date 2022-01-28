@@ -4,12 +4,20 @@ const level = "level1"
 
 var level_data = null
 
-
 func _ready():
 	GameState.player_can_move = false
 	# warning-ignore:return_value_discarded
 	EventReporter.connect("event_reported", self, "handle_event")
-	level_data = LevelManager.parse_level_data(LevelManager.read_level_data("level1"), false)
+	
+	level_data = LevelManager.parse_level_data(LevelManager.read_level_data(level))
+	
+	level_data = LevelManager.apply_immovable_mask(level_data, ["$"])
+	level_data = LevelManager.apply_max_entity_mask(level_data, {"P": 1, "D": 1})
+	
+	# Insert level specific masks/checks here
+	
+	LevelManager.write_level_data(level, LevelManager.serialize_level_data(level_data))
+	
 	LevelManager.build_tilemaps(self, level_data["map"])
 	LevelManager.spawn_entities(self, level_data["entities"])
 	
