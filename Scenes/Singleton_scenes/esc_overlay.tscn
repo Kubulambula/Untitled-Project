@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [sub_resource type="GDScript" id=13]
 script/source = "extends CanvasLayer
@@ -12,6 +12,13 @@ font_path = "res://Resources/Fonts/8bitOperator/8bitOperatorPlus-Bold.ttf"
 size = 25
 font_data = SubResource( 11 )
 
+[sub_resource type="DynamicFontData" id=14]
+font_path = "res://Resources/Fonts/8bitOperator/8bitOperatorPlusSC-Bold.ttf"
+
+[sub_resource type="DynamicFont" id=15]
+size = 200
+font_data = SubResource( 14 )
+
 [node name="CanvasLayer" type="CanvasLayer"]
 pause_mode = 2
 script = SubResource( 13 )
@@ -23,7 +30,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ColorRect" type="ColorRect" parent="Control"]
+[node name="Background" type="ColorRect" parent="Control"]
 margin_right = 40.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 1280, 720 )
@@ -32,7 +39,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
+[node name="Version" type="VBoxContainer" parent="Control"]
 margin_right = 40.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 1280, 720 )
@@ -42,7 +49,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Control/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/Version"]
 margin_top = 675.0
 margin_right = 1280.0
 margin_bottom = 711.0
@@ -50,23 +57,49 @@ rect_min_size = Vector2( 1280, 0 )
 mouse_filter = 2
 alignment = 2
 
-[node name="Version" type="Label" parent="Control/VBoxContainer/HBoxContainer"]
+[node name="Version" type="Label" parent="Control/Version/HBoxContainer"]
 margin_left = 1090.0
 margin_right = 1266.0
 margin_bottom = 36.0
 custom_fonts/font = SubResource( 12 )
 text = "Version: 0.0"
 
-[node name="Control" type="Control" parent="Control/VBoxContainer/HBoxContainer"]
+[node name="Spacing" type="Control" parent="Control/Version/HBoxContainer"]
 margin_left = 1270.0
 margin_right = 1280.0
 margin_bottom = 36.0
 rect_min_size = Vector2( 10, 0 )
 mouse_filter = 2
 
-[node name="Control" type="Control" parent="Control/VBoxContainer"]
+[node name="Spacing" type="Control" parent="Control/Version"]
 margin_top = 715.0
 margin_right = 1280.0
 margin_bottom = 720.0
 rect_min_size = Vector2( 0, 5 )
 mouse_filter = 2
+
+[node name="Paused" type="CenterContainer" parent="Control"]
+margin_right = 1280.0
+margin_bottom = 600.0
+rect_min_size = Vector2( 1280, 720 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/Paused"]
+margin_left = 226.0
+margin_top = 133.0
+margin_right = 1054.0
+margin_bottom = 586.0
+
+[node name="PausedLabel" type="Label" parent="Control/Paused/VBoxContainer"]
+margin_right = 828.0
+margin_bottom = 279.0
+custom_fonts/font = SubResource( 15 )
+text = "PAUSED"
+
+[node name="Spacing" type="Control" parent="Control/Paused/VBoxContainer"]
+margin_top = 283.0
+margin_right = 828.0
+margin_bottom = 453.0
+rect_min_size = Vector2( 0, 170 )
