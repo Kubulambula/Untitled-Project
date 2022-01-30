@@ -88,7 +88,7 @@ func _on_response(result, code, headers, body):
 	var next_request = _request_queue.pop_front()
 	if _callback != null:
 		var response = null
-		if body.empty():
+		if not body.empty():
 			response = (JSON.parse(body.get_string_from_utf8()).result)
 			if code == 200 and _callback["name"] == "login":
 				_access_token = response["accessToken"]
