@@ -8,7 +8,6 @@ var _request_queue = []
 
 const API_URL = "https://www.skulaurun.eu/untitled-project/api"
 
-
 func _init():
 	if is_permitted():
 		initialize()
@@ -64,14 +63,35 @@ func get_user_info(callback):
 		API_URL + "/me"
 	)
 
+func submit(code, callback):
+	generic_request(
+		"submit",
+		[ code, callback ],
+		HTTPClient.METHOD_POST,
+		API_URL + "/results/submit",
+		to_json({
+			"code": code
+		})
+	)
+
+func get_my_results(callback):
+	generic_request(
+		"get_my_results",
+		[ callback ],
+		HTTPClient.METHOD_GET,
+		API_URL + "me/results"
+	)
+
 # warning-ignore:unused_argument
 # warning-ignore:unused_argument
 func _on_response(result, code, headers, body):
 	var next_request = _request_queue.pop_front()
 	if _callback != null:
-		var response = (JSON.parse(body.get_string_from_utf8()).result)
-		if code == 200 and _callback["name"] == "login":
-			_access_token = response["accessToken"]
+		var response = null
+		if body.empty():
+			response = (JSON.parse(body.get_string_from_utf8()).result)
+			if code == 200 and _callback["name"] == "login":
+				_access_token = response["accessToken"]
 		_callback["function"].call_func(code, response)
 	if next_request != null:
 		callv(next_request["name"], next_request["args"])
