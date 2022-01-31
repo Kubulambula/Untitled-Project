@@ -75,4 +75,4 @@ func _user_info_response(code, response):
 		logging_in = true
 		$CenterContainer/TokenLogin.visible = false
 		GameState.config.set_value("user", "token", "")
-		alert("Could not log in from saved token\nGET(" + str(code) + "): " + str(response), 8)
+		alert("Could not log in from token\nGET(" + str(code) + "): " + str(response), 8)

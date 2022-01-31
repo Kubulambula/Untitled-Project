@@ -56,6 +56,13 @@ func recalculate_movement_settings():
 	jumpBufferTimer.one_shot = true
 
 
+func set_camera_limits(left_top: Vector2 = Vector2(0, 0), right_bottom: Vector2 = Vector2(1280, 720)):
+	$Camera2D.limit_left = left_top.x
+	$Camera2D.limit_top = left_top.y
+	$Camera2D.limit_right = right_bottom.x
+	$Camera2D.limit_bottom = right_bottom.y
+
+
 func _physics_process(delta):
 	#Test move 1 unit down to determine if the player is grounded
 #	is_grounded = true if move_and_collide(Vector2.DOWN, false, true, true) else false
