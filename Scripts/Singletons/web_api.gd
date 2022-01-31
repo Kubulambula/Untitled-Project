@@ -1,7 +1,7 @@
 extends Node
 
 var _http = null
-var _access_token = ""
+var _access_token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MWYyZGFlZjYyMzMzY2IyNGNjZjg2YzMiLCJpYXQiOjE2NDMzMDgwNTl9.RX_Mq52aBiuDdC3PePQCy2wTLGFH98DIZGCnaQvdUsQ"
 
 var _callback = null
 var _request_queue = []
