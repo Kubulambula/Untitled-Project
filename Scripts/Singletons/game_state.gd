@@ -12,6 +12,7 @@ var player_can_move = true
 
 var version = ProjectSettings.get_setting("untitled_project/config/version")
 
+var score = 0
 
 func _init():
 	print("[START]")

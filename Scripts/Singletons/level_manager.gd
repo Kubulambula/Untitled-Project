@@ -111,7 +111,7 @@ func spawn_entities(root, entities):
 		if not resource_path.begins_with("res://"):
 			resource_path = "res://Scenes/Entities/" + resource_path
 		var entity = load(resource_path).instance()
-		entity.set_global_position(get_world_position(entity_data["position"]))
+		entity.set_global_position(get_world_position_with_center_offset(entity_data["position"]))
 		entity_data["node"] = entity
 		scenes.append(entity)
 		root.add_child(entity)
@@ -137,6 +137,9 @@ func count_tiles(map):
 # Možná jestli se bude s TileMapou hýbat, tak to bude dělat bordel, ale to se asi nebude (pro jistotu sem píšu ať vím kde hledat)
 func get_world_position(map_position):
 	return _default_tilemap.map_to_world(map_position)
+
+func get_world_position_with_center_offset(map_position):
+	return _default_tilemap.map_to_world(map_position) + GameState.tile_unit_size/2
 
 func apply_immovable_mask(level_data, mask):
 	# For simplicity's sake
