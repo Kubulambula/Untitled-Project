@@ -39,7 +39,7 @@ content_margin_left = 20.0
 content_margin_right = 20.0
 content_margin_top = 10.0
 content_margin_bottom = 10.0
-bg_color = Color( 0.203922, 0.203922, 0.203922, 1 )
+bg_color = Color( 0.219608, 0.219608, 0.219608, 1 )
 
 [sub_resource type="DynamicFontData" id=14]
 font_path = "res://Resources/Fonts/8bitOperator/8bitOperatorPlus8-Bold.ttf"

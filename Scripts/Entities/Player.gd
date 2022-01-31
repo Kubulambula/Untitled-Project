@@ -1,14 +1,13 @@
 extends KinematicBody2D
 const controller_type = 0
 
-#TODO: coyote timer, slope stopper (raycast collision normal angle?), better ground detection on round edges (testmove to the sides), camera, snap na rampy
 
 #public and editor settings
 export (float, 0.01, 100) var speed_tiles_per_sec = 4
 export (float, 0, 1) var horizontal_lerp_weight = 0.5
-export (float, 0.01, 100) var max_jump_height = 2.25
-export (float, 0.01, 100) var min_jump_height = 0.35
-export (float, 0.01, 60) var sec_jump_duration = 0.37
+export (float, 0.01, 100) var max_jump_height = 2.15
+export (float, 0.01, 100) var min_jump_height = 0.3
+export (float, 0.01, 60) var sec_jump_duration = 0.35
 export (float, 0, 60) var sec_jump_buffer = 0.12
 export (float, 0, 60) var sec_coyote_time = 0.15
 
@@ -55,6 +54,13 @@ func recalculate_movement_settings():
 	jumpBufferTimer.wait_time = sec_jump_buffer
 	coyoteTimer.one_shot = true
 	jumpBufferTimer.one_shot = true
+
+
+func set_camera_limits(left_top: Vector2 = Vector2(0, 0), right_bottom: Vector2 = Vector2(1280, 720)):
+	$Camera2D.limit_left = left_top.x
+	$Camera2D.limit_top = left_top.y
+	$Camera2D.limit_right = right_bottom.x
+	$Camera2D.limit_bottom = right_bottom.y
 
 
 func _physics_process(delta):

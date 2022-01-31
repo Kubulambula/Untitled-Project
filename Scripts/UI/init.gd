@@ -13,7 +13,7 @@ func _ready():
 	ResourceQueue.register_callback(next_scene_path, "is_ready", funcref(self, "_next_scene_ready"))
 	ResourceQueue.queue_resource(next_scene_path)
 	if OS.is_debug_build():
-		intro = "intro_fast"
+		intro = "intro_middle"
 	$AnimationPlayer.play(intro)
 
 
@@ -39,3 +39,12 @@ func _switch_to_next_scene(scene):
 	# warning-ignore:return_value_discarded
 	get_tree().change_scene_to(scene)
 	WindowOverlay.undim(.3)
+
+
+func _input(event):
+	# Ctrl + Shift+ Arrow Up
+	if event is InputEventKey and event.alt and event.shift and event.scancode == KEY_UP:
+		if not GameState.dev_mode:
+			GameState.dev_mode = true
+			print("=== DEV MODE ===")
+	

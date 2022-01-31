@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Resources/Misc/Themes/login_box.png" type="Texture" id=1]
 [ext_resource path="res://Resources/Misc/Themes/login_theme.tres" type="Theme" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://Resources/Misc/Themes/alert.png" type="Texture" id=6]
 [ext_resource path="res://Resources/Misc/Themes/login_login_button_hover2.png" type="Texture" id=7]
 [ext_resource path="res://Resources/Misc/Themes/untitled_theme.tres" type="Theme" id=8]
+[ext_resource path="res://Resources/Entities/fireworks.tres" type="SpriteFrames" id=9]
 
 [sub_resource type="Animation" id=1]
 length = 0.001
@@ -47,6 +48,18 @@ tracks/2/keys = {
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ) ]
 }
+tracks/3/type = "value"
+tracks/3/path = NodePath("../../AnimatedSprite:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
 
 [sub_resource type="Animation" id=2]
 resource_name = "alert"
@@ -77,6 +90,37 @@ tracks/1/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
+[sub_resource type="Animation" id=4]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "load_indicator"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
 [node name="Login" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -90,11 +134,15 @@ root_node = NodePath("../CenterContainer/TextureRect")
 anims/RESET = SubResource( 1 )
 anims/alert = SubResource( 2 )
 
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 4 )
+anims/load_indicator = SubResource( 3 )
+
 [node name="ColorRect" type="ColorRect" parent="."]
 margin_right = 40.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 1280, 720 )
-color = Color( 0.141176, 0.141176, 0.141176, 0.784314 )
+color = Color( 0.141176, 0.141176, 0.141176, 0.901961 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -117,7 +165,14 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Name" type="LineEdit" parent="CenterContainer/TextureRect"]
+[node name="FocusGroup" type="Control" parent="CenterContainer/TextureRect"]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Name" type="LineEdit" parent="CenterContainer/TextureRect/FocusGroup"]
 margin_left = 46.0
 margin_top = 83.0
 margin_right = 454.0
@@ -130,7 +185,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Password" type="LineEdit" parent="CenterContainer/TextureRect"]
+[node name="Password" type="LineEdit" parent="CenterContainer/TextureRect/FocusGroup"]
 margin_left = 46.0
 margin_top = 217.0
 margin_right = 454.0
@@ -145,7 +200,7 @@ __meta__ = {
 "_editor_description_": ""
 }
 
-[node name="Login" type="TextureButton" parent="CenterContainer/TextureRect"]
+[node name="Login" type="TextureButton" parent="CenterContainer/TextureRect/FocusGroup"]
 margin_left = 182.0
 margin_top = 384.0
 margin_right = 318.0
@@ -185,4 +240,57 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[connection signal="pressed" from="CenterContainer/TextureRect/Login" to="." method="_on_Login_pressed"]
+[node name="TokenLogin" type="ColorRect" parent="CenterContainer"]
+visible = false
+margin_left = 390.0
+margin_top = 75.0
+margin_right = 890.0
+margin_bottom = 575.0
+rect_min_size = Vector2( 500, 500 )
+color = Color( 0.141176, 0.141176, 0.141176, 0.784314 )
+
+[node name="CenterContainer" type="CenterContainer" parent="CenterContainer/TokenLogin"]
+margin_right = 40.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 500, 500 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect2" type="ColorRect" parent="CenterContainer/TokenLogin/CenterContainer"]
+margin_left = 47.0
+margin_top = 222.0
+margin_right = 452.0
+margin_bottom = 277.0
+rect_min_size = Vector2( 405, 55 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="CenterContainer/TokenLogin/CenterContainer"]
+margin_left = 50.0
+margin_top = 225.0
+margin_right = 450.0
+margin_bottom = 275.0
+rect_min_size = Vector2( 400, 50 )
+color = Color( 0, 0.533333, 0.392157, 1 )
+
+[node name="Label" type="Label" parent="CenterContainer/TokenLogin/CenterContainer"]
+margin_left = 68.0
+margin_top = 242.0
+margin_right = 432.0
+margin_bottom = 257.0
+theme = ExtResource( 8 )
+text = "Signing in from saved token..."
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+position = Vector2( 50, 50 )
+frames = ExtResource( 9 )
+playing = true
+
+[connection signal="focus_entered" from="CenterContainer/TextureRect/FocusGroup/Login" to="." method="_on_Login_focus_entered"]
+[connection signal="pressed" from="CenterContainer/TextureRect/FocusGroup/Login" to="." method="_on_Login_pressed"]
