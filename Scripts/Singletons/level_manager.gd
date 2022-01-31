@@ -111,7 +111,8 @@ func spawn_entities(root, entities):
 		if not resource_path.begins_with("res://"):
 			resource_path = "res://Scenes/Entities/" + resource_path
 		var entity = load(resource_path).instance()
-		entity.set_global_position(get_world_position_with_center_offset(entity_data["position"]))
+		entity.set_global_position(get_world_position(entity_data["position"]))
+		entity_data["node"] = entity
 		scenes.append(entity)
 		root.add_child(entity)
 	return scenes
@@ -136,9 +137,6 @@ func count_tiles(map):
 # Možná jestli se bude s TileMapou hýbat, tak to bude dělat bordel, ale to se asi nebude (pro jistotu sem píšu ať vím kde hledat)
 func get_world_position(map_position):
 	return _default_tilemap.map_to_world(map_position)
-
-func get_world_position_with_center_offset(map_position):
-	return _default_tilemap.map_to_world(map_position) + GameState.tile_unit_size/2
 
 func apply_immovable_mask(level_data, mask):
 	# For simplicity's sake
@@ -194,6 +192,38 @@ func apply_max_entity_mask(level_data, mask):
 						entities.remove(i)
 						difference -= 1
 	return level_data
+
+func _calc_index_from_position(position):
+	return position.y * map_width + position.x
+
+func sort_entities(entities):
+	# HRLE taught me this! So f*ck u!
+	var did_swap = false
+	for j in len(entities):
+		for i in len(entities) - 1:
+			if _calc_index_from_position(entities[i]["position"]) > _calc_index_from_position(entities[i + 1]["position"]):
+				var temp =  entities[i]
+				entities[i] = entities[i + 1]
+				entities[i + 1] = temp
+				did_swap = true
+		if not did_swap:
+			break
+
+# WARNING: You must call this AFTER the entities have been spawned
+func set_entity_properties(level_data, entity_properties):
+	for e_prop in entity_properties:
+		var selected_entities = []
+		for entity in level_data["entities"]:
+			if entity["character"] == e_prop:
+				selected_entities.append(entity)
+		sort_entities(selected_entities)
+		for i in len(selected_entities):
+			var node = selected_entities[i]["node"]
+			var properties = entity_properties[e_prop]
+			for prop in properties:
+				var value = properties[prop]
+				if range(len(value)).has(i):
+					node.set(prop, value[i])
 
 func parse_level_data(content: String, fill_missing: String = " "):
 	var section = "Global"
