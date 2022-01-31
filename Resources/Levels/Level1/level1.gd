@@ -12,8 +12,8 @@ func _ready():
 	LevelManager.set_map_dimensions(16, 9)
 	level_data = LevelManager.parse_level_data(LevelManager.read_level_data(level))
 	
-	level_data = LevelManager.apply_immovable_mask(level_data, ["$", "P", "#"])
-	level_data = LevelManager.apply_max_entity_mask(level_data, {"P": 1, "D": 1})
+	LevelManager.apply_immovable_mask(level_data, ["$", "P"])
+	LevelManager.apply_max_entity_mask(level_data, {"P": 1, "D": 1})
 	
 	# Insert level specific masks/checks here
 	
@@ -21,6 +21,13 @@ func _ready():
 	
 	LevelManager.build_tilemaps(self, level_data["map"])
 	LevelManager.spawn_entities(self, level_data["entities"])
+	
+	# WARNING: You must call this AFTER the entities have been spawned
+	LevelManager.set_entity_properties(level_data, {
+		"$": {
+			"coin_type": [2, 2, 0, 1, 1, 0]
+		}
+	})
 	
 	if not OS.is_debug_build():
 		PopupBox.create_simple("ahoj", "")
@@ -32,4 +39,13 @@ func _ready():
 
 
 func handle_event(source, name):
-	print("level event: ", source, name)
+	if name == "player_reached_door":
+		var result = "0".repeat(15) + str(GameState.score)
+		WebAPI.submit(result, funcref(self, "_on_submit_response"))
+		WebAPI.get_my_results(funcref(self, "_on_get_my_results_response"))
+
+func _on_submit_response(code, response):
+	print(code, response)
+
+func _on_get_my_results_response(code, response):
+	print(code, response)
