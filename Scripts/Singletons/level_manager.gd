@@ -49,7 +49,7 @@ func _create_level_header(level):
 	return ";" + level + "\n"
 
 func _get_level_internal_path(level):
-	return "res://Resources/Levels/" + level + "/" + level + ".tres"
+	return "res://Resources/Levels/" + level + "/" + level + ".lvl"
 
 func _get_level_external_path(level):
 	return get_level_dir(level) + "/level.txt"
