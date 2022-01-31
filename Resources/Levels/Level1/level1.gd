@@ -1,6 +1,6 @@
 extends Node2D
 
-const level = "level1"
+const level = "Level1"
 
 var level_data = null
 
