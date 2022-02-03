@@ -1,15 +1,39 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Resources/Misc/Themes/untitled_theme.tres" type="Theme" id=1]
 [ext_resource path="res://Scenes/UI/login.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scripts/UI/main_menu.gd" type="Script" id=3]
+[ext_resource path="res://Resources/Misc/Menu/title.tres" type="SpriteFrames" id=4]
 
-[sub_resource type="DynamicFontData" id=1]
-font_path = "res://Resources/Fonts/8bitOperator/8bitOperatorPlusSC-Bold.ttf"
+[sub_resource type="Animation" id=18]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ "idle" ]
+}
 
-[sub_resource type="DynamicFont" id=2]
-size = 100
-font_data = SubResource( 1 )
+[sub_resource type="Animation" id=19]
+resource_name = "menu"
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "idle" ]
+}
 
 [sub_resource type="DynamicFontData" id=14]
 font_path = "res://Resources/Fonts/8bitOperator/8bitOperatorPlusSC-Bold.ttf"
@@ -39,56 +63,33 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="CenterContainer" type="CenterContainer" parent="."]
-anchor_right = 1.0
-margin_bottom = 672.0
-rect_min_size = Vector2( 1280, 720 )
-__meta__ = {
-"_edit_use_anchors_": true
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 18 )
+anims/menu = SubResource( 19 )
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
-margin_top = 213.0
-margin_right = 1280.0
-margin_bottom = 506.0
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 695, 242 )
+frames = ExtResource( 4 )
+animation = "idle"
+frame = 10
+playing = true
 
-[node name="Control" type="Control" parent="CenterContainer/VBoxContainer"]
-margin_right = 1280.0
-
-[node name="Title" type="Label" parent="CenterContainer/VBoxContainer"]
-margin_top = 4.0
-margin_right = 1280.0
-margin_bottom = 144.0
-rect_min_size = Vector2( 1280, 0 )
-custom_fonts/font = SubResource( 2 )
-text = "GAMEBOOK 3"
-align = 1
-valign = 1
-autowrap = true
-
-[node name="Control2" type="Control" parent="CenterContainer/VBoxContainer"]
-margin_top = 148.0
-margin_right = 1280.0
-margin_bottom = 198.0
-rect_min_size = Vector2( 0, 50 )
-
-[node name="CenterContainer" type="CenterContainer" parent="CenterContainer/VBoxContainer"]
-margin_top = 202.0
-margin_right = 1280.0
-margin_bottom = 293.0
-
-[node name="Button" type="Button" parent="CenterContainer/VBoxContainer/CenterContainer"]
+[node name="Button" type="Button" parent="."]
 margin_left = 535.0
+margin_top = 380.0
 margin_right = 745.0
-margin_bottom = 91.0
+margin_bottom = 471.0
 theme = ExtResource( 1 )
 custom_fonts/font = SubResource( 15 )
 shortcut = SubResource( 17 )
 text = "START"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
-margin_right = 40.0
-margin_bottom = 40.0
+margin_right = 1280.0
+margin_bottom = 720.0
 rect_min_size = Vector2( 1280, 720 )
 mouse_filter = 2
 alignment = 2
@@ -126,5 +127,7 @@ rect_min_size = Vector2( 0, 5 )
 mouse_filter = 2
 
 [node name="Login" parent="." instance=ExtResource( 2 )]
+visible = false
 
-[connection signal="pressed" from="CenterContainer/VBoxContainer/CenterContainer/Button" to="." method="_on_Button_pressed"]
+[connection signal="animation_finished" from="AnimatedSprite" to="." method="_on_AnimatedSprite_animation_finished"]
+[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]

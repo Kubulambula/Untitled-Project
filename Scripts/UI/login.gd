@@ -3,6 +3,7 @@ extends Control
 var logging_in = true
 
 func _ready():
+	show()
 	$CenterContainer/TextureRect/FocusGroup/Name.grab_focus()
 	var saved_token = GameState.config.get_value("user", "token", "")
 	if saved_token:
