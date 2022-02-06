@@ -3,6 +3,8 @@ extends Node2D
 onready var _parallax = $ParallaxBackground
 
 func _ready():
+	if name == "Background":
+		set_process(false)
 	$AnimationPlayer.play("stuff")
 	for child in $ParallaxBackground.get_children():
 		for sub_child in child.get_children():
@@ -15,4 +17,4 @@ func _on_AnimationPlayer_animation_finished(_anim_name):
 
 
 func _process(delta):
-	_parallax.scroll_offset = lerp(_parallax.scroll_offset, get_local_mouse_position() / 100, 7 * delta)
+	_parallax.scroll_offset = lerp(_parallax.scroll_offset, get_local_mouse_position() / 90, 7 * delta)
