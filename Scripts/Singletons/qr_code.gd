@@ -1,6 +1,6 @@
 extends Node
 
-const qrc_res = "res://External/qrcode.exe"
+const qrc_res = "res://Resources/External/qrcode.exe"
 const qrc_exe = "user://qrc/qrcode.exe"
 const qrc_out = "user://qrc/output.bmp"
 

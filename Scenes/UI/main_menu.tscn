@@ -1,68 +1,35 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=24 format=2]
 
-[ext_resource path="res://Resources/Misc/Themes/untitled_theme.tres" type="Theme" id=1]
+[ext_resource path="res://Resources/Themes/untitled_theme.tres" type="Theme" id=1]
 [ext_resource path="res://Scenes/UI/login.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scripts/UI/main_menu.gd" type="Script" id=3]
-[ext_resource path="res://Resources/Misc/Menu/title.tres" type="SpriteFrames" id=4]
+[ext_resource path="res://Resources/Menu/title.tres" type="SpriteFrames" id=4]
 [ext_resource path="res://Scenes/Other/Menu_background.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Resources/Misc/Buttons/button_1.png" type="Texture" id=6]
-[ext_resource path="res://Resources/Misc/Buttons/button_2_hover.png" type="Texture" id=7]
-[ext_resource path="res://Resources/Misc/Buttons/button_1_hover.png" type="Texture" id=8]
-[ext_resource path="res://Resources/Misc/Buttons/button_2.png" type="Texture" id=10]
-[ext_resource path="res://Resources/Misc/Buttons/button_1_pressed.png" type="Texture" id=11]
-[ext_resource path="res://Resources/Misc/Buttons/button_2_pressed.png" type="Texture" id=12]
-[ext_resource path="res://Resources/Misc/Buttons/button_settings.png" type="Texture" id=13]
-[ext_resource path="res://Resources/Misc/Buttons/button_settings_pressed.png" type="Texture" id=14]
-[ext_resource path="res://Resources/Misc/Buttons/button_settings_hover.png" type="Texture" id=15]
-
-[sub_resource type="Animation" id=18]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/path = NodePath("Title:animation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ "idle" ]
-}
-
-[sub_resource type="Animation" id=19]
-resource_name = "menu"
-tracks/0/type = "value"
-tracks/0/path = NodePath("Title:animation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ "idle" ]
-}
-
-[sub_resource type="InputEventAction" id=16]
-action = "ui_enter"
-
-[sub_resource type="ShortCut" id=17]
-shortcut = SubResource( 16 )
+[ext_resource path="res://Resources/Themes/Buttons/button_help_pressed.png" type="Texture" id=6]
+[ext_resource path="res://Resources/Themes/Buttons/button_2_hover.png" type="Texture" id=7]
+[ext_resource path="res://Resources/Logos/logo_large_color_dark.png" type="Texture" id=8]
+[ext_resource path="res://Resources/Entities/characters.tres" type="SpriteFrames" id=9]
+[ext_resource path="res://Resources/Themes/Buttons/button_2.png" type="Texture" id=10]
+[ext_resource path="res://Resources/Themes/qr_license.png" type="Texture" id=11]
+[ext_resource path="res://Resources/Themes/Buttons/button_2_pressed.png" type="Texture" id=12]
+[ext_resource path="res://Resources/Themes/Buttons/button_settings.png" type="Texture" id=13]
+[ext_resource path="res://Resources/Themes/Buttons/button_settings_pressed.png" type="Texture" id=14]
+[ext_resource path="res://Resources/Themes/Buttons/button_settings_hover.png" type="Texture" id=15]
+[ext_resource path="res://Resources/Themes/Buttons/button_help.png" type="Texture" id=16]
+[ext_resource path="res://Resources/Themes/Buttons/button_help_hover.png" type="Texture" id=17]
 
 [sub_resource type="DynamicFontData" id=20]
 font_path = "res://Resources/Fonts/8bitOperator/8bitOperatorPlus8-Bold.ttf"
 
 [sub_resource type="DynamicFont" id=21]
-size = 42
+size = 40
 font_data = SubResource( 20 )
 
 [sub_resource type="DynamicFontData" id=22]
 font_path = "res://Resources/Fonts/8bitOperator/8bitOperatorPlus8-Bold.ttf"
 
 [sub_resource type="DynamicFont" id=23]
-size = 33
+size = 40
 font_data = SubResource( 22 )
 
 [sub_resource type="DynamicFontData" id=13]
@@ -80,11 +47,19 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/RESET = SubResource( 18 )
-anims/menu = SubResource( 19 )
+[node name="GUI" type="Control" parent="."]
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="Title" type="AnimatedSprite" parent="."]
+[node name="Menu" type="Control" parent="GUI"]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="AnimatedSprite" parent="GUI/Menu"]
 position = Vector2( 706, 200 )
 scale = Vector2( 1.25, 1.25 )
 frames = ExtResource( 4 )
@@ -92,23 +67,29 @@ animation = "idle"
 frame = 10
 playing = true
 
-[node name="Button" type="TextureButton" parent="."]
-margin_left = 490.0
+[node name="Group1" type="Control" parent="GUI/Menu"]
+margin_left = 450.0
 margin_top = 331.0
-margin_right = 690.0
-margin_bottom = 396.0
-rect_scale = Vector2( 1.5, 1.5 )
-theme = ExtResource( 1 )
-shortcut_in_tooltip = false
-shortcut = SubResource( 17 )
-texture_normal = ExtResource( 10 )
-texture_pressed = ExtResource( 12 )
-texture_hover = ExtResource( 7 )
+margin_right = 831.0
+margin_bottom = 422.0
+rect_min_size = Vector2( 381, 91 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="Button"]
+[node name="Start" type="TextureButton" parent="GUI/Menu/Group1"]
+margin_right = 200.0
+margin_bottom = 65.0
+rect_scale = Vector2( 1.4, 1.4 )
+texture_normal = ExtResource( 10 )
+texture_pressed = ExtResource( 12 )
+texture_hover = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
+[node name="Label" type="Label" parent="GUI/Menu/Group1/Start"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 size_flags_horizontal = 3
@@ -122,26 +103,47 @@ __meta__ = {
 "_editor_description_": ""
 }
 
-[node name="Quit" type="TextureButton" parent="."]
-margin_left = 490.0
-margin_top = 439.0
-margin_right = 630.0
-margin_bottom = 504.0
+[node name="Settings" type="TextureButton" parent="GUI/Menu/Group1"]
+margin_left = 290.0
+margin_right = 355.0
+margin_bottom = 65.0
 rect_scale = Vector2( 1.4, 1.4 )
-texture_normal = ExtResource( 6 )
-texture_pressed = ExtResource( 11 )
-texture_hover = ExtResource( 8 )
+texture_normal = ExtResource( 13 )
+texture_pressed = ExtResource( 14 )
+texture_hover = ExtResource( 15 )
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
+[node name="Group2" type="Control" parent="GUI/Menu"]
+margin_left = 450.0
+margin_top = 433.0
+margin_right = 831.0
+margin_bottom = 524.0
+rect_min_size = Vector2( 381, 91 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="Quit"]
+[node name="Quit" type="TextureButton" parent="GUI/Menu/Group2"]
+margin_right = 200.0
+margin_bottom = 65.0
+rect_scale = Vector2( 1.4, 1.4 )
+texture_normal = ExtResource( 10 )
+texture_pressed = ExtResource( 12 )
+texture_hover = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="GUI/Menu/Group2/Quit"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/font = SubResource( 23 )
-text = "QUIT"
+text = "$quit"
 align = 1
 valign = 1
 __meta__ = {
@@ -149,17 +151,354 @@ __meta__ = {
 "_editor_description_": ""
 }
 
-[node name="Settings" type="TextureButton" parent="."]
-margin_left = 699.0
-margin_top = 439.0
-margin_right = 839.0
-margin_bottom = 504.0
+[node name="About" type="TextureButton" parent="GUI/Menu/Group2"]
+margin_left = 290.0
+margin_right = 355.0
+margin_bottom = 65.0
 rect_scale = Vector2( 1.4, 1.4 )
-texture_normal = ExtResource( 13 )
-texture_pressed = ExtResource( 14 )
-texture_hover = ExtResource( 15 )
+texture_normal = ExtResource( 16 )
+texture_pressed = ExtResource( 6 )
+texture_hover = ExtResource( 17 )
 __meta__ = {
 "_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
+[node name="Settings" type="Control" parent="GUI"]
+margin_left = -1280.0
+margin_bottom = 720.0
+rect_min_size = Vector2( 1280, 720 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="About" type="Control" parent="GUI"]
+margin_left = 1280.0
+margin_right = 2560.0
+margin_bottom = 720.0
+rect_min_size = Vector2( 1280, 720 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Us" type="ColorRect" parent="GUI/About"]
+margin_left = 25.0
+margin_top = 25.0
+margin_right = 490.0
+margin_bottom = 525.0
+theme = ExtResource( 1 )
+color = Color( 0.141176, 0.141176, 0.141176, 0.705882 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GUI/About/Us"]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="Control" parent="GUI/About/Us/VBoxContainer"]
+margin_right = 450.0
+margin_bottom = 75.0
+rect_min_size = Vector2( 0, 75 )
+
+[node name="Label" type="Label" parent="GUI/About/Us/VBoxContainer/Title"]
+margin_left = 25.0
+margin_top = 25.0
+margin_right = 475.0
+margin_bottom = 40.0
+rect_scale = Vector2( 2, 2 )
+text = "$credits"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Adam" type="Control" parent="GUI/About/Us/VBoxContainer"]
+margin_top = 75.0
+margin_right = 450.0
+margin_bottom = 211.0
+rect_min_size = Vector2( 450, 136 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="GUI/About/Us/VBoxContainer/Adam"]
+position = Vector2( -10, 0 )
+scale = Vector2( 1.7, 1.7 )
+frames = ExtResource( 9 )
+animation = "adam_idle"
+frame = 3
+playing = true
+centered = false
+
+[node name="Label" type="Label" parent="GUI/About/Us/VBoxContainer/Adam"]
+margin_left = 115.0
+margin_top = 70.0
+margin_right = 279.0
+margin_bottom = 85.0
+rect_scale = Vector2( 1.5, 1.5 )
+text = "Adam Charvát"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Jakub" type="Control" parent="GUI/About/Us/VBoxContainer"]
+margin_top = 211.0
+margin_right = 450.0
+margin_bottom = 347.0
+rect_min_size = Vector2( 450, 136 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="GUI/About/Us/VBoxContainer/Jakub"]
+position = Vector2( -10, 0 )
+scale = Vector2( 1.7, 1.7 )
+frames = ExtResource( 9 )
+animation = "jakub_idle"
+frame = 4
+playing = true
+centered = false
+
+[node name="Label" type="Label" parent="GUI/About/Us/VBoxContainer/Jakub"]
+margin_left = 115.0
+margin_top = 70.0
+margin_right = 279.0
+margin_bottom = 85.0
+rect_scale = Vector2( 1.5, 1.5 )
+text = "Jakub Janšta"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Martina" type="Control" parent="GUI/About/Us/VBoxContainer"]
+margin_top = 347.0
+margin_right = 450.0
+margin_bottom = 483.0
+rect_min_size = Vector2( 450, 136 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="GUI/About/Us/VBoxContainer/Martina"]
+position = Vector2( -10, 0 )
+scale = Vector2( 1.7, 1.7 )
+frames = ExtResource( 9 )
+animation = "martina_idle"
+frame = 3
+playing = true
+centered = false
+
+[node name="Label" type="Label" parent="GUI/About/Us/VBoxContainer/Martina"]
+margin_left = 115.0
+margin_top = 70.0
+margin_right = 279.0
+margin_bottom = 85.0
+rect_scale = Vector2( 1.5, 1.5 )
+text = "Martina Prokšová"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="3rdParty2" type="TabContainer" parent="GUI/About"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 515.0
+margin_top = 25.0
+margin_right = -25.0
+margin_bottom = -195.0
+theme = ExtResource( 1 )
+tab_align = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Godot Engine" type="Control" parent="GUI/About/3rdParty2"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 32.0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="GUI/About/3rdParty2/Godot Engine"]
+margin_right = 740.0
+margin_bottom = 470.0
+rect_min_size = Vector2( 740, 470 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GUI/About/3rdParty2/Godot Engine/ScrollContainer"]
+margin_right = 740.0
+margin_bottom = 715.0
+rect_min_size = Vector2( 650, 0 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Logo" type="Control" parent="GUI/About/3rdParty2/Godot Engine/ScrollContainer/VBoxContainer"]
+margin_right = 740.0
+margin_bottom = 300.0
+rect_min_size = Vector2( 0, 300 )
+
+[node name="GodotLogo" type="TextureButton" parent="GUI/About/3rdParty2/Godot Engine/ScrollContainer/VBoxContainer/Logo"]
+margin_right = 40.0
+margin_bottom = 40.0
+rect_scale = Vector2( 0.29, 0.29 )
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="License" type="Control" parent="GUI/About/3rdParty2/Godot Engine/ScrollContainer/VBoxContainer"]
+margin_top = 300.0
+margin_right = 740.0
+margin_bottom = 715.0
+rect_min_size = Vector2( 740, 415 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="GUI/About/3rdParty2/Godot Engine/ScrollContainer/VBoxContainer/License"]
+margin_right = 740.0
+margin_bottom = 405.0
+size_flags_horizontal = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Spacer" type="Control" parent="GUI/About/3rdParty2/Godot Engine/ScrollContainer/VBoxContainer/License/HBoxContainer"]
+margin_right = 10.0
+margin_bottom = 405.0
+rect_min_size = Vector2( 10, 0 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="GUI/About/3rdParty2/Godot Engine/ScrollContainer/VBoxContainer/License/HBoxContainer"]
+margin_left = 10.0
+margin_right = 720.0
+margin_bottom = 405.0
+size_flags_horizontal = 3
+bbcode_enabled = true
+bbcode_text = "[color=white]Copyright (c) 2007-2022 Juan Linietsky, Ariel Manzur.
+Copyright (c) 2014-2022 Godot Engine contributors (cf. AUTHORS.md).
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.[/color]"
+text = "Copyright (c) 2007-2022 Juan Linietsky, Ariel Manzur.
+Copyright (c) 2014-2022 Godot Engine contributors (cf. AUTHORS.md).
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE."
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Spacer2" type="Control" parent="GUI/About/3rdParty2/Godot Engine/ScrollContainer/VBoxContainer/License/HBoxContainer"]
+margin_left = 720.0
+margin_right = 740.0
+margin_bottom = 405.0
+rect_min_size = Vector2( 20, 0 )
+
+[node name="QRCode Generator" type="Control" parent="GUI/About/3rdParty2"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 32.0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="GUI/About/3rdParty2/QRCode Generator"]
+margin_right = 740.0
+margin_bottom = 470.0
+rect_min_size = Vector2( 740, 470 )
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GUI/About/3rdParty2/QRCode Generator/ScrollContainer"]
+margin_right = 740.0
+margin_bottom = 615.0
+rect_min_size = Vector2( 0, 610 )
+
+[node name="QRCode" type="Control" parent="GUI/About/3rdParty2/QRCode Generator/ScrollContainer/VBoxContainer"]
+margin_right = 740.0
+margin_bottom = 200.0
+rect_min_size = Vector2( 0, 200 )
+
+[node name="QRCode" type="TextureButton" parent="GUI/About/3rdParty2/QRCode Generator/ScrollContainer/VBoxContainer/QRCode"]
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 51.0
+margin_bottom = 51.0
+rect_scale = Vector2( 5, 5 )
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource( 11 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="License" type="Control" parent="GUI/About/3rdParty2/QRCode Generator/ScrollContainer/VBoxContainer"]
+margin_top = 200.0
+margin_right = 740.0
+margin_bottom = 615.0
+rect_min_size = Vector2( 740, 415 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="GUI/About/3rdParty2/QRCode Generator/ScrollContainer/VBoxContainer/License"]
+margin_right = 740.0
+margin_bottom = 405.0
+size_flags_horizontal = 3
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
+[node name="Spacer" type="Control" parent="GUI/About/3rdParty2/QRCode Generator/ScrollContainer/VBoxContainer/License/HBoxContainer"]
+margin_right = 10.0
+margin_bottom = 405.0
+rect_min_size = Vector2( 10, 0 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="QRCodeLicense" type="RichTextLabel" parent="GUI/About/3rdParty2/QRCode Generator/ScrollContainer/VBoxContainer/License/HBoxContainer"]
+margin_left = 10.0
+margin_right = 720.0
+margin_bottom = 405.0
+size_flags_horizontal = 3
+bbcode_enabled = true
+bbcode_text = "[color=white]Copyright (c) 2021 Project Nayuki. (MIT License)
+
+[color=aqua][url]https://www.nayuki.io/page/qr-code-generator-library[/url][/color]
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.[/color]"
+text = "Copyright (c) 2021 Project Nayuki. (MIT License)
+
+https://www.nayuki.io/page/qr-code-generator-library
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE."
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="Spacer2" type="Control" parent="GUI/About/3rdParty2/QRCode Generator/ScrollContainer/VBoxContainer/License/HBoxContainer"]
+margin_left = 720.0
+margin_right = 740.0
+margin_bottom = 405.0
+rect_min_size = Vector2( 20, 0 )
+__meta__ = {
 "_editor_description_": ""
 }
 
@@ -208,7 +547,11 @@ visible = false
 [node name="MenuBackground" parent="." instance=ExtResource( 5 )]
 position = Vector2( 461, -17 )
 
-[connection signal="animation_finished" from="Title" to="." method="_on_AnimatedSprite_animation_finished"]
-[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
-[connection signal="pressed" from="Quit" to="." method="_on_Quit_pressed"]
-[connection signal="pressed" from="Settings" to="." method="_on_Settings_pressed"]
+[connection signal="animation_finished" from="GUI/Menu/Title" to="." method="_on_AnimatedSprite_animation_finished"]
+[connection signal="pressed" from="GUI/Menu/Group1/Start" to="." method="_on_Start_pressed"]
+[connection signal="pressed" from="GUI/Menu/Group1/Settings" to="." method="_on_Settings_pressed"]
+[connection signal="pressed" from="GUI/Menu/Group2/Quit" to="." method="_on_Quit_pressed"]
+[connection signal="pressed" from="GUI/Menu/Group2/About" to="." method="_on_About_pressed"]
+[connection signal="pressed" from="GUI/About/3rdParty2/Godot Engine/ScrollContainer/VBoxContainer/Logo/GodotLogo" to="." method="_on_GodotLogo_pressed"]
+[connection signal="pressed" from="GUI/About/3rdParty2/QRCode Generator/ScrollContainer/VBoxContainer/QRCode/QRCode" to="." method="_on_QRCode_pressed"]
+[connection signal="meta_clicked" from="GUI/About/3rdParty2/QRCode Generator/ScrollContainer/VBoxContainer/License/HBoxContainer/QRCodeLicense" to="." method="_on_QRCodeLicense_meta_clicked"]

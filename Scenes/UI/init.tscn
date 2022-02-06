@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://Resources/Misc/Logos/godot_logo.png" type="Texture" id=1]
-[ext_resource path="res://Resources/Misc/Logos/purkiada2022_logo.png" type="Texture" id=2]
+[ext_resource path="res://Resources/Logos/godot_logo.png" type="Texture" id=1]
+[ext_resource path="res://Resources/Logos/purkiada2022_logo.png" type="Texture" id=2]
 [ext_resource path="res://Scripts/UI/init.gd" type="Script" id=3]
 
 [sub_resource type="Animation" id=1]

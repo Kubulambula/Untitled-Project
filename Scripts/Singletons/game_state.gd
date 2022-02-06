@@ -43,7 +43,7 @@ func pls_quit():
 # Wrapper for ConfigFile so it can be used safely from outside
 class _Config:
 	const config_file_path: String = "user://config.cfg"
-	const default_config_file_path: String = "res://Resources/Misc/default_config.cfg"
+	const default_config_file_path: String = "res://Resources/default_config.cfg"
 	var _cfgf: ConfigFile
 	
 	
@@ -105,3 +105,6 @@ class _Config:
 			_: # Someone is an idiot and set a bad value. Windowed
 				OS.set_window_fullscreen(false)
 				OS.set_borderless_window(false)
+		# Locale
+		if self.get_value("user", "locale", "cs") in TranslationServer.get_loaded_locales():
+			TranslationServer.set_locale(self.get_value("user", "locale", "cs"))

@@ -14,10 +14,10 @@ config/name="Untitled-Project - Purkiáda 2022 - © Jakub Janšta & Adam Charvá
 run/main_scene="res://Scenes/UI/init.tscn"
 config/use_custom_user_dir=true
 config/custom_user_dir_name="Untitled-Project"
-boot_splash/image="res://Resources/Misc/Logos/purkiada2022_logo.png"
+boot_splash/image="res://Resources/Logos/purkiada2022_logo.png"
 boot_splash/bg_color=Color( 0.141176, 0.141176, 0.141176, 1 )
-config/icon="res://Resources/Misc/Icons/icon.png"
-config/windows_native_icon="res://Resources/Misc/Icons/purkiada.ico"
+config/icon="res://Resources/Logos/icon.png"
+config/windows_native_icon="res://Resources/Logos/purkiada.ico"
 config/auto_accept_quit=false
 
 [autoload]
@@ -106,8 +106,9 @@ use_interact={
 
 [locale]
 
+fallback="cs"
 locale_filter=[ 0, 1 ]
-translations=PoolStringArray( "res://Translations/translations.en.translation", "res://Translations/translations.cs.translation" )
+translations=PoolStringArray( "res://Resources/Translations/translations.cs.translation", "res://Resources/Translations/translations.en.translation" )
 
 [logging]
 

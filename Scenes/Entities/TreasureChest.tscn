@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Resources/Entities/treasure_chest.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/Entities/TreasureChest.gd" type="Script" id=2]
-[ext_resource path="res://Resources/Misc/Themes/untitled_theme.tres" type="Theme" id=3]
+[ext_resource path="res://Resources/Themes/untitled_theme.tres" type="Theme" id=3]
 
 [sub_resource type="RectangleShape2D" id=13]
 extents = Vector2( 40, 40 )

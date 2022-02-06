@@ -17,4 +17,4 @@ func _on_AnimationPlayer_animation_finished(_anim_name):
 
 
 func _process(delta):
-	_parallax.scroll_offset = lerp(_parallax.scroll_offset, get_local_mouse_position() / 90, 7 * delta)
+	_parallax.scroll_offset = lerp(_parallax.scroll_offset, get_local_mouse_position() / 64, 7 * delta)

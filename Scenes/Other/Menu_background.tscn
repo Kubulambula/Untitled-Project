@@ -46,7 +46,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 120 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 3000, 70 ), Vector2( -2000, 70 ) ]
+"values": [ Vector2( 1800, 70 ), Vector2( -1200, 70 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("ParallaxBackground/Clouds2/Sprite3:offset")
@@ -55,10 +55,10 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 120 ),
+"times": PoolRealArray( -0.4, 120 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 4500, 200 ), Vector2( -3000, 200 ) ]
+"values": [ Vector2( 2300, 200 ), Vector2( -2200, 200 ) ]
 }
 
 [sub_resource type="AtlasTexture" id=51]
