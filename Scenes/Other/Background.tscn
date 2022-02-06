@@ -35,7 +35,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id=124]
 resource_name = "stuff"
-length = 240.0
+length = 120.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("ParallaxBackground/Clouds/Sprite:offset")
 tracks/0/interp = 1
@@ -43,10 +43,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 240 ),
+"times": PoolRealArray( 0, 120 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 6400, 70 ), Vector2( -5000, 70 ) ]
+"values": [ Vector2( 3000, 70 ), Vector2( -2000, 70 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("ParallaxBackground/Clouds2/Sprite3:offset")
@@ -55,10 +55,10 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 240 ),
+"times": PoolRealArray( 0, 120 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 5800, 200 ), Vector2( -10000, 200 ) ]
+"values": [ Vector2( 4500, 200 ), Vector2( -3000, 200 ) ]
 }
 
 [sub_resource type="AtlasTexture" id=51]
@@ -558,7 +558,7 @@ motion_offset = Vector2( -1, 0 )
 texture = ExtResource( 4 )
 offset = Vector2( 6400, 70 )
 region_enabled = true
-region_rect = Rect2( 1280, 600, 12800, 600 )
+region_rect = Rect2( 1280, 600, 6400, 600 )
 
 [node name="Mountains" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_scale = Vector2( 1.035, 1 )
@@ -590,8 +590,9 @@ motion_scale = Vector2( 1.05, 1 )
 self_modulate = Color( 0.890196, 0.941176, 1, 1 )
 texture = ExtResource( 4 )
 offset = Vector2( 5800, 200 )
+flip_h = true
 region_enabled = true
-region_rect = Rect2( 1280, 600, 25600, 600 )
+region_rect = Rect2( 1280, 600, 9600, 600 )
 
 [node name="Grass" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_scale = Vector2( 1.07, 1 )

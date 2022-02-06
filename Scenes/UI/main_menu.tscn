@@ -1,9 +1,10 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Resources/Misc/Themes/untitled_theme.tres" type="Theme" id=1]
 [ext_resource path="res://Scenes/UI/login.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scripts/UI/main_menu.gd" type="Script" id=3]
 [ext_resource path="res://Resources/Misc/Menu/title.tres" type="SpriteFrames" id=4]
+[ext_resource path="res://Scenes/Other/Background.tscn" type="PackedScene" id=5]
 
 [sub_resource type="Animation" id=18]
 length = 0.001
@@ -128,6 +129,8 @@ mouse_filter = 2
 
 [node name="Login" parent="." instance=ExtResource( 2 )]
 visible = false
+
+[node name="Background" parent="." instance=ExtResource( 5 )]
 
 [connection signal="animation_finished" from="AnimatedSprite" to="." method="_on_AnimatedSprite_animation_finished"]
 [connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
