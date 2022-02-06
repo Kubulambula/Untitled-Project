@@ -32,4 +32,9 @@ func _ready():
 
 
 func handle_event(source, name):
-	print("level event: ", source, name)
+	if name == "player_reached_door":
+		# TDOO: Submit to API
+		GameState.current_level = "level2"
+		get_tree().change_scene("res://Resources/Levels/Level2/level2.tscn")
+	elif name == "player_outside_play_area":
+		LevelManager.restart_level(level_data)
