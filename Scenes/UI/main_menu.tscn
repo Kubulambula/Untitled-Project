@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://Resources/Misc/Themes/untitled_theme.tres" type="Theme" id=1]
 [ext_resource path="res://Scenes/UI/login.tscn" type="PackedScene" id=2]
@@ -8,7 +8,6 @@
 [ext_resource path="res://Resources/Misc/Buttons/button_1.png" type="Texture" id=6]
 [ext_resource path="res://Resources/Misc/Buttons/button_2_hover.png" type="Texture" id=7]
 [ext_resource path="res://Resources/Misc/Buttons/button_1_hover.png" type="Texture" id=8]
-[ext_resource path="res://Resources/Entities/characters.tres" type="SpriteFrames" id=9]
 [ext_resource path="res://Resources/Misc/Buttons/button_2.png" type="Texture" id=10]
 [ext_resource path="res://Resources/Misc/Buttons/button_1_pressed.png" type="Texture" id=11]
 [ext_resource path="res://Resources/Misc/Buttons/button_2_pressed.png" type="Texture" id=12]
@@ -100,6 +99,7 @@ margin_right = 690.0
 margin_bottom = 396.0
 rect_scale = Vector2( 1.5, 1.5 )
 theme = ExtResource( 1 )
+shortcut_in_tooltip = false
 shortcut = SubResource( 17 )
 texture_normal = ExtResource( 10 )
 texture_pressed = ExtResource( 12 )
@@ -204,13 +204,6 @@ mouse_filter = 2
 
 [node name="Login" parent="." instance=ExtResource( 2 )]
 visible = false
-
-[node name="AnimatedSprite2" type="AnimatedSprite" parent="."]
-visible = false
-position = Vector2( 621, 681 )
-frames = ExtResource( 9 )
-animation = "player_idle"
-playing = true
 
 [node name="MenuBackground" parent="." instance=ExtResource( 5 )]
 position = Vector2( 461, -17 )
