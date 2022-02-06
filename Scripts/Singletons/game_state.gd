@@ -10,6 +10,8 @@ const map_tile_size: Vector2 = Vector2(16, 9)
 
 var player_can_move = true
 
+var current_level = null
+
 var version = ProjectSettings.get_setting("untitled_project/config/version")
 
 var score = 0
@@ -21,7 +23,7 @@ func _init():
 	# warning-ignore:return_value_discarded
 	config.save_data()
 	config.apply()
-
+	current_level = config.get_value("game", "current_level", "level1")
 
 func set_discard(_value):
 	push_error("Do not modify this value directly >:(")
@@ -35,6 +37,7 @@ func _notification(what):
 func pls_quit():
 	print("[QUIT REQUEST]")
 	# warning-ignore:return_value_discarded
+	config.set_value("game", "current_level", current_level)
 	config.save_data()
 	print("[QUITTING]")
 	get_tree().quit()
