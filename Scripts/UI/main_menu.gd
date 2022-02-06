@@ -3,7 +3,7 @@ extends Control
 const version_format = "Version: %s"
 onready var login_panel = $Login
 
-onready var title = $AnimatedSprite
+onready var title = $Title
 # Ah yes... animations
 var title_animations_ptr = 0
 const title_animations = [
@@ -72,3 +72,11 @@ func _on_AnimatedSprite_animation_finished():
 	title_animations_ptr = (title_animations_ptr + 1) % title_animations.size()
 	title.frame = 0
 	title.playing = true
+
+
+func _on_Quit_pressed():
+	GameState.pls_quit()
+
+
+func _on_Settings_pressed():
+	pass # Replace with function body.
