@@ -1,14 +1,25 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://Resources/Misc/Themes/untitled_theme.tres" type="Theme" id=1]
 [ext_resource path="res://Scenes/UI/login.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scripts/UI/main_menu.gd" type="Script" id=3]
 [ext_resource path="res://Resources/Misc/Menu/title.tres" type="SpriteFrames" id=4]
+[ext_resource path="res://Scenes/Other/Menu_background.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Resources/Misc/Buttons/button_1.png" type="Texture" id=6]
+[ext_resource path="res://Resources/Misc/Buttons/button_2_hover.png" type="Texture" id=7]
+[ext_resource path="res://Resources/Misc/Buttons/button_1_hover.png" type="Texture" id=8]
+[ext_resource path="res://Resources/Entities/characters.tres" type="SpriteFrames" id=9]
+[ext_resource path="res://Resources/Misc/Buttons/button_2.png" type="Texture" id=10]
+[ext_resource path="res://Resources/Misc/Buttons/button_1_pressed.png" type="Texture" id=11]
+[ext_resource path="res://Resources/Misc/Buttons/button_2_pressed.png" type="Texture" id=12]
+[ext_resource path="res://Resources/Misc/Buttons/button_settings.png" type="Texture" id=13]
+[ext_resource path="res://Resources/Misc/Buttons/button_settings_pressed.png" type="Texture" id=14]
+[ext_resource path="res://Resources/Misc/Buttons/button_settings_hover.png" type="Texture" id=15]
 
 [sub_resource type="Animation" id=18]
 length = 0.001
 tracks/0/type = "value"
-tracks/0/path = NodePath("AnimatedSprite:animation")
+tracks/0/path = NodePath("Title:animation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -23,7 +34,7 @@ tracks/0/keys = {
 [sub_resource type="Animation" id=19]
 resource_name = "menu"
 tracks/0/type = "value"
-tracks/0/path = NodePath("AnimatedSprite:animation")
+tracks/0/path = NodePath("Title:animation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -35,18 +46,25 @@ tracks/0/keys = {
 "values": [ "idle" ]
 }
 
-[sub_resource type="DynamicFontData" id=14]
-font_path = "res://Resources/Fonts/8bitOperator/8bitOperatorPlusSC-Bold.ttf"
-
-[sub_resource type="DynamicFont" id=15]
-size = 50
-font_data = SubResource( 14 )
-
 [sub_resource type="InputEventAction" id=16]
 action = "ui_enter"
 
 [sub_resource type="ShortCut" id=17]
 shortcut = SubResource( 16 )
+
+[sub_resource type="DynamicFontData" id=20]
+font_path = "res://Resources/Fonts/8bitOperator/8bitOperatorPlus8-Bold.ttf"
+
+[sub_resource type="DynamicFont" id=21]
+size = 42
+font_data = SubResource( 20 )
+
+[sub_resource type="DynamicFontData" id=22]
+font_path = "res://Resources/Fonts/8bitOperator/8bitOperatorPlus8-Bold.ttf"
+
+[sub_resource type="DynamicFont" id=23]
+size = 33
+font_data = SubResource( 22 )
 
 [sub_resource type="DynamicFontData" id=13]
 font_path = "res://Resources/Fonts/8bitOperator/8bitOperatorPlus-Bold.ttf"
@@ -67,24 +85,82 @@ __meta__ = {
 anims/RESET = SubResource( 18 )
 anims/menu = SubResource( 19 )
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-position = Vector2( 695, 242 )
+[node name="Title" type="AnimatedSprite" parent="."]
+position = Vector2( 706, 200 )
+scale = Vector2( 1.25, 1.25 )
 frames = ExtResource( 4 )
 animation = "idle"
 frame = 10
 playing = true
 
-[node name="Button" type="Button" parent="."]
-margin_left = 535.0
-margin_top = 380.0
-margin_right = 745.0
-margin_bottom = 471.0
+[node name="Button" type="TextureButton" parent="."]
+margin_left = 490.0
+margin_top = 331.0
+margin_right = 690.0
+margin_bottom = 396.0
+rect_scale = Vector2( 1.5, 1.5 )
 theme = ExtResource( 1 )
-custom_fonts/font = SubResource( 15 )
 shortcut = SubResource( 17 )
-text = "START"
+texture_normal = ExtResource( 10 )
+texture_pressed = ExtResource( 12 )
+texture_hover = ExtResource( 7 )
 __meta__ = {
 "_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Button"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = SubResource( 21 )
+text = "START"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
+[node name="Quit" type="TextureButton" parent="."]
+margin_left = 490.0
+margin_top = 439.0
+margin_right = 630.0
+margin_bottom = 504.0
+rect_scale = Vector2( 1.4, 1.4 )
+texture_normal = ExtResource( 6 )
+texture_pressed = ExtResource( 11 )
+texture_hover = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Quit"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = SubResource( 23 )
+text = "QUIT"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
+[node name="Settings" type="TextureButton" parent="."]
+margin_left = 699.0
+margin_top = 439.0
+margin_right = 839.0
+margin_bottom = 504.0
+rect_scale = Vector2( 1.4, 1.4 )
+texture_normal = ExtResource( 13 )
+texture_pressed = ExtResource( 14 )
+texture_hover = ExtResource( 15 )
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
@@ -129,5 +205,17 @@ mouse_filter = 2
 [node name="Login" parent="." instance=ExtResource( 2 )]
 visible = false
 
-[connection signal="animation_finished" from="AnimatedSprite" to="." method="_on_AnimatedSprite_animation_finished"]
+[node name="AnimatedSprite2" type="AnimatedSprite" parent="."]
+visible = false
+position = Vector2( 621, 681 )
+frames = ExtResource( 9 )
+animation = "player_idle"
+playing = true
+
+[node name="MenuBackground" parent="." instance=ExtResource( 5 )]
+position = Vector2( 461, -17 )
+
+[connection signal="animation_finished" from="Title" to="." method="_on_AnimatedSprite_animation_finished"]
 [connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="Quit" to="." method="_on_Quit_pressed"]
+[connection signal="pressed" from="Settings" to="." method="_on_Settings_pressed"]

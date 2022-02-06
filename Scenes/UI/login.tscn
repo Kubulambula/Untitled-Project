@@ -8,7 +8,7 @@
 [ext_resource path="res://Resources/Misc/Themes/alert.png" type="Texture" id=6]
 [ext_resource path="res://Resources/Misc/Themes/login_login_button_hover2.png" type="Texture" id=7]
 [ext_resource path="res://Resources/Misc/Themes/untitled_theme.tres" type="Theme" id=8]
-[ext_resource path="res://Resources/Entities/fireworks.tres" type="SpriteFrames" id=9]
+[ext_resource path="res://Resources/Entities/coin.tres" type="SpriteFrames" id=9]
 
 [sub_resource type="Animation" id=1]
 length = 0.001
@@ -290,6 +290,8 @@ __meta__ = {
 modulate = Color( 1, 1, 1, 0 )
 position = Vector2( 50, 50 )
 frames = ExtResource( 9 )
+animation = "gold"
+frame = 3
 playing = true
 
 [connection signal="focus_entered" from="CenterContainer/TextureRect/FocusGroup/Login" to="." method="_on_Login_focus_entered"]

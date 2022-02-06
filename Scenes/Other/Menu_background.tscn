@@ -533,7 +533,7 @@ animations = [ {
 "speed": 8.0
 } ]
 
-[node name="Background" type="Node2D"]
+[node name="MenuBackground" type="Node2D"]
 script = ExtResource( 5 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -598,33 +598,39 @@ region_rect = Rect2( 1280, 600, 9600, 600 )
 motion_scale = Vector2( 1.07, 1 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="ParallaxBackground/Grass"]
+scale = Vector2( 0.7, 0.7 )
 frames = SubResource( 7 )
 centered = false
-offset = Vector2( 640, 500 )
+offset = Vector2( 640, 745 )
 
 [node name="AnimatedSprite4" type="AnimatedSprite" parent="ParallaxBackground/Grass"]
+scale = Vector2( 0.7, 0.7 )
 frames = SubResource( 7 )
 centered = false
-offset = Vector2( 1920, 500 )
+offset = Vector2( 1920, 745 )
 
 [node name="AnimatedSprite6" type="AnimatedSprite" parent="ParallaxBackground/Grass"]
+scale = Vector2( 0.7, 0.7 )
 frames = SubResource( 7 )
 centered = false
-offset = Vector2( 3200, 500 )
+offset = Vector2( 3200, 745 )
 
 [node name="AnimatedSprite2" type="AnimatedSprite" parent="ParallaxBackground/Grass"]
+scale = Vector2( 0.7, 0.7 )
 frames = SubResource( 7 )
 centered = false
-offset = Vector2( -640, 500 )
+offset = Vector2( -640, 745 )
 
 [node name="AnimatedSprite3" type="AnimatedSprite" parent="ParallaxBackground/Grass"]
+scale = Vector2( 0.7, 0.7 )
 frames = SubResource( 7 )
 centered = false
-offset = Vector2( -1920, 500 )
+offset = Vector2( -1920, 745 )
 
 [node name="AnimatedSprite5" type="AnimatedSprite" parent="ParallaxBackground/Grass"]
+scale = Vector2( 0.7, 0.7 )
 frames = SubResource( 7 )
 centered = false
-offset = Vector2( -3200, 500 )
+offset = Vector2( -3200, 745 )
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
