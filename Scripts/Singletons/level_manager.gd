@@ -21,6 +21,8 @@ var layers = {
 
 var _default_tilemap = null
 
+var _internal_level_cache = {}
+
 func _ready():
 	_default_tilemap = TileMap.new()
 	_default_tilemap.cell_size = GameState.tile_unit_size
@@ -53,6 +55,10 @@ func _get_level_internal_path(level: String):
 
 func _get_level_external_path(level):
 	return get_level_dir(level) + "/level.txt"
+
+func get_level_scene(level):
+	var level_folder = level[0].to_upper() + level.substr(1)
+	return "res://Resources/Levels/" + level_folder + "/" + level + ".tscn"
 
 func _load_internal_level_data(level):
 	var header = _create_level_header(level)
@@ -124,6 +130,19 @@ func find_tile(map, tile):
 				return Vector2(x, y)
 	return Vector2(-1, -1)
 
+func find_entity(level_data, character):
+	for entity in level_data["entities"]:
+		if entity["character"] == character:
+			return entity
+	return null
+
+func find_entities(level_data, character):
+	var selected_entities = []
+	for entity in level_data["entities"]:
+		if entity["character"] == character:
+			selected_entities.append(entity)
+	return sort_entities(selected_entities)
+
 func count_tiles(map):
 	var counts = {}
 	for y in len(map):
@@ -143,7 +162,7 @@ func get_world_position_with_center_offset(map_position):
 
 func apply_immovable_mask(level_data, mask):
 	# For simplicity's sake
-	var internal_level_data = _load_internal_level_data(level_data["level"])
+	var internal_level_data = _load_internal_level_data_from_cache(level_data["level"])
 	var internal_map = internal_level_data["map"]
 	var internal_entities = internal_level_data["entities"]
 	var map = level_data["map"]
@@ -177,7 +196,7 @@ func apply_max_tile_mask(level_data, mask):
 
 # Maybe rework this in the future, depends on the usage needed
 func apply_max_entity_mask(level_data, mask):
-	var internal_level_data = _load_internal_level_data(level_data["level"])
+	var internal_level_data = _load_internal_level_data_from_cache(level_data["level"])
 	var internal_map = internal_level_data["map"]
 	var map = level_data["map"]
 	var entities = level_data["entities"]
@@ -211,15 +230,12 @@ func sort_entities(entities):
 				did_swap = true
 		if not did_swap:
 			break
+	return entities
 
 # WARNING: You must call this AFTER the entities have been spawned
 func set_entity_properties(level_data, entity_properties):
 	for e_prop in entity_properties:
-		var selected_entities = []
-		for entity in level_data["entities"]:
-			if entity["character"] == e_prop:
-				selected_entities.append(entity)
-		sort_entities(selected_entities)
+		var selected_entities = find_entities(level_data, e_prop)
 		for i in len(selected_entities):
 			var node = selected_entities[i]["node"]
 			var properties = entity_properties[e_prop]
@@ -301,3 +317,29 @@ func serialize_level_data(level_data):
 					pair[1] = level_data["settings"][option]
 			lines[i] = pair.join("=")
 	return lines.join("\n")
+
+# Mabye move somewhere else?
+func restart_level(level_data):
+	GameState.score = 0
+	var player = LevelManager.find_entity(level_data, "P")
+	if player != null:
+		var start_position = LevelManager.get_world_position_with_center_offset(player["position"])
+		player["node"].set_global_position(start_position)
+	var coins = LevelManager.find_entities(level_data, "$")
+	for coin in coins:
+		coin["node"].set("is_collected", false)
+		coin["node"].show()
+
+func get_internal_option(level, option):
+	var internal_level_data = _load_internal_level_data_from_cache(level)
+	if option in internal_level_data["settings"]:
+		return internal_level_data["settings"][option]
+	return null
+
+func _load_internal_level_data_from_cache(level):
+	if level in _internal_level_cache:
+		return _internal_level_cache[level]
+	else:
+		var internal_level = _load_internal_level_data(level)
+		_internal_level_cache[level] = internal_level
+		return internal_level
