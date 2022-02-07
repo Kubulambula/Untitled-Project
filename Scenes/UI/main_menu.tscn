@@ -42,12 +42,15 @@ font_data = SubResource( 13 )
 [node name="Control" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+mouse_filter = 2
 script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="GUI" type="Control" parent="."]
+margin_left = 1280.0
+margin_right = 1280.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -202,6 +205,7 @@ __meta__ = {
 margin_right = 560.0
 margin_bottom = 60.0
 rect_min_size = Vector2( 560, 60 )
+mouse_filter = 2
 
 [node name="Label" type="Label" parent="GUI/Settings/SettingsTab/Graphics/VBoxContainer/WindowMode"]
 margin_top = 23.0
@@ -213,7 +217,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="WindowMode" type="OptionButton" parent="GUI/Settings/SettingsTab/Graphics/VBoxContainer/WindowMode"]
+[node name="OptionButton" type="OptionButton" parent="GUI/Settings/SettingsTab/Graphics/VBoxContainer/WindowMode"]
 margin_left = 260.0
 margin_top = 12.0
 margin_right = 450.0
@@ -224,7 +228,8 @@ text = "Windowed"
 items = [ "Windowed", null, false, 0, null, "Fullscreen", null, false, 1, null, "Borderless", null, false, 2, null ]
 selected = 0
 __meta__ = {
-"_edit_use_anchors_": false
+"_edit_use_anchors_": false,
+"_editor_description_": ""
 }
 
 [node name="KeepScreenOn" type="Control" parent="GUI/Settings/SettingsTab/Graphics/VBoxContainer"]
@@ -416,7 +421,7 @@ position = Vector2( -10, 0 )
 scale = Vector2( 1.7, 1.7 )
 frames = ExtResource( 9 )
 animation = "adam_idle"
-frame = 4
+frame = 5
 playing = true
 centered = false
 
@@ -445,7 +450,6 @@ position = Vector2( -10, 0 )
 scale = Vector2( 1.7, 1.7 )
 frames = ExtResource( 9 )
 animation = "jakub_idle"
-frame = 5
 playing = true
 centered = false
 
@@ -474,7 +478,7 @@ position = Vector2( -10, 0 )
 scale = Vector2( 1.7, 1.7 )
 frames = ExtResource( 9 )
 animation = "martina_idle"
-frame = 4
+frame = 5
 playing = true
 centered = false
 
@@ -690,21 +694,19 @@ __meta__ = {
 }
 
 [node name="Login" parent="." instance=ExtResource( 2 )]
-visible = false
 
 [node name="MenuBackground" parent="." instance=ExtResource( 5 )]
-position = Vector2( 461, -17 )
 
 [node name="Tween" type="Tween" parent="."]
 
 [node name="Camera2D" type="Camera2D" parent="."]
-offset = Vector2( 640, 360 )
+offset = Vector2( 1920, 360 )
 current = true
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="Version" type="CanvasLayer" parent="."]
 layer = 0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Version"]
 margin_right = 1280.0
 margin_bottom = 720.0
 rect_min_size = Vector2( 1280, 720 )
@@ -714,7 +716,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Version/VBoxContainer"]
 margin_top = 675.0
 margin_right = 1280.0
 margin_bottom = 711.0
@@ -722,21 +724,21 @@ rect_min_size = Vector2( 1280, 0 )
 mouse_filter = 2
 alignment = 2
 
-[node name="Version" type="Label" parent="CanvasLayer/VBoxContainer/HBoxContainer"]
+[node name="Version" type="Label" parent="Version/VBoxContainer/HBoxContainer"]
 margin_left = 1090.0
 margin_right = 1266.0
 margin_bottom = 36.0
 custom_fonts/font = SubResource( 12 )
 text = "Version: 0.0"
 
-[node name="Control" type="Control" parent="CanvasLayer/VBoxContainer/HBoxContainer"]
+[node name="Control" type="Control" parent="Version/VBoxContainer/HBoxContainer"]
 margin_left = 1270.0
 margin_right = 1280.0
 margin_bottom = 36.0
 rect_min_size = Vector2( 10, 0 )
 mouse_filter = 2
 
-[node name="Control" type="Control" parent="CanvasLayer/VBoxContainer"]
+[node name="Control" type="Control" parent="Version/VBoxContainer"]
 margin_top = 715.0
 margin_right = 1280.0
 margin_bottom = 720.0

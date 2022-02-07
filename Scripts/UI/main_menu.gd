@@ -3,7 +3,7 @@ extends Control
 const version_format = "%s: %s"
 onready var login_panel = $Login
 
-const screens = [-640, 640, 1920]
+const screens = [640, 1920, 3200]
 var screen = 1
 
 onready var title = $GUI/Menu/Title
@@ -54,7 +54,7 @@ const title_animations = [
 
 func _ready():
 	EscOverlay.allowed = false
-	$CanvasLayer/VBoxContainer/HBoxContainer/Version.text = version_format % [TranslationServer.translate("$version"), GameState.version]
+	$Version/VBoxContainer/HBoxContainer/Version.text = version_format % [TranslationServer.translate("$version"), GameState.version]
 	$GUI/Settings/SettingsTab.set_tab_title(0, TranslationServer.translate("$graphics"))
 	$GUI/Settings/SettingsTab.set_tab_title(1, TranslationServer.translate("$user"))
 	
