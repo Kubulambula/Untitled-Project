@@ -2,3 +2,10 @@ keys;cs;en
 $quit;KONEC;QUIT
 $credits;Vytvořili:;Made by:
 $version;Verze;Version
+$graphics;Grafika;Graphics
+$user;Uživatel;User
+$win_mode;Mód okna;Window mode
+$keep_on;Nevypínat monitor;Keep screen on
+$language;Jazyk;Language
+$vsync;Vertikální synchronizace;Vertical synchronization
+$vsync_comp;Vsync kompozitor;Vsync compositor

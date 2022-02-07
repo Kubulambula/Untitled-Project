@@ -3,8 +3,8 @@ extends Node2D
 onready var _parallax = $ParallaxBackground
 
 func _ready():
-	if name == "Background":
-		set_process(false)
+#	if name == "Background":
+	set_process(false)
 	$AnimationPlayer.play("stuff")
 	for child in $ParallaxBackground.get_children():
 		for sub_child in child.get_children():

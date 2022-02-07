@@ -172,6 +172,193 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="SettingsTab" type="TabContainer" parent="GUI/Settings"]
+margin_left = 340.0
+margin_top = 75.0
+margin_right = 940.0
+margin_bottom = 525.0
+rect_min_size = Vector2( 600, 450 )
+theme = ExtResource( 1 )
+tab_align = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Graphics" type="Control" parent="GUI/Settings/SettingsTab"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 32.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GUI/Settings/SettingsTab/Graphics"]
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 60.0
+margin_bottom = 60.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="WindowMode" type="Control" parent="GUI/Settings/SettingsTab/Graphics/VBoxContainer"]
+margin_right = 560.0
+margin_bottom = 60.0
+rect_min_size = Vector2( 560, 60 )
+
+[node name="Label" type="Label" parent="GUI/Settings/SettingsTab/Graphics/VBoxContainer/WindowMode"]
+margin_top = 23.0
+margin_right = 152.0
+margin_bottom = 38.0
+rect_scale = Vector2( 1.5, 1.5 )
+text = "$win_mode"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="WindowMode" type="OptionButton" parent="GUI/Settings/SettingsTab/Graphics/VBoxContainer/WindowMode"]
+margin_left = 260.0
+margin_top = 12.0
+margin_right = 450.0
+margin_bottom = 47.0
+rect_min_size = Vector2( 190, 35 )
+rect_scale = Vector2( 1.25, 1.25 )
+text = "Windowed"
+items = [ "Windowed", null, false, 0, null, "Fullscreen", null, false, 1, null, "Borderless", null, false, 2, null ]
+selected = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="KeepScreenOn" type="Control" parent="GUI/Settings/SettingsTab/Graphics/VBoxContainer"]
+margin_top = 60.0
+margin_right = 560.0
+margin_bottom = 120.0
+rect_min_size = Vector2( 560, 60 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="GUI/Settings/SettingsTab/Graphics/VBoxContainer/KeepScreenOn"]
+margin_top = 23.0
+margin_right = 152.0
+margin_bottom = 38.0
+rect_scale = Vector2( 1.5, 1.5 )
+text = "$keep_on"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="KeepScreenOn" type="CheckButton" parent="GUI/Settings/SettingsTab/Graphics/VBoxContainer/KeepScreenOn"]
+margin_right = 500.0
+margin_bottom = 52.0
+pressed = true
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Vsync" type="Control" parent="GUI/Settings/SettingsTab/Graphics/VBoxContainer"]
+margin_top = 120.0
+margin_right = 560.0
+margin_bottom = 180.0
+rect_min_size = Vector2( 560, 60 )
+
+[node name="Label" type="Label" parent="GUI/Settings/SettingsTab/Graphics/VBoxContainer/Vsync"]
+margin_top = 23.0
+margin_right = 152.0
+margin_bottom = 38.0
+rect_scale = Vector2( 1.5, 1.5 )
+text = "$vsync"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CheckButton" type="CheckButton" parent="GUI/Settings/SettingsTab/Graphics/VBoxContainer/Vsync"]
+margin_left = 400.0
+margin_right = 504.0
+margin_bottom = 52.0
+pressed = true
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VsyncCompositor" type="Control" parent="GUI/Settings/SettingsTab/Graphics/VBoxContainer"]
+margin_top = 180.0
+margin_right = 560.0
+margin_bottom = 240.0
+rect_min_size = Vector2( 560, 60 )
+
+[node name="Label" type="Label" parent="GUI/Settings/SettingsTab/Graphics/VBoxContainer/VsyncCompositor"]
+margin_top = 23.0
+margin_right = 152.0
+margin_bottom = 38.0
+rect_scale = Vector2( 1.5, 1.5 )
+text = "$vsync_comp"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CheckButton" type="CheckButton" parent="GUI/Settings/SettingsTab/Graphics/VBoxContainer/VsyncCompositor"]
+margin_left = 400.0
+margin_right = 504.0
+margin_bottom = 52.0
+pressed = true
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="User" type="Control" parent="GUI/Settings/SettingsTab"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 32.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GUI/Settings/SettingsTab/User"]
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 60.0
+margin_bottom = 60.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Locale" type="Control" parent="GUI/Settings/SettingsTab/User/VBoxContainer"]
+margin_right = 560.0
+margin_bottom = 60.0
+rect_min_size = Vector2( 560, 60 )
+
+[node name="Label" type="Label" parent="GUI/Settings/SettingsTab/User/VBoxContainer/Locale"]
+margin_top = 23.0
+margin_right = 152.0
+margin_bottom = 38.0
+rect_scale = Vector2( 1.5, 1.5 )
+text = "$language"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Language" type="OptionButton" parent="GUI/Settings/SettingsTab/User/VBoxContainer/Locale"]
+margin_left = 260.0
+margin_top = 12.0
+margin_right = 310.0
+margin_bottom = 27.0
+rect_min_size = Vector2( 130, 35 )
+rect_scale = Vector2( 1.25, 1.25 )
+text = "Čeština"
+items = [ "Čeština", null, false, 0, null, "english", null, false, 1, null ]
+selected = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DELETEME" type="Label" parent="GUI/Settings"]
+margin_left = 557.0
+margin_top = 440.0
+margin_right = 611.0
+margin_bottom = 454.0
+rect_scale = Vector2( 3, 3 )
+text = "Still WIP"
+
 [node name="About" type="Control" parent="GUI"]
 margin_left = 1280.0
 margin_right = 2560.0
@@ -229,7 +416,7 @@ position = Vector2( -10, 0 )
 scale = Vector2( 1.7, 1.7 )
 frames = ExtResource( 9 )
 animation = "adam_idle"
-frame = 3
+frame = 4
 playing = true
 centered = false
 
@@ -258,7 +445,7 @@ position = Vector2( -10, 0 )
 scale = Vector2( 1.7, 1.7 )
 frames = ExtResource( 9 )
 animation = "jakub_idle"
-frame = 4
+frame = 5
 playing = true
 centered = false
 
@@ -287,7 +474,7 @@ position = Vector2( -10, 0 )
 scale = Vector2( 1.7, 1.7 )
 frames = ExtResource( 9 )
 animation = "martina_idle"
-frame = 3
+frame = 4
 playing = true
 centered = false
 
@@ -502,7 +689,22 @@ __meta__ = {
 "_editor_description_": ""
 }
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="Login" parent="." instance=ExtResource( 2 )]
+visible = false
+
+[node name="MenuBackground" parent="." instance=ExtResource( 5 )]
+position = Vector2( 461, -17 )
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+offset = Vector2( 640, 360 )
+current = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
 margin_right = 1280.0
 margin_bottom = 720.0
 rect_min_size = Vector2( 1280, 720 )
@@ -512,7 +714,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/VBoxContainer"]
 margin_top = 675.0
 margin_right = 1280.0
 margin_bottom = 711.0
@@ -520,32 +722,26 @@ rect_min_size = Vector2( 1280, 0 )
 mouse_filter = 2
 alignment = 2
 
-[node name="Version" type="Label" parent="VBoxContainer/HBoxContainer"]
+[node name="Version" type="Label" parent="CanvasLayer/VBoxContainer/HBoxContainer"]
 margin_left = 1090.0
 margin_right = 1266.0
 margin_bottom = 36.0
 custom_fonts/font = SubResource( 12 )
 text = "Version: 0.0"
 
-[node name="Control" type="Control" parent="VBoxContainer/HBoxContainer"]
+[node name="Control" type="Control" parent="CanvasLayer/VBoxContainer/HBoxContainer"]
 margin_left = 1270.0
 margin_right = 1280.0
 margin_bottom = 36.0
 rect_min_size = Vector2( 10, 0 )
 mouse_filter = 2
 
-[node name="Control" type="Control" parent="VBoxContainer"]
+[node name="Control" type="Control" parent="CanvasLayer/VBoxContainer"]
 margin_top = 715.0
 margin_right = 1280.0
 margin_bottom = 720.0
 rect_min_size = Vector2( 0, 5 )
 mouse_filter = 2
-
-[node name="Login" parent="." instance=ExtResource( 2 )]
-visible = false
-
-[node name="MenuBackground" parent="." instance=ExtResource( 5 )]
-position = Vector2( 461, -17 )
 
 [connection signal="animation_finished" from="GUI/Menu/Title" to="." method="_on_AnimatedSprite_animation_finished"]
 [connection signal="pressed" from="GUI/Menu/Group1/Start" to="." method="_on_Start_pressed"]

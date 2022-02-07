@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=34 format=2]
+[gd_resource type="Theme" load_steps=43 format=2]
 
 [sub_resource type="DynamicFontData" id=1]
 font_path = "res://Resources/Fonts/8bitOperator/8bitOperatorPlus8-Bold.ttf"
@@ -80,18 +80,50 @@ bg_color = Color( 0.141176, 0.141176, 0.141176, 1 )
 
 [sub_resource type="StyleBoxFlat" id=24]
 
+[sub_resource type="StyleBoxFlat" id=40]
+bg_color = Color( 1, 0, 0, 1 )
+
+[sub_resource type="StyleBoxFlat" id=37]
+content_margin_left = 5.0
+bg_color = Color( 0.196078, 0.196078, 0.196078, 1 )
+
+[sub_resource type="StyleBoxFlat" id=36]
+content_margin_left = 5.0
+bg_color = Color( 0.235294, 0.235294, 0.235294, 1 )
+
+[sub_resource type="StyleBoxFlat" id=38]
+content_margin_left = 5.0
+bg_color = Color( 0.235294, 0.235294, 0.235294, 1 )
+
 [sub_resource type="DynamicFontData" id=16]
 font_path = "res://Resources/Fonts/8bitOperator/8bitOperatorPlus8-Bold.ttf"
 
 [sub_resource type="DynamicFont" id=17]
-size = 17
+size = 18
+extra_spacing_top = 5
+extra_spacing_bottom = 5
 font_data = SubResource( 16 )
 
+[sub_resource type="ImageTexture" id=41]
+
+[sub_resource type="ImageTexture" id=42]
+
+[sub_resource type="ImageTexture" id=43]
+
+[sub_resource type="ImageTexture" id=44]
+
+[sub_resource type="ImageTexture" id=39]
+
 [sub_resource type="StyleBoxFlat" id=18]
-bg_color = Color( 0.180392, 0.180392, 0.180392, 1 )
+bg_color = Color( 0.27451, 0.27451, 0.27451, 1 )
+expand_margin_left = 5.0
 
 [sub_resource type="StyleBoxFlat" id=19]
-bg_color = Color( 0, 0, 0, 1 )
+content_margin_left = 10.0
+content_margin_right = 5.0
+content_margin_top = 5.0
+content_margin_bottom = 5.0
+bg_color = Color( 0.196078, 0.196078, 0.196078, 1 )
 
 [sub_resource type="DynamicFontData" id=34]
 font_path = "res://Resources/Fonts/8bitOperator/8bitOperatorPlus8-Bold.ttf"
@@ -360,22 +392,22 @@ MenuButton/fonts/font = null
 MenuButton/styles/disabled = null
 MenuButton/styles/focus = null
 MenuButton/styles/hover = null
-MenuButton/styles/normal = null
+MenuButton/styles/normal = SubResource( 40 )
 MenuButton/styles/pressed = null
 OptionButton/colors/font_color = Color( 1, 1, 1, 1 )
 OptionButton/colors/font_color_disabled = Color( 1, 1, 1, 1 )
 OptionButton/colors/font_color_focus = Color( 1, 1, 1, 1 )
 OptionButton/colors/font_color_hover = Color( 1, 1, 1, 1 )
 OptionButton/colors/font_color_pressed = Color( 1, 1, 1, 1 )
-OptionButton/constants/arrow_margin = 0
+OptionButton/constants/arrow_margin = 5
 OptionButton/constants/hseparation = 0
 OptionButton/fonts/font = null
 OptionButton/icons/arrow = null
 OptionButton/styles/disabled = null
 OptionButton/styles/focus = null
-OptionButton/styles/hover = null
-OptionButton/styles/normal = null
-OptionButton/styles/pressed = null
+OptionButton/styles/hover = SubResource( 37 )
+OptionButton/styles/normal = SubResource( 36 )
+OptionButton/styles/pressed = SubResource( 38 )
 Panel/styles/panel = null
 PanelContainer/styles/panel = null
 PopupDialog/styles/panel = null
@@ -384,14 +416,14 @@ PopupMenu/colors/font_color_accel = Color( 1, 1, 1, 1 )
 PopupMenu/colors/font_color_disabled = Color( 1, 1, 1, 1 )
 PopupMenu/colors/font_color_hover = Color( 1, 1, 1, 1 )
 PopupMenu/colors/font_color_separator = Color( 1, 1, 1, 1 )
-PopupMenu/constants/hseparation = 3
-PopupMenu/constants/vseparation = 3
+PopupMenu/constants/hseparation = 0
+PopupMenu/constants/vseparation = 0
 PopupMenu/fonts/font = SubResource( 17 )
-PopupMenu/icons/checked = null
-PopupMenu/icons/radio_checked = null
-PopupMenu/icons/radio_unchecked = null
-PopupMenu/icons/submenu = null
-PopupMenu/icons/unchecked = null
+PopupMenu/icons/checked = SubResource( 41 )
+PopupMenu/icons/radio_checked = SubResource( 42 )
+PopupMenu/icons/radio_unchecked = SubResource( 43 )
+PopupMenu/icons/submenu = SubResource( 44 )
+PopupMenu/icons/unchecked = SubResource( 39 )
 PopupMenu/styles/hover = SubResource( 18 )
 PopupMenu/styles/labeled_separator_left = null
 PopupMenu/styles/labeled_separator_right = null

@@ -19,6 +19,7 @@ boot_splash/bg_color=Color( 0.141176, 0.141176, 0.141176, 1 )
 config/icon="res://Resources/Logos/icon.png"
 config/windows_native_icon="res://Resources/Logos/purkiada.ico"
 config/auto_accept_quit=false
+config/quit_on_go_back=false
 
 [autoload]
 
@@ -39,6 +40,7 @@ EscOverlay="*res://Scripts/Singletons/esc_overlay.gd"
 window/size/width=1280
 window/size/height=720
 window/dpi/allow_hidpi=true
+window/vsync/vsync_via_compositor=true
 window/stretch/mode="2d"
 window/stretch/aspect="keep"
 
@@ -113,6 +115,7 @@ translations=PoolStringArray( "res://Resources/Translations/translations.cs.tran
 [logging]
 
 file_logging/enable_file_logging=true
+file_logging/max_log_files=10
 
 [physics]
 
