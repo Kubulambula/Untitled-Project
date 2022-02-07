@@ -20,8 +20,6 @@ func _init():
 	print("[START]")
 	# warning-ignore:return_value_discarded
 	config.load_data()
-	# warning-ignore:return_value_discarded
-	config.save_data()
 	config.apply()
 	current_level = config.get_value("game", "current_level", "level1")
 
