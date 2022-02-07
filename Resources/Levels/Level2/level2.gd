@@ -1,18 +1,19 @@
 extends Node2D
 
-const level = "Level1"
+const level = "Level2"
 
 var level_data = null
 
 func _ready():
 	GameState.player_can_move = false
+	
 	# warning-ignore:return_value_discarded
 	EventReporter.connect("event_reported", self, "handle_event")
 	
-	LevelManager.set_map_dimensions(16, 9)
+	LevelManager.set_map_dimensions(30, 9)
 	level_data = LevelManager.parse_level_data(LevelManager.read_level_data(level))
 	
-	level_data = LevelManager.apply_immovable_mask(level_data, ["P", "D", "$"])
+	level_data = LevelManager.apply_immovable_mask(level_data, ["#", "D", "$"])
 	level_data = LevelManager.apply_max_entity_mask(level_data, {"P": 1, "D": 1})
 	
 	# Insert level specific masks/checks here
@@ -22,19 +23,21 @@ func _ready():
 	LevelManager.build_tilemaps(self, level_data["map"])
 	LevelManager.spawn_entities(self, level_data["entities"])
 	
-	if not OS.is_debug_build():
-		PopupBox.create_simple("ahoj", "")
-		yield(PopupBox, "next_button")
-		PopupBox.player_request_next()
-		PopupBox.create_labeled("Jak je?", "ahoj", "", 2)
-		yield(PopupBox, "hidden")
+	LevelManager.set_entity_properties(level_data, {
+		"$": {
+			"coin_type": [2, 2, 1, 2, 2, 2, 2, 1, 1, 1, 1, 1]
+		},
+		"P": {
+			"camera_limits": [Rect2(0, 0, 30 * 80, 9 * 80)]
+		}
+	})
+	
 	GameState.player_can_move = true
-
 
 func handle_event(source, name):
 	if name == "player_reached_door":
-		# TDOO: Submit to API
-		GameState.current_level = "level2"
-		get_tree().change_scene("res://Resources/Levels/Level2/level2.tscn")
+		GameState.current_level = "level3"
+		get_tree().change_scene("res://Resources/Levels/Level3/level3.tscn")
+		pass # Submit to API & Next level
 	elif name == "player_outside_play_area":
 		LevelManager.restart_level(level_data)

@@ -11,6 +11,7 @@ export (float, 0.01, 60) var sec_jump_duration = 0.35
 export (float, 0, 60) var sec_jump_buffer = 0.12
 export (float, 0, 60) var sec_coyote_time = 0.15
 
+export (Rect2) var camera_limits = Rect2(0, 0, 1280, 720) setget set_camera_limits_property
 
 #private variables basen on public settings
 var _gravity
@@ -54,6 +55,10 @@ func recalculate_movement_settings():
 	jumpBufferTimer.wait_time = sec_jump_buffer
 	coyoteTimer.one_shot = true
 	jumpBufferTimer.one_shot = true
+
+
+func set_camera_limits_property(new_rect):
+	set_camera_limits(new_rect.position, new_rect.size)
 
 
 func set_camera_limits(left_top: Vector2 = Vector2(0, 0), right_bottom: Vector2 = Vector2(1280, 720)):
