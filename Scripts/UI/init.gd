@@ -9,6 +9,7 @@ var next_scene = null
 
 
 func _ready():
+	OS.set_window_title("Untitled-Game - Purkiáda 2022 - © Adam Charvát, Jakub Janšta & Martina Prokšová 2022")
 	EscOverlay.allowed = false
 	ResourceQueue.register_callback(next_scene_path, "is_ready", funcref(self, "_next_scene_ready"))
 	ResourceQueue.queue_resource(next_scene_path)

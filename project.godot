@@ -10,10 +10,10 @@ config_version=4
 
 [application]
 
-config/name="Untitled-Project - Purkiáda 2022 - © Jakub Janšta & Adam Charvát 2022"
+config/name="Untitled-Game - Purkiáda 2022"
 run/main_scene="res://Scenes/UI/init.tscn"
 config/use_custom_user_dir=true
-config/custom_user_dir_name="Untitled-Project"
+config/custom_user_dir_name="Untitled-Game"
 boot_splash/image="res://Resources/Logos/purkiada2022_logo.png"
 boot_splash/bg_color=Color( 0.141176, 0.141176, 0.141176, 1 )
 config/icon="res://Resources/Logos/icon.png"
