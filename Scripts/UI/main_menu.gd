@@ -73,7 +73,7 @@ func _on_Start_pressed():
 	yield(WindowOverlay, "complete")
 	EscOverlay.allowed = true
 	# warning-ignore:return_value_discarded
-	get_tree().change_scene("res://Resources/Levels/Level1/level1.tscn")
+	get_tree().change_scene(LevelManager.get_level_scene(GameState.current_level))
 	WindowOverlay.undim(0.5)
 
 
