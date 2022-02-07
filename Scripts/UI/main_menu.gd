@@ -117,7 +117,10 @@ func _move_screen():
 	$Tween.start()
 
 func _input(_event):
-	if Input.is_action_just_pressed("ui_pause"):
+	if Input.is_action_just_pressed("ui_enter"):
+		_on_Start_pressed()
+	
+	elif Input.is_action_just_pressed("ui_pause"):
 		screen = 1
 		_move_screen()
 	
