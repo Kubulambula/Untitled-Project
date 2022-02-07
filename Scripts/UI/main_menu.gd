@@ -3,6 +3,9 @@ extends Control
 const version_format = "%s: %s"
 onready var login_panel = $Login
 
+const screens = [-640, 640, 1920]
+var screen = 1
+
 onready var title = $GUI/Menu/Title
 # Ah yes... animations
 var title_animations_ptr = 0
@@ -85,13 +88,13 @@ func _on_Quit_pressed():
 
 
 func _on_Settings_pressed():
-	$Tween.interpolate_property($Camera2D, "offset:x", null, -640, 0.75, Tween.TRANS_QUINT, Tween.EASE_OUT)
-	$Tween.start()
+	screen = 0
+	_move_screen()
 
 
 func _on_About_pressed():
-	$Tween.interpolate_property($Camera2D, "offset:x", null, 1920, 0.75, Tween.TRANS_QUINT, Tween.EASE_OUT)
-	$Tween.start()
+	screen = 2
+	_move_screen()
 
 
 func _on_GodotLogo_pressed():
@@ -109,7 +112,19 @@ func _on_QRCode_pressed():
 	OS.shell_open("https://www.nayuki.io/page/qr-code-generator-library")
 
 
+func _move_screen():
+	$Tween.interpolate_property($Camera2D, "offset:x", null, screens[screen], 0.75, Tween.TRANS_QUINT, Tween.EASE_OUT)
+	$Tween.start()
+
 func _input(_event):
 	if Input.is_action_just_pressed("ui_pause"):
-		$Tween.interpolate_property($Camera2D, "offset:x", null, 640, 0.75, Tween.TRANS_QUINT, Tween.EASE_OUT)
-		$Tween.start()
+		screen = 1
+		_move_screen()
+	
+	elif Input.is_action_just_pressed("move_left"):
+		screen = clamp(screen - 1, 0, screens.size()-1)
+		_move_screen()
+	
+	elif Input.is_action_just_pressed("move_right"):
+		screen = clamp(screen + 1, 0, screens.size()-1)
+		_move_screen()

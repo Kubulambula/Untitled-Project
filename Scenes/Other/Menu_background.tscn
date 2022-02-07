@@ -551,7 +551,7 @@ region_enabled = true
 region_rect = Rect2( 1280, 1280, 7680, 1280 )
 
 [node name="Clouds" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_scale = Vector2( 1.3, 1 )
+motion_scale = Vector2( 0.08, 1 )
 motion_offset = Vector2( -1, 0 )
 
 [node name="Sprite" type="Sprite" parent="ParallaxBackground/Clouds"]
@@ -561,7 +561,7 @@ region_enabled = true
 region_rect = Rect2( 1280, 600, 6400, 600 )
 
 [node name="Mountains" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_scale = Vector2( 1.25, 1 )
+motion_scale = Vector2( 0.1, 1 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="ParallaxBackground/Mountains"]
 frames = SubResource( 122 )
@@ -590,7 +590,7 @@ centered = false
 offset = Vector2( 2881, 100 )
 
 [node name="Clouds2" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_scale = Vector2( 1.2, 1 )
+motion_scale = Vector2( 0.12, 1 )
 
 [node name="Sprite3" type="Sprite" parent="ParallaxBackground/Clouds2"]
 self_modulate = Color( 0.890196, 0.941176, 1, 1 )
@@ -601,7 +601,7 @@ region_enabled = true
 region_rect = Rect2( 1280, 600, 9600, 600 )
 
 [node name="Grass" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_scale = Vector2( 1.1, 1 )
+motion_scale = Vector2( 0.7, 1 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="ParallaxBackground/Grass"]
 scale = Vector2( 0.7, 0.7 )
