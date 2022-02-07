@@ -4,18 +4,18 @@ const level = "Level3"
 
 var level_data = null
 
-func apply_door_destination_mask(level_data, allowed_levels):
-	var settings = level_data["settings"]
-	var fallback_level = LevelManager.get_internal_option(level_data["level"], "door_destination")
+func apply_door_destination_mask(lvl_data, allowed_levels):
+	var settings = lvl_data["settings"]
+	var fallback_level = LevelManager.get_internal_option(lvl_data["level"], "door_destination")
 	if "door_destination" in settings:
 		var user_level = settings["door_destination"].to_lower()
 		for allowed_level in allowed_levels:
 			if not "level" in str(allowed_level):
 				allowed_level = "level" + str(allowed_level)
 			if user_level == allowed_level:
-				return level_data
+				return lvl_data
 	settings["door_destination"] = fallback_level.to_lower()
-	return level_data
+	return lvl_data
 
 func _ready():
 	GameState.player_can_move = false
@@ -47,11 +47,12 @@ func _ready():
 
 	GameState.player_can_move = true
 
-func handle_event(source, name):
+func handle_event(_source, name):
 	if name == "player_reached_door":
 		# TODO: Submit to API
 		var next_level = level_data["settings"]["door_destination"]
 		GameState.current_level = next_level
+		# warning-ignore:return_value_discarded
 		get_tree().change_scene(LevelManager.get_level_scene(next_level))
 	elif name == "player_outside_play_area":
 		LevelManager.restart_level(level_data)

@@ -31,10 +31,11 @@ func _ready():
 	GameState.player_can_move = true
 
 
-func handle_event(source, name):
+func handle_event(_source, name):
 	if name == "player_reached_door":
 		# TDOO: Submit to API
 		GameState.current_level = "level2"
+		# warning-ignore:return_value_discarded
 		get_tree().change_scene("res://Resources/Levels/Level2/level2.tscn")
 	elif name == "player_outside_play_area":
 		LevelManager.restart_level(level_data)

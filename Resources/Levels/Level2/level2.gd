@@ -34,9 +34,10 @@ func _ready():
 	
 	GameState.player_can_move = true
 
-func handle_event(source, name):
+func handle_event(_source, name):
 	if name == "player_reached_door":
 		GameState.current_level = "level3"
+		# warning-ignore:return_value_discarded
 		get_tree().change_scene("res://Resources/Levels/Level3/level3.tscn")
 		pass # Submit to API & Next level
 	elif name == "player_outside_play_area":

@@ -51,7 +51,7 @@ func _create_level_header(level):
 	return ";" + level + "\n"
 
 func _get_level_internal_path(level: String):
-	return "res://Resources/Levels/" + level + "/" + level.to_lower() + ".lvl"
+	return "res://Resources/Levels/" + level + "/" + level + ".lvl"
 
 func _get_level_external_path(level):
 	return get_level_dir(level) + "/level.txt"
@@ -191,7 +191,7 @@ func apply_immovable_mask(level_data, mask):
 	return level_data
 
 # TODO: Write this if needed or make one function for tiles and entities
-func apply_max_tile_mask(level_data, mask):
+func apply_max_tile_mask(level_data, _mask):
 	return level_data
 
 # Maybe rework this in the future, depends on the usage needed

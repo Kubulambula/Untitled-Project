@@ -33,7 +33,7 @@ func _ready():
 
 	GameState.player_can_move = true
 
-func handle_event(source, name):
+func handle_event(_source, name):
 	if name == "player_reached_door":
 		pass
 	elif name == "player_outside_play_area":
