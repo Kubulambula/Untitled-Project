@@ -116,18 +116,19 @@ func _move_screen():
 	$Tween.interpolate_property($Camera2D, "offset:x", null, screens[screen], 0.75, Tween.TRANS_QUINT, Tween.EASE_OUT)
 	$Tween.start()
 
-func _input(_event):
-	if Input.is_action_just_pressed("ui_enter"):
-		_on_Start_pressed()
-	
-	elif Input.is_action_just_pressed("ui_pause"):
-		screen = 1
-		_move_screen()
-	
-	elif Input.is_action_just_pressed("move_left"):
-		screen = clamp(screen - 1, 0, screens.size()-1)
-		_move_screen()
-	
-	elif Input.is_action_just_pressed("move_right"):
-		screen = clamp(screen + 1, 0, screens.size()-1)
-		_move_screen()
+func _input(event):
+	if event is InputEventKey and not $Login/Login.visible:
+		if Input.is_action_just_pressed("ui_enter"):
+			_on_Start_pressed()
+		
+		elif Input.is_action_just_pressed("ui_pause"):
+			screen = 1
+			_move_screen()
+		
+		elif Input.is_action_just_pressed("move_left"):
+			screen = clamp(screen - 1, 0, screens.size()-1)
+			_move_screen()
+		
+		elif Input.is_action_just_pressed("move_right"):
+			screen = clamp(screen + 1, 0, screens.size()-1)
+			_move_screen()
