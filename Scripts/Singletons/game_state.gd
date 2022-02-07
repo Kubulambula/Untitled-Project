@@ -94,6 +94,10 @@ class _Config:
 		
 		# Vsync
 		OS.set_use_vsync(self.get_value("graphics", "vsync", true))
+		# Vsync via compositor
+		OS.set_vsync_via_compositor(self.get_value("graphics", "vsync_via_compositor", true))
+		# Keep screen on
+		OS.set_keep_screen_on(self.get_value("graphics", "keep_screen_on", true))
 		# Window mode
 		match self.get_value("graphics", "window_mode", 0):
 			0: # Windowed
