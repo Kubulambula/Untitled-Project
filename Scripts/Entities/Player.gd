@@ -42,6 +42,9 @@ func _ready():
 	add_child(jumpBufferTimer)
 	
 	recalculate_movement_settings()
+	
+	yield(get_tree().create_timer(.25), "timeout") # I don't know either 
+	$Camera2D.smoothing_enabled = true
 
 
 

@@ -14,6 +14,7 @@ max_jump_height = 2.3
 [node name="GFX" type="AnimatedSprite" parent="."]
 frames = ExtResource( 2 )
 animation = "player_idle"
+frame = 5
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -26,5 +27,11 @@ limit_left = 0
 limit_top = 0
 limit_right = 1280
 limit_bottom = 720
+limit_smoothed = true
+drag_margin_h_enabled = true
+drag_margin_left = 0.15
+drag_margin_right = 0.15
+editor_draw_limits = true
+editor_draw_drag_margin = true
 
 [connection signal="animation_finished" from="GFX" to="." method="_on_GFX_animation_finished"]
