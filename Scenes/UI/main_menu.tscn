@@ -39,7 +39,7 @@ font_path = "res://Resources/Fonts/8bitOperator/8bitOperatorPlus-Bold.ttf"
 size = 25
 font_data = SubResource( 13 )
 
-[node name="Control" type="Control"]
+[node name="Control" type="Control" groups=["translateable"]]
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
@@ -217,7 +217,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="OptionButton" type="OptionButton" parent="GUI/Settings/SettingsTab/Graphics/VBoxContainer/WindowMode"]
+[node name="WindowMode" type="OptionButton" parent="GUI/Settings/SettingsTab/Graphics/VBoxContainer/WindowMode"]
 margin_left = 260.0
 margin_top = 12.0
 margin_right = 450.0
@@ -276,7 +276,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="CheckButton" type="CheckButton" parent="GUI/Settings/SettingsTab/Graphics/VBoxContainer/Vsync"]
+[node name="Vsync" type="CheckButton" parent="GUI/Settings/SettingsTab/Graphics/VBoxContainer/Vsync"]
 margin_left = 400.0
 margin_right = 504.0
 margin_bottom = 52.0
@@ -302,7 +302,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="CheckButton" type="CheckButton" parent="GUI/Settings/SettingsTab/Graphics/VBoxContainer/VsyncCompositor"]
+[node name="VsyncCompositor" type="CheckButton" parent="GUI/Settings/SettingsTab/Graphics/VBoxContainer/VsyncCompositor"]
 margin_left = 400.0
 margin_right = 504.0
 margin_bottom = 52.0
@@ -349,20 +349,12 @@ margin_right = 310.0
 margin_bottom = 27.0
 rect_min_size = Vector2( 130, 35 )
 rect_scale = Vector2( 1.25, 1.25 )
-text = "Čeština"
-items = [ "Čeština", null, false, 0, null, "english", null, false, 1, null ]
+text = "čeština"
+items = [ "čeština", null, false, 0, null, "english", null, false, 1, null ]
 selected = 0
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="DELETEME" type="Label" parent="GUI/Settings"]
-margin_left = 557.0
-margin_top = 440.0
-margin_right = 611.0
-margin_bottom = 454.0
-rect_scale = Vector2( 3, 3 )
-text = "Still WIP"
 
 [node name="About" type="Control" parent="GUI"]
 margin_left = 1280.0
@@ -751,6 +743,11 @@ mouse_filter = 2
 [connection signal="pressed" from="GUI/Menu/Group1/Settings" to="." method="_on_Settings_pressed"]
 [connection signal="pressed" from="GUI/Menu/Group2/Quit" to="." method="_on_Quit_pressed"]
 [connection signal="pressed" from="GUI/Menu/Group2/About" to="." method="_on_About_pressed"]
+[connection signal="item_selected" from="GUI/Settings/SettingsTab/Graphics/VBoxContainer/WindowMode/WindowMode" to="." method="_on_WindowMode_item_selected"]
+[connection signal="toggled" from="GUI/Settings/SettingsTab/Graphics/VBoxContainer/KeepScreenOn/KeepScreenOn" to="." method="_on_KeepScreenOn_toggled"]
+[connection signal="toggled" from="GUI/Settings/SettingsTab/Graphics/VBoxContainer/Vsync/Vsync" to="." method="_on_Vsync_toggled"]
+[connection signal="toggled" from="GUI/Settings/SettingsTab/Graphics/VBoxContainer/VsyncCompositor/VsyncCompositor" to="." method="_on_VsyncCompositor_toggled"]
+[connection signal="item_selected" from="GUI/Settings/SettingsTab/User/VBoxContainer/Locale/Language" to="." method="_on_Language_item_selected"]
 [connection signal="pressed" from="GUI/About/3rdParty2/Godot Engine/ScrollContainer/VBoxContainer/Logo/GodotLogo" to="." method="_on_GodotLogo_pressed"]
 [connection signal="pressed" from="GUI/About/3rdParty2/QRCode Generator/ScrollContainer/VBoxContainer/QRCode/QRCode" to="." method="_on_QRCode_pressed"]
 [connection signal="meta_clicked" from="GUI/About/3rdParty2/QRCode Generator/ScrollContainer/VBoxContainer/License/HBoxContainer/QRCodeLicense" to="." method="_on_QRCodeLicense_meta_clicked"]
