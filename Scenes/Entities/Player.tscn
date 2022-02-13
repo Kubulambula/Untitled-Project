@@ -14,7 +14,7 @@ max_jump_height = 2.3
 [node name="GFX" type="AnimatedSprite" parent="."]
 frames = ExtResource( 2 )
 animation = "player_idle"
-frame = 4
+frame = 2
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

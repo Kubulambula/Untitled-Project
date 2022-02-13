@@ -55,7 +55,6 @@ const languages = ["cs", "en"]
 
 func _ready():
 	EscOverlay.allowed = false
-	$Version/VBoxContainer/HBoxContainer/Version.text = version_format % [TranslationServer.translate("$version"), GameState.version]
 	
 	title.animation = title_animations[0]
 	title_animations_ptr = (title_animations_ptr + 1) % title_animations.size()
@@ -88,6 +87,7 @@ func _set_settings_from_saved_config():
 
 
 func translate():
+	$Version/VBoxContainer/HBoxContainer/Version.text = version_format % [TranslationServer.translate("$version"), GameState.version]
 	$GUI/Settings/SettingsTab.set_tab_title(0, TranslationServer.translate("$graphics"))
 	$GUI/Settings/SettingsTab.set_tab_title(1, TranslationServer.translate("$user"))
 

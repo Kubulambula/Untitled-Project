@@ -1,87 +1,80 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Resources/Entities/portraits.tres" type="SpriteFrames" id=1]
+[ext_resource path="res://Resources/Themes/textbox_adam.png" type="Texture" id=2]
+[ext_resource path="res://Resources/Themes/textbox_kuba.png" type="Texture" id=3]
+[ext_resource path="res://Resources/Themes/untitled_theme.tres" type="Theme" id=4]
 
 [sub_resource type="Animation" id=1]
-resource_name = "Slide"
-length = 0.3
+resource_name = "blink"
+length = 2.5
+loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("Window:rect_position")
+tracks/0/path = NodePath("Window/Prompt:self_modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.25 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 0, 1.5, 2.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( -600, 0 ), Vector2( 0, 0 ) ]
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
 [node name="Custom_popup" type="CanvasLayer"]
-layer = 10
+layer = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/Slide = SubResource( 1 )
+anims/blink = SubResource( 1 )
+
+[node name="Tween" type="Tween" parent="."]
 
 [node name="Window" type="Control" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -600.0
-margin_right = -660.0
+margin_left = -900.0
+margin_right = -900.0
 mouse_filter = 2
+theme = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Simple" type="Control" parent="Window"]
-margin_right = 40.0
-margin_bottom = 40.0
-mouse_filter = 2
+[node name="AdamBox" type="Sprite" parent="Window"]
+texture = ExtResource( 2 )
+centered = false
+offset = Vector2( 30, 500 )
+
+[node name="JakubBox" type="Sprite" parent="Window"]
+texture = ExtResource( 3 )
+centered = false
+offset = Vector2( 30, 500 )
+
+[node name="Portrait" type="AnimatedSprite" parent="Window"]
+frames = ExtResource( 1 )
+animation = "adam"
+offset = Vector2( 84, 595 )
+
+[node name="Text" type="RichTextLabel" parent="Window"]
+margin_left = 154.0
+margin_top = 560.0
+margin_right = 830.0
+margin_bottom = 670.0
+rect_min_size = Vector2( 676, 110 )
+bbcode_enabled = true
+scroll_following = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ColorRect" type="ColorRect" parent="Window/Simple"]
-margin_right = 300.0
-margin_bottom = 150.0
-color = Color( 1, 0, 0, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label" type="Label" parent="Window/Simple"]
-margin_left = 75.0
-margin_top = 30.0
-margin_right = 119.0
-margin_bottom = 44.0
-rect_scale = Vector2( 3, 3 )
-text = "Simple"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Labeled" type="Control" parent="Window"]
-margin_right = 40.0
-margin_bottom = 40.0
-mouse_filter = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="ColorRect" type="ColorRect" parent="Window/Labeled"]
-margin_right = 300.0
-margin_bottom = 150.0
-color = Color( 0, 1, 0, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label" type="Label" parent="Window/Labeled"]
-margin_left = 75.0
-margin_top = 30.0
-margin_right = 119.0
-margin_bottom = 44.0
-rect_scale = Vector2( 3, 3 )
-text = "Labeled"
+[node name="Prompt" type="Label" parent="Window"]
+margin_left = 790.0
+margin_top = 485.0
+margin_right = 830.0
+margin_bottom = 500.0
+rect_scale = Vector2( 1.5, 1.5 )
+text = "[E]"
 __meta__ = {
 "_edit_use_anchors_": false
 }

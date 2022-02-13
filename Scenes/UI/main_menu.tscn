@@ -413,7 +413,7 @@ position = Vector2( -10, 0 )
 scale = Vector2( 1.7, 1.7 )
 frames = ExtResource( 9 )
 animation = "adam_idle"
-frame = 1
+frame = 4
 playing = true
 centered = false
 
@@ -442,7 +442,7 @@ position = Vector2( -10, 0 )
 scale = Vector2( 1.7, 1.7 )
 frames = ExtResource( 9 )
 animation = "jakub_idle"
-frame = 2
+frame = 5
 playing = true
 centered = false
 
@@ -471,7 +471,7 @@ position = Vector2( -10, 0 )
 scale = Vector2( 1.7, 1.7 )
 frames = ExtResource( 9 )
 animation = "martina_idle"
-frame = 1
+frame = 4
 playing = true
 centered = false
 
@@ -514,8 +514,8 @@ __meta__ = {
 
 [node name="VBoxContainer" type="VBoxContainer" parent="GUI/About/3rdParty2/Godot Engine/ScrollContainer"]
 margin_right = 740.0
-margin_bottom = 715.0
-rect_min_size = Vector2( 650, 0 )
+margin_bottom = 930.0
+rect_min_size = Vector2( 740, 930 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -551,13 +551,13 @@ __meta__ = {
 
 [node name="Spacer" type="Control" parent="GUI/About/3rdParty2/Godot Engine/ScrollContainer/VBoxContainer/License/HBoxContainer"]
 margin_right = 10.0
-margin_bottom = 405.0
+margin_bottom = 608.0
 rect_min_size = Vector2( 10, 0 )
 
 [node name="RichTextLabel" type="RichTextLabel" parent="GUI/About/3rdParty2/Godot Engine/ScrollContainer/VBoxContainer/License/HBoxContainer"]
 margin_left = 10.0
 margin_right = 720.0
-margin_bottom = 405.0
+margin_bottom = 608.0
 size_flags_horizontal = 3
 bbcode_enabled = true
 bbcode_text = "[color=white]Copyright (c) 2007-2022 Juan Linietsky, Ariel Manzur.
@@ -576,6 +576,8 @@ Permission is hereby granted, free of charge, to any person obtaining a copy of 
 The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE."
+fit_content_height = true
+scroll_active = false
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -583,7 +585,7 @@ __meta__ = {
 [node name="Spacer2" type="Control" parent="GUI/About/3rdParty2/Godot Engine/ScrollContainer/VBoxContainer/License/HBoxContainer"]
 margin_left = 720.0
 margin_right = 740.0
-margin_bottom = 405.0
+margin_bottom = 608.0
 rect_min_size = Vector2( 20, 0 )
 
 [node name="QRCode Generator" type="Control" parent="GUI/About/3rdParty2"]
@@ -603,8 +605,8 @@ __meta__ = {
 
 [node name="VBoxContainer" type="VBoxContainer" parent="GUI/About/3rdParty2/QRCode Generator/ScrollContainer"]
 margin_right = 740.0
-margin_bottom = 615.0
-rect_min_size = Vector2( 0, 610 )
+margin_bottom = 850.0
+rect_min_size = Vector2( 740, 850 )
 
 [node name="QRCode" type="Control" parent="GUI/About/3rdParty2/QRCode Generator/ScrollContainer/VBoxContainer"]
 margin_right = 740.0
@@ -673,6 +675,8 @@ Permission is hereby granted, free of charge, to any person obtaining a copy of 
 The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE."
+fit_content_height = true
+scroll_active = false
 __meta__ = {
 "_editor_description_": ""
 }

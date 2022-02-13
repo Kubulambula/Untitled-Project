@@ -1,0 +1,56 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Resources/Entities/pong_telka.png" type="Texture" id=1]
+[ext_resource path="res://Scenes/Entities/TV/disco.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/Entities/TV/noise.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/Entities/TV/pong.tscn" type="PackedScene" id=4]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends Node2D
+
+
+onready var PONG = $Screen/Pong
+onready var DISCO = $Screen/Disco
+onready var NOISE = $Screen/noise
+
+
+func _ready():
+	set_channel(DISCO)
+
+
+func start_pong():
+	PONG.get_node(\"BG/PlayerPONG\").position = Vector2(15,55)
+	PONG.get_node(\"BG/PlayerPONG\").speed = 300
+	PONG.restart()
+
+
+func set_channel(channel: Node2D):
+	for child in $Screen.get_children():
+		child.visible = false
+	channel.visible = true
+"
+
+[node name="TV" type="Node2D"]
+script = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+centered = false
+
+[node name="Screen" type="Control" parent="."]
+margin_left = 46.0
+margin_top = 43.0
+margin_right = 211.0
+margin_bottom = 159.0
+rect_min_size = Vector2( 165, 116 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Pong" parent="Screen" instance=ExtResource( 4 )]
+visible = false
+
+[node name="Disco" parent="Screen" instance=ExtResource( 2 )]
+visible = false
+
+[node name="noise" parent="Screen" instance=ExtResource( 3 )]

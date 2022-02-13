@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/you_spin_me.mp3-aa2acfc167b5773d5996ebe5991fef6a.mp3str"
+
+[deps]
+
+source_file="res://Resources/Entities/DISCO/you_spin_me.mp3"
+dest_files=[ "res://.import/you_spin_me.mp3-aa2acfc167b5773d5996ebe5991fef6a.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

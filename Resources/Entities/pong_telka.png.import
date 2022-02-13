@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/door.png-4b1c0a7399b4088ce2a9db9a67325040.stex"
+path="res://.import/pong_telka.png-f9eab8d17c3f67be23919fa60540d8ab.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Resources/Entities/Door/door.png"
-dest_files=[ "res://.import/door.png-4b1c0a7399b4088ce2a9db9a67325040.stex" ]
+source_file="res://Resources/Entities/pong_telka.png"
+dest_files=[ "res://.import/pong_telka.png-f9eab8d17c3f67be23919fa60540d8ab.stex" ]
 
 [params]
 
