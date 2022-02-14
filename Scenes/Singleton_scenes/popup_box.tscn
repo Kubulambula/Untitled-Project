@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Resources/Entities/portraits.tres" type="SpriteFrames" id=1]
 [ext_resource path="res://Resources/Themes/textbox_adam.png" type="Texture" id=2]
@@ -19,8 +19,17 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 1.5, 2.5 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.392157 ), Color( 1, 1, 1, 1 ) ]
 }
+
+[sub_resource type="DynamicFontData" id=2]
+font_path = "res://Resources/Fonts/8bitOperator/8bitOperatorPlus8-Bold.ttf"
+
+[sub_resource type="DynamicFont" id=3]
+size = 20
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+font_data = SubResource( 2 )
 
 [node name="Custom_popup" type="CanvasLayer"]
 layer = 2
@@ -74,6 +83,7 @@ margin_top = 485.0
 margin_right = 830.0
 margin_bottom = 500.0
 rect_scale = Vector2( 1.5, 1.5 )
+custom_fonts/font = SubResource( 3 )
 text = "[E]"
 __meta__ = {
 "_edit_use_anchors_": false

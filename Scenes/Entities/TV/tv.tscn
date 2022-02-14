@@ -19,8 +19,8 @@ func _ready():
 
 
 func start_pong():
+	PONG.get_node(\"BG/PlayerPONG\").set_physics_process(true)
 	PONG.get_node(\"BG/PlayerPONG\").position = Vector2(15,55)
-	PONG.get_node(\"BG/PlayerPONG\").speed = 300
 	PONG.restart()
 
 

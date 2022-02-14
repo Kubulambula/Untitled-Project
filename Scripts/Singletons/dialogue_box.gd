@@ -174,8 +174,8 @@ func player_request_next():
 
 func wait_for_next_request():
 	yield(self, "next_button")
-	print("lol")
 	emit_signal("_player_request_next")
+
 
 func _input(_event):
 	if Input.is_action_just_pressed("ui_next_dialogue"):

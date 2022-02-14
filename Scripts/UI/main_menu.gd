@@ -49,9 +49,6 @@ const title_animations = [
 
 const languages = ["cs", "en"]
 
-# TODO : 
-# load the level with threads
-
 
 func _ready():
 	EscOverlay.allowed = false

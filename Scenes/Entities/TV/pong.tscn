@@ -10,8 +10,11 @@ extents = Vector2( 83, 5 )
 [sub_resource type="GDScript" id=5]
 script/source = "extends KinematicBody2D
 
-var speed = 0 #300
+var speed = 300
 
+
+func _ready():
+	set_physics_process(false)
 
 func _physics_process(_delta):
 	var velocity = Vector2.ZERO
@@ -95,7 +98,7 @@ func restart():
 	position = Vector2(82,58)
 	randomize()
 	speed = 100
-	velocity.x = 1 # Always move to right first
+	velocity.x = [-0.8,0.8][randi() % 2]
 	velocity.y = [-0.8,0.8][randi() % 2]
 "
 
