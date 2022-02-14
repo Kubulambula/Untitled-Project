@@ -26,7 +26,7 @@ var _velocity = Vector2(0,0)
 #var is_grounded = false
 var was_grounded = false
 
-enum{IDLE, WALK, RUN, AIR, JUMP, LAND}
+enum{IDLE, WALK, RUN, AIR, JUMP, LAND, CUSTOM}
 var state = IDLE
 var direction = 0
 var jumping = false

@@ -1,0 +1,42 @@
+[gd_resource type="SpriteFrames" load_steps=6 format=2]
+
+[ext_resource path="res://Resources/Entities/portraits.png" type="Texture" id=1]
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 1 )
+region = Rect2( 80, 0, 80, 80 )
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 1 )
+region = Rect2( 160, 0, 80, 80 )
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 1 )
+region = Rect2( 0, 0, 80, 80 )
+
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 1 )
+region = Rect2( 240, 0, 80, 80 )
+
+[resource]
+animations = [ {
+"frames": [ SubResource( 1 ) ],
+"loop": false,
+"name": "jakub_angry",
+"speed": 1.0
+}, {
+"frames": [ SubResource( 2 ) ],
+"loop": false,
+"name": "adam",
+"speed": 1.0
+}, {
+"frames": [ SubResource( 3 ) ],
+"loop": false,
+"name": "jakub",
+"speed": 1.0
+}, {
+"frames": [ SubResource( 4 ) ],
+"loop": false,
+"name": "adam_angry",
+"speed": 1.0
+} ]

@@ -1,0 +1,308 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://Resources/Entities/DISCO/crt_shader.shader" type="Shader" id=1]
+[ext_resource path="res://Scenes/Entities/TV/pong.gd" type="Script" id=2]
+[ext_resource path="res://Resources/Themes/untitled_theme.tres" type="Theme" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 83, 5 )
+
+[sub_resource type="GDScript" id=5]
+script/source = "extends KinematicBody2D
+
+var speed = 300
+
+
+func _ready():
+	set_physics_process(false)
+
+func _physics_process(_delta):
+	var velocity = Vector2.ZERO
+	if Input.is_action_pressed(\"move_jump\"):
+		velocity.y = -1
+	if Input.is_action_pressed(\"move_down\"):
+		velocity.y = 1
+	# warning-ignore:return_value_discarded
+	move_and_slide(velocity * speed)
+"
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 3, 10 )
+
+[sub_resource type="GDScript" id=7]
+script/source = "extends KinematicBody2D
+
+
+var speed = 300
+
+var position_margin = 8
+
+onready var ball = get_parent().get_node(\"Ball\")
+onready var ray = ball.get_node(\"RayCast2D\")
+
+var target_pos: Vector2 = Vector2(0,55)
+onready var idle_position = global_position
+
+
+
+func get_intersection_point():
+	if ball.velocity.x > 0:
+		ray.force_raycast_update()
+		ray.clear_exceptions()
+		ray.global_position = ball.global_position
+		ray.cast_to = ball.velocity.normalized() * 200
+		if ray.get_collider() is StaticBody2D: # bounce
+			ray.add_exception(ray.get_collider())
+			ray.global_position = ray.get_collision_point()
+			ray.cast_to = ray.cast_to.bounce(ray.get_collision_normal())
+			ray.force_raycast_update()
+		return ray.get_collision_point()
+	return idle_position # middle
+
+
+func _physics_process(_delta):
+	target_pos = get_intersection_point()
+	
+	var velocity = Vector2.ZERO
+	if target_pos.y < global_position.y - position_margin:
+		velocity.y = -1
+#		print(\"up\")
+	elif target_pos.y > global_position.y + position_margin:
+		velocity.y = 1
+#		print(\"down\")
+	# warning-ignore:return_value_discarded
+	move_and_slide(velocity * speed)
+"
+
+[sub_resource type="GDScript" id=6]
+script/source = "extends KinematicBody2D
+
+
+var speed = 300
+var velocity = Vector2.ZERO
+onready var raycast = $RayCast2D
+
+
+func _physics_process(delta):
+	var collision_object = move_and_collide(velocity * speed * delta)
+	if collision_object:
+		velocity = velocity.bounce(collision_object.normal)
+		speed += 10
+
+
+func stop():
+	speed = 0
+
+
+func restart():
+	position = Vector2(82,58)
+	randomize()
+	speed = 100
+	velocity.x = [-0.8,0.8][randi() % 2]
+	velocity.y = [-0.8,0.8][randi() % 2]
+"
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 4, 4 )
+
+[sub_resource type="RectangleShape2D" id=8]
+extents = Vector2( 10, 70 )
+
+[sub_resource type="ShaderMaterial" id=9]
+shader = ExtResource( 1 )
+shader_param/overlay = true
+shader_param/scanlines_opacity = 0.05
+shader_param/scanlines_width = 0.25
+shader_param/grille_opacity = 0.3
+shader_param/resolution = Vector2( 660, 464 )
+shader_param/pixelate = false
+shader_param/roll = true
+shader_param/roll_speed = 8.0
+shader_param/roll_size = 15.0
+shader_param/roll_variation = 1.8
+shader_param/distort_intensity = 0.005
+shader_param/noise_opacity = 0.4
+shader_param/noise_speed = 5.0
+shader_param/static_noise_intensity = 0.2
+shader_param/aberration = 0.0
+shader_param/brightness = 1.4
+shader_param/discolor = true
+shader_param/warp_amount = 1.0
+shader_param/clip_warp = true
+shader_param/clip_color = Plane( 0.7607, 0.7607, 0.7607, 1 )
+shader_param/vignette_intensity = 0.4
+shader_param/vignette_opacity = 0.5
+
+[node name="Pong" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="BG" type="ColorRect" parent="."]
+margin_right = 165.0
+margin_bottom = 116.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PlayerScore" type="Label" parent="BG"]
+margin_left = 59.0
+margin_top = 17.0
+margin_right = 109.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 50, 15 )
+theme = ExtResource( 3 )
+text = "0"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScoreSeparator" type="Label" parent="BG"]
+margin_left = 73.0
+margin_top = 17.0
+margin_right = 80.0
+margin_bottom = 32.0
+theme = ExtResource( 3 )
+text = ":"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="JakubScore" type="Label" parent="BG"]
+margin_left = 80.0
+margin_top = 17.0
+margin_right = 130.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 50, 15 )
+theme = ExtResource( 3 )
+text = "0"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="BG"]
+margin_right = 165.0
+margin_bottom = 10.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect2" type="ColorRect" parent="BG"]
+margin_top = 106.0
+margin_right = 165.0
+margin_bottom = 116.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="BG"]
+visible = false
+position = Vector2( -10, 0 )
+collision_layer = 6
+collision_mask = 6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BG/StaticBody2D"]
+position = Vector2( 82, 5 )
+shape = SubResource( 1 )
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="BG"]
+visible = false
+position = Vector2( -10, 106 )
+collision_layer = 6
+collision_mask = 6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BG/StaticBody2D2"]
+position = Vector2( 82, 5 )
+shape = SubResource( 1 )
+
+[node name="PlayerPONG" type="KinematicBody2D" parent="BG"]
+position = Vector2( 15, 55 )
+collision_layer = 2
+collision_mask = 2
+script = SubResource( 5 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BG/PlayerPONG"]
+shape = SubResource( 2 )
+
+[node name="ColorRect" type="ColorRect" parent="BG/PlayerPONG"]
+margin_left = -3.0
+margin_top = -10.0
+margin_right = 3.0
+margin_bottom = 10.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Jakub" type="KinematicBody2D" parent="BG"]
+position = Vector2( 151, 55 )
+collision_layer = 2
+collision_mask = 2
+script = SubResource( 7 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BG/Jakub"]
+shape = SubResource( 2 )
+
+[node name="ColorRect" type="ColorRect" parent="BG/Jakub"]
+margin_left = -3.0
+margin_top = -10.0
+margin_right = 3.0
+margin_bottom = 10.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Ball" type="KinematicBody2D" parent="BG"]
+position = Vector2( 82, 58 )
+collision_layer = 2
+collision_mask = 2
+script = SubResource( 6 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BG/Ball"]
+shape = SubResource( 4 )
+
+[node name="ColorRect" type="ColorRect" parent="BG/Ball"]
+margin_left = -4.0
+margin_top = -4.0
+margin_right = 4.0
+margin_bottom = 4.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RayCast2D" type="RayCast2D" parent="BG/Ball"]
+enabled = true
+cast_to = Vector2( 0, 0 )
+collision_mask = 4
+collide_with_areas = true
+
+[node name="Player_back" type="Area2D" parent="BG"]
+visible = false
+position = Vector2( -9, 55 )
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BG/Player_back"]
+shape = SubResource( 8 )
+
+[node name="Jakub_back" type="Area2D" parent="BG"]
+visible = false
+position = Vector2( 160, 55 )
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BG/Jakub_back"]
+shape = SubResource( 8 )
+
+[node name="CRT" type="ColorRect" parent="."]
+material = SubResource( 9 )
+margin_right = 165.0
+margin_bottom = 116.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="body_entered" from="BG/Player_back" to="." method="_on_Player_back_body_entered"]
+[connection signal="body_entered" from="BG/Jakub_back" to="." method="_on_Jakub_back_body_entered"]

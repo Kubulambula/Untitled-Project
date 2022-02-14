@@ -1,0 +1,182 @@
+[gd_scene load_steps=36 format=2]
+
+[ext_resource path="res://Resources/Entities/characters.tres" type="SpriteFrames" id=1]
+[ext_resource path="res://Resources/Entities/DISCO/disco.png" type="Texture" id=2]
+[ext_resource path="res://Resources/Entities/DISCO/crt_shader.shader" type="Shader" id=3]
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 2 )
+region = Rect2( 0, 0, 351, 263 )
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 2 )
+region = Rect2( 351, 0, 351, 263 )
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 2 )
+region = Rect2( 702, 0, 351, 263 )
+
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 2 )
+region = Rect2( 1053, 0, 351, 263 )
+
+[sub_resource type="AtlasTexture" id=5]
+atlas = ExtResource( 2 )
+region = Rect2( 1404, 0, 351, 263 )
+
+[sub_resource type="AtlasTexture" id=6]
+atlas = ExtResource( 2 )
+region = Rect2( 1755, 0, 351, 263 )
+
+[sub_resource type="AtlasTexture" id=7]
+atlas = ExtResource( 2 )
+region = Rect2( 2106, 0, 351, 263 )
+
+[sub_resource type="AtlasTexture" id=8]
+atlas = ExtResource( 2 )
+region = Rect2( 2457, 0, 351, 263 )
+
+[sub_resource type="AtlasTexture" id=9]
+atlas = ExtResource( 2 )
+region = Rect2( 2808, 0, 351, 263 )
+
+[sub_resource type="AtlasTexture" id=10]
+atlas = ExtResource( 2 )
+region = Rect2( 3159, 0, 351, 263 )
+
+[sub_resource type="AtlasTexture" id=12]
+atlas = ExtResource( 2 )
+region = Rect2( 3861, 0, 351, 263 )
+
+[sub_resource type="AtlasTexture" id=13]
+atlas = ExtResource( 2 )
+region = Rect2( 4212, 0, 351, 263 )
+
+[sub_resource type="AtlasTexture" id=15]
+atlas = ExtResource( 2 )
+region = Rect2( 4914, 0, 351, 263 )
+
+[sub_resource type="AtlasTexture" id=22]
+atlas = ExtResource( 2 )
+region = Rect2( 7371, 0, 351, 263 )
+
+[sub_resource type="AtlasTexture" id=23]
+atlas = ExtResource( 2 )
+region = Rect2( 7722, 0, 351, 263 )
+
+[sub_resource type="AtlasTexture" id=24]
+atlas = ExtResource( 2 )
+region = Rect2( 8073, 0, 351, 263 )
+
+[sub_resource type="AtlasTexture" id=25]
+atlas = ExtResource( 2 )
+region = Rect2( 8424, 0, 351, 263 )
+
+[sub_resource type="AtlasTexture" id=26]
+atlas = ExtResource( 2 )
+region = Rect2( 8775, 0, 351, 263 )
+
+[sub_resource type="AtlasTexture" id=27]
+atlas = ExtResource( 2 )
+region = Rect2( 9126, 0, 351, 263 )
+
+[sub_resource type="AtlasTexture" id=28]
+atlas = ExtResource( 2 )
+region = Rect2( 9477, 0, 351, 263 )
+
+[sub_resource type="AtlasTexture" id=29]
+atlas = ExtResource( 2 )
+region = Rect2( 9828, 0, 351, 263 )
+
+[sub_resource type="AtlasTexture" id=31]
+atlas = ExtResource( 2 )
+region = Rect2( 10530, 0, 351, 263 )
+
+[sub_resource type="AtlasTexture" id=32]
+atlas = ExtResource( 2 )
+region = Rect2( 10881, 0, 351, 263 )
+
+[sub_resource type="AtlasTexture" id=33]
+atlas = ExtResource( 2 )
+region = Rect2( 11232, 0, 351, 263 )
+
+[sub_resource type="AtlasTexture" id=34]
+atlas = ExtResource( 2 )
+region = Rect2( 11583, 0, 351, 263 )
+
+[sub_resource type="AtlasTexture" id=37]
+atlas = ExtResource( 2 )
+region = Rect2( 12636, 0, 351, 263 )
+
+[sub_resource type="AtlasTexture" id=40]
+atlas = ExtResource( 2 )
+region = Rect2( 13689, 0, 351, 263 )
+
+[sub_resource type="AtlasTexture" id=41]
+atlas = ExtResource( 2 )
+region = Rect2( 14040, 0, 351, 263 )
+
+[sub_resource type="AtlasTexture" id=43]
+atlas = ExtResource( 2 )
+region = Rect2( 14742, 0, 351, 263 )
+
+[sub_resource type="AtlasTexture" id=44]
+atlas = ExtResource( 2 )
+region = Rect2( 15093, 0, 351, 263 )
+
+[sub_resource type="SpriteFrames" id=45]
+animations = [ {
+"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 12 ), SubResource( 13 ), SubResource( 15 ), SubResource( 22 ), SubResource( 23 ), SubResource( 24 ), SubResource( 25 ), SubResource( 26 ), SubResource( 27 ), SubResource( 28 ), SubResource( 29 ), SubResource( 31 ), SubResource( 32 ), SubResource( 33 ), SubResource( 34 ), SubResource( 37 ), SubResource( 40 ), SubResource( 41 ), SubResource( 43 ), SubResource( 44 ) ],
+"loop": true,
+"name": "default",
+"speed": 8.0
+} ]
+
+[sub_resource type="ShaderMaterial" id=46]
+shader = ExtResource( 3 )
+shader_param/overlay = true
+shader_param/scanlines_opacity = 0.05
+shader_param/scanlines_width = 0.25
+shader_param/grille_opacity = 0.3
+shader_param/resolution = Vector2( 660, 464 )
+shader_param/pixelate = true
+shader_param/roll = true
+shader_param/roll_speed = 8.0
+shader_param/roll_size = 15.0
+shader_param/roll_variation = 1.8
+shader_param/distort_intensity = 0.003
+shader_param/noise_opacity = 0.4
+shader_param/noise_speed = 5.0
+shader_param/static_noise_intensity = 0.15
+shader_param/aberration = 0.01
+shader_param/brightness = 1.4
+shader_param/discolor = true
+shader_param/warp_amount = 1.0
+shader_param/clip_warp = true
+shader_param/clip_color = Plane( 0.761, 0.761, 0.761, 1 )
+shader_param/vignette_intensity = 0.4
+shader_param/vignette_opacity = 0.5
+
+[node name="Disco" type="Node2D"]
+
+[node name="BG" type="AnimatedSprite" parent="."]
+scale = Vector2( 0.47, 0.44 )
+frames = SubResource( 45 )
+frame = 15
+playing = true
+centered = false
+
+[node name="Jakub" type="AnimatedSprite" parent="."]
+frames = ExtResource( 1 )
+animation = "jakub_spin"
+playing = true
+offset = Vector2( 82, 58 )
+
+[node name="CRT" type="ColorRect" parent="."]
+material = SubResource( 46 )
+margin_right = 165.0
+margin_bottom = 116.0
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}

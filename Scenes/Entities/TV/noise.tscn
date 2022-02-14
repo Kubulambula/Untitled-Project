@@ -1,0 +1,38 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Resources/Entities/DISCO/crt_shader.shader" type="Shader" id=1]
+
+[sub_resource type="ShaderMaterial" id=1]
+shader = ExtResource( 1 )
+shader_param/overlay = true
+shader_param/scanlines_opacity = 0.4
+shader_param/scanlines_width = 0.25
+shader_param/grille_opacity = 0.3
+shader_param/resolution = Vector2( 660, 464 )
+shader_param/pixelate = true
+shader_param/roll = true
+shader_param/roll_speed = 8.0
+shader_param/roll_size = 15.0
+shader_param/roll_variation = 1.8
+shader_param/distort_intensity = 0.05
+shader_param/noise_opacity = 0.4
+shader_param/noise_speed = 5.0
+shader_param/static_noise_intensity = 1.0
+shader_param/aberration = 0.03
+shader_param/brightness = 1.4
+shader_param/discolor = true
+shader_param/warp_amount = 1.0
+shader_param/clip_warp = true
+shader_param/clip_color = Plane( 0.7607, 0.7607, 0.7607, 1 )
+shader_param/vignette_intensity = 0.4
+shader_param/vignette_opacity = 0.5
+
+[node name="noise" type="Node2D"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource( 1 )
+margin_right = 165.0
+margin_bottom = 116.0
+__meta__ = {
+"_edit_use_anchors_": false
+}

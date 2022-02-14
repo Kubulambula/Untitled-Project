@@ -21,6 +21,7 @@ font_data = SubResource( 14 )
 
 [node name="CanvasLayer" type="CanvasLayer"]
 pause_mode = 2
+layer = 10
 script = SubResource( 13 )
 
 [node name="Control" type="Control" parent="."]

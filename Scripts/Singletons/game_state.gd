@@ -16,12 +16,19 @@ var version = ProjectSettings.get_setting("untitled_project/config/version")
 
 var score = 0
 
+
+onready var SCENE_TREE = get_tree()
+
+
 func _init():
 	print("[START]")
 	# warning-ignore:return_value_discarded
 	config.load_data()
-	config.apply()
 	current_level = config.get_value("game", "current_level", "level1")
+
+func _ready():
+	config.apply()
+
 
 func set_discard(_value):
 	push_error("Do not modify this value directly >:(")
@@ -111,5 +118,7 @@ class _Config:
 				OS.set_window_fullscreen(false)
 				OS.set_borderless_window(false)
 		# Locale
-		if self.get_value("user", "locale", "cs") in TranslationServer.get_loaded_locales():
-			TranslationServer.set_locale(self.get_value("user", "locale", "cs"))
+		var lang = self.get_value("user", "locale", "cs")
+		if lang in TranslationServer.get_loaded_locales():
+			TranslationServer.set_locale(lang)
+			GameState.SCENE_TREE.call_group("translateable", "translate")
