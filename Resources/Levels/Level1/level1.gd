@@ -71,6 +71,11 @@ func _ready():
 	
 	GameState.player_can_move = true
 
+func _submit_callback(code, response):
+	GameState.current_level = "level2"
+	# warning-ignore:return_value_discarded
+	get_tree().change_scene("res://Resources/Levels/Level2/level2.tscn")
+	
 
 func handle_event(_source, name):
 	if name == "player_reached_door":
@@ -84,10 +89,13 @@ func handle_event(_source, name):
 		yield(DialogueBox, "_player_request_next")
 		
 		GameState.player_can_move = true
-		# TDOO: Submit to API
-		GameState.current_level = "level2"
-		# warning-ignore:return_value_discarded
-		get_tree().change_scene("res://Resources/Levels/Level2/level2.tscn")
+    
+		WebAPI.submit(GameCode.generate(
+			"level1", # Challenge Id -> GameCode.CHALLENGE_IDS
+			GameState.score # Collected coins
+			+ 1500 # Level completion bonus
+		), funcref(self, "_submit_callback"))
+		
 	elif name == "player_outside_play_area":
 		LevelManager.restart_level(level_data)
 		death_counter += 1
