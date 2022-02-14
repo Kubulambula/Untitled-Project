@@ -47,12 +47,20 @@ func _ready():
 
 	GameState.player_can_move = true
 
+func _submit_callback(code, response):
+	var next_level = level_data["settings"]["door_destination"]
+	GameState.current_level = next_level
+	# warning-ignore:return_value_discarded
+	get_tree().change_scene(LevelManager.get_level_scene(next_level))
+
 func handle_event(_source, name):
 	if name == "player_reached_door":
-		# TODO: Submit to API
-		var next_level = level_data["settings"]["door_destination"]
-		GameState.current_level = next_level
-		# warning-ignore:return_value_discarded
-		get_tree().change_scene(LevelManager.get_level_scene(next_level))
+		
+		WebAPI.submit(GameCode.generate(
+			"level3", # Challenge Id -> GameCode.CHALLENGE_IDS
+			GameState.score # Collected coins
+			+ 1500 # Level completion bonus
+		), funcref(self, "_submit_callback"))
+
 	elif name == "player_outside_play_area":
 		LevelManager.restart_level(level_data)

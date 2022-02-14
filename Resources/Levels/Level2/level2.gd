@@ -34,11 +34,19 @@ func _ready():
 	
 	GameState.player_can_move = true
 
+func _submit_callback(code, response):
+	GameState.current_level = "level3"
+	# warning-ignore:return_value_discarded
+	get_tree().change_scene("res://Resources/Levels/Level3/level3.tscn")
+
 func handle_event(_source, name):
 	if name == "player_reached_door":
-		GameState.current_level = "level3"
-		# warning-ignore:return_value_discarded
-		get_tree().change_scene("res://Resources/Levels/Level3/level3.tscn")
-		pass # Submit to API & Next level
+		
+		WebAPI.submit(GameCode.generate(
+			"level2", # Challenge Id -> GameCode.CHALLENGE_IDS
+			GameState.score # Collected coins
+			+ 1500 # Level completion bonus
+		), funcref(self, "_submit_callback"))
+		
 	elif name == "player_outside_play_area":
 		LevelManager.restart_level(level_data)
