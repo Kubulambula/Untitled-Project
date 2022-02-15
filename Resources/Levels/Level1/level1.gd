@@ -25,53 +25,22 @@ func _ready():
 	LevelManager.build_tilemaps(self, level_data["map"])
 	LevelManager.spawn_entities(self, level_data["entities"])
 	
+	GameState.player_can_move = false
 	DialogueBox.create_adam("C-co...?", -1)
-	DialogueBox.wait_for_next_request()
-	yield(DialogueBox, "_player_request_next")
-	
 	DialogueBox.create_jakub("Hráč?", -1)
-	DialogueBox.wait_for_next_request()
-	yield(DialogueBox, "_player_request_next")
-	
 	DialogueBox.create_adam("Ale ta hra není dodělaná! Vždyť ani nemá název!", -1)
-	DialogueBox.wait_for_next_request()
-	yield(DialogueBox, "_player_request_next")
-	
 	DialogueBox.create_adam("Uvidí jak je zabugovaná a že půlka věcí chybí! [color=red](Zatím opravdu)[/color]", -1)
-	DialogueBox.wait_for_next_request()
-	yield(DialogueBox, "_player_request_next")
-	
 	DialogueBox.create_jakub("Dobře klid... To se nějak zvládne. Ono se to nějak udělá", -1)
-	DialogueBox.wait_for_next_request()
-	yield(DialogueBox, "_player_request_next")
-	
 	DialogueBox.create_jakub("Alespoň nám pomůže tu hru otestovat ne?", -1)
-	DialogueBox.wait_for_next_request()
-	yield(DialogueBox, "_player_request_next")
-	
 	DialogueBox.create_jakub("Pomůžeš nám že?", -1)
-	DialogueBox.wait_for_next_request()
-	yield(DialogueBox, "_player_request_next")
-	
 	DialogueBox.create_jakub("...", -1)
-	DialogueBox.wait_for_next_request()
-	yield(DialogueBox, "_player_request_next")
-	
 	DialogueBox.create_adam_angry("Do háje fix už zase nefungujou dialogy... Vždyť minule to ještě šlo. Se z toho může jeden-", -1)
-	DialogueBox.wait_for_next_request()
-	yield(DialogueBox, "_player_request_next")
-	
 	DialogueBox.create_jakub("Beru to jako ano", -1)
-	DialogueBox.wait_for_next_request()
-	yield(DialogueBox, "_player_request_next")
-	
 	DialogueBox.create_jakub("Tvým cílem je dostat se v každém levelu vždy ke dveřím. Budeme tě pozorovat z povzdálí.\n\nHodně štěstí", -1)
-	DialogueBox.wait_for_next_request()
-	yield(DialogueBox, "_player_request_next")
-	
+	yield(DialogueBox, "queue_empty")
 	GameState.player_can_move = true
 
-func _submit_callback(code, response):
+func _submit_callback(_code, _response):
 	GameState.current_level = "level2"
 	# warning-ignore:return_value_discarded
 	get_tree().change_scene("res://Resources/Levels/Level2/level2.tscn")
@@ -81,15 +50,10 @@ func handle_event(_source, name):
 	if name == "player_reached_door":
 		GameState.player_can_move = false
 		DialogueBox.create_jakub("Výborná práce! Vidím, že rozumíš, že změna v jednom souboru dokáže ovlivnit soubor druhý.", -1)
-		DialogueBox.wait_for_next_request()
-		yield(DialogueBox, "_player_request_next")
-		
 		DialogueBox.create_adam("Dej nám jen chviličku, než načteme nový level...", -1)
-		DialogueBox.wait_for_next_request()
-		yield(DialogueBox, "_player_request_next")
-		
+		yield(DialogueBox, "queue_empty")
 		GameState.player_can_move = true
-    
+	
 		WebAPI.submit(GameCode.generate(
 			"level1", # Challenge Id -> GameCode.CHALLENGE_IDS
 			GameState.score # Collected coins
@@ -101,13 +65,11 @@ func handle_event(_source, name):
 		death_counter += 1
 		if death_counter == 1:
 			GameState.player_can_move = false
-			DialogueBox.create_adam("No výborně. Další nepřeskočitelná díra. Co kdybys zkusil mapu zeditovat a udělat si třeba most?\nMěla by být někde v '[color=black]" + LevelManager.get_level_dir(level) + "[/color]'", -1)
-			DialogueBox.wait_for_next_request()
-			yield(DialogueBox, "_player_request_next")
+			DialogueBox.create_adam("No výborně. Další nepřeskočitelná díra. Co zkusit mapu zeditovat a udělat si třeba most?\nMěla by být někde v '[color=black]" + LevelManager.get_level_dir(level) + "[/color]'", -1)
+			yield(DialogueBox, "queue_empty")
 			GameState.player_can_move = true
 		elif death_counter % 5 == 0:
 			GameState.player_can_move = false
 			DialogueBox.create_adam("Zkus se podívat do '[color=black]" + LevelManager.get_level_dir(level) + "[/color]' jestli něco nevymyslíš s tou mapou", -1)
-			DialogueBox.wait_for_next_request()
-			yield(DialogueBox, "_player_request_next")
+			yield(DialogueBox, "queue_empty")
 			GameState.player_can_move = true
