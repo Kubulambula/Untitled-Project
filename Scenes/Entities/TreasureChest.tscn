@@ -54,7 +54,7 @@ region = Rect2( 320, 80, 80, 80 )
 [sub_resource type="SpriteFrames" id=12]
 animations = [ {
 "frames": [ SubResource( 1 ) ],
-"loop": true,
+"loop": false,
 "name": "idle",
 "speed": 8.0
 }, {
@@ -75,7 +75,8 @@ frames = SubResource( 12 )
 animation = "idle"
 playing = true
 
-[node name="Label" type="Label" parent="."]
+[node name="ChestTitle" type="Label" parent="."]
+visible = false
 margin_left = -100.0
 margin_top = -54.0
 margin_right = 106.0
