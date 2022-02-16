@@ -13,7 +13,7 @@ func _ready():
 	level_data = LevelManager.parse_level_data(LevelManager.read_level_data(level))
 	
 	level_data = LevelManager.apply_immovable_mask(level_data, ["P", "#", "D", "$"])
-	level_data = LevelManager.apply_max_entity_mask(level_data, {"P": 1})
+	level_data = LevelManager.apply_max_entity_mask(level_data, {"P": 1, "D": 1, "C": 3})
 	
 	# Insert level specific masks/checks here
 	
@@ -24,10 +24,10 @@ func _ready():
 	
 	LevelManager.set_entity_properties(level_data, {
 		"$": {
-			"coin_type": [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2] # Is it enough?
+			"coin_type": [2] # Is it enough?
 		},
 		"P": {
-			"camera_limits": [Rect2(0, 0, 16 * 80, 9 * 80)]
+			"camera_limits":[Rect2(0, 0, 16 * 80, 9 * 80)]
 		}
 	})
 

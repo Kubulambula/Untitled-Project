@@ -47,7 +47,7 @@ func _ready():
 
 	GameState.player_can_move = true
 
-func _submit_callback(code, response):
+func _submit_callback(_code, _response):
 	var next_level = level_data["settings"]["door_destination"]
 	GameState.current_level = next_level
 	# warning-ignore:return_value_discarded

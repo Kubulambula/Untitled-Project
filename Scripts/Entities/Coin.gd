@@ -24,9 +24,10 @@ func _ready():
 
 func collect():
 	if not is_collected:
+		$AnimationPlayer.play("collect")
 		GameState.score += _get_coin_value()
 		is_collected = true
-		self.hide()
+#		self.hide()
 
 func _on_Area2D_body_entered(body):
 	if body.name == "Player":

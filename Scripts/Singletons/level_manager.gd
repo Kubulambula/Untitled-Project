@@ -12,7 +12,9 @@ var map_tiles = {
 var map_entities = {
 	"P": "Player.tscn",
 	"D": "Door.tscn",
-	"$": "Coin.tscn"
+	"$": "Coin.tscn",
+	"K": "Box.tscn",
+	"C": "Physics_box.tscn",
 }
 
 var layers = {

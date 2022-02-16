@@ -134,7 +134,13 @@ func _physics_process(delta):
 			GFX.play("player_jump")
 		
 	#moving
-	_velocity = move_and_slide_with_snap(_velocity, Vector2.DOWN, Vector2.UP)
+	_velocity = move_and_slide(_velocity, Vector2.UP, false, 4, PI/4, false)
+	for index in get_slide_count():
+		var collision = get_slide_collision(index)
+		if collision.collider is RigidBody2D:
+			collision.collider.apply_central_impulse(-collision.normal * 100)
+	
+	
 	if was_grounded and not is_grounded() and not jumping:
 		jumping = false
 		coyoteTimer.start()

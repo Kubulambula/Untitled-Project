@@ -13,7 +13,7 @@ func _ready():
 	LevelManager.set_map_dimensions(25, 9)
 	level_data = LevelManager.parse_level_data(LevelManager.read_level_data(level))
 	
-	level_data = LevelManager.apply_immovable_mask(level_data, ["#", "D", "$"])
+	level_data = LevelManager.apply_immovable_mask(level_data, ["#", "D", "$", "K"])
 	level_data = LevelManager.apply_max_entity_mask(level_data, {"P": 1, "D": 1})
 	
 	# Insert level specific masks/checks here
@@ -32,6 +32,9 @@ func _ready():
 		}
 	})
 	
+	GameState.player_can_move = false
+	
+	yield(DialogueBox, "queue_empty")
 	GameState.player_can_move = true
 
 func _submit_callback(_code, _response):
