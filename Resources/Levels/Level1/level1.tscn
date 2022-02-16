@@ -10,3 +10,5 @@ script = ExtResource( 1 )
 [node name="PlayerDeathCheker" parent="." instance=ExtResource( 2 )]
 
 [node name="Background" parent="." instance=ExtResource( 3 )]
+
+[node name="LevelData" type="Node2D" parent="."]

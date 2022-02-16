@@ -4,10 +4,7 @@ const level = "Level2"
 
 var level_data = null
 
-func _ready():
-	GameState.player_can_move = false
-	
-	# warning-ignore:return_value_discarded
+func _load_level():
 	EventReporter.connect("event_reported", self, "handle_event")
 	
 	LevelManager.set_map_dimensions(25, 9)
@@ -20,8 +17,8 @@ func _ready():
 	
 	LevelManager.write_level_data(level, LevelManager.serialize_level_data(level_data))
 	
-	LevelManager.build_tilemaps(self, level_data["map"])
-	LevelManager.spawn_entities(self, level_data["entities"])
+	LevelManager.build_tilemaps($LevelData, level_data["map"])
+	LevelManager.spawn_entities($LevelData, level_data["entities"])
 	
 	LevelManager.set_entity_properties(level_data, {
 		"$": {
@@ -31,6 +28,13 @@ func _ready():
 			"camera_limits": [Rect2(0, 0, 25 * 80, 9 * 80)]
 		}
 	})
+
+func _ready():
+	GameState.player_can_move = false
+	
+	# warning-ignore:return_value_discarded
+	
+	_load_level()
 	
 	GameState.player_can_move = false
 	
@@ -53,3 +57,12 @@ func handle_event(_source, name):
 		
 	elif name == "player_outside_play_area":
 		LevelManager.restart_level(level_data)
+
+func _process(delta):
+	if Input.is_action_just_pressed("ui_reload"):
+		EventReporter.disconnect("event_reported", self, "handle_event")
+		for node in $LevelData.get_children():
+			$LevelData.remove_child(node)
+			node.queue_free()
+		_load_level()
+		GameState.player_can_move = true
