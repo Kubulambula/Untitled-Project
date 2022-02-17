@@ -6,7 +6,7 @@ enum COIN_TYPE {
 	Gold = 2
 }
 
-export (COIN_TYPE) var coin_type = COIN_TYPE.Gold setget set_coin_type
+var coin_type = COIN_TYPE.Gold setget set_coin_type
 
 var is_collected = false setget set_collected
 
