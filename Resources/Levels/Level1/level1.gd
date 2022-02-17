@@ -7,6 +7,7 @@ var level_data = null
 var death_counter = 0
 
 func _load_level():
+# warning-ignore:return_value_discarded
 	EventReporter.connect("event_reported", self, "handle_event")
 	
 	LevelManager.set_map_dimensions(16, 9)
@@ -28,19 +29,19 @@ func _ready():
 	
 	_load_level()
 	
-	GameState.player_can_move = false
-	DialogueBox.create_adam("C-co...?", -1)
-	DialogueBox.create_jakub("Hráč?", -1)
-	DialogueBox.create_adam("Ale ta hra není dodělaná! Vždyť ani nemá název!", -1)
-	DialogueBox.create_adam("Uvidí jak je zabugovaná a že půlka věcí chybí! [color=red](Zatím opravdu)[/color]", -1)
-	DialogueBox.create_jakub("Dobře klid... To se nějak zvládne. Ono se to nějak udělá", -1)
-	DialogueBox.create_jakub("Alespoň nám pomůže tu hru otestovat ne?", -1)
-	DialogueBox.create_jakub("Pomůžeš nám že?", -1)
-	DialogueBox.create_jakub("...", -1)
-	DialogueBox.create_adam_angry("Do háje fix už zase nefungujou dialogy... Vždyť minule to ještě šlo. Se z toho může jeden-", -1)
-	DialogueBox.create_jakub("Beru to jako ano", -1)
-	DialogueBox.create_jakub("Tvým cílem je dostat se v každém levelu vždy ke dveřím. Budeme tě pozorovat z povzdálí.\n\nHodně štěstí", -1)
-	yield(DialogueBox, "queue_empty")
+#	GameState.player_can_move = false
+#	DialogueBox.create_adam("C-co...?", -1)
+#	DialogueBox.create_jakub("Hráč?", -1)
+#	DialogueBox.create_adam("Ale ta hra není dodělaná! Vždyť ani nemá název!", -1)
+#	DialogueBox.create_adam("Uvidí jak je zabugovaná a že půlka věcí chybí! [color=red](Zatím opravdu)[/color]", -1)
+#	DialogueBox.create_jakub("Dobře klid... To se nějak zvládne. Ono se to nějak udělá", -1)
+#	DialogueBox.create_jakub("Alespoň nám pomůže tu hru otestovat ne?", -1)
+#	DialogueBox.create_jakub("Pomůžeš nám že?", -1)
+#	DialogueBox.create_jakub("...", -1)
+#	DialogueBox.create_adam_angry("Do háje fix už zase nefungujou dialogy... Vždyť minule to ještě šlo. Se z toho může jeden-", -1)
+#	DialogueBox.create_jakub("Beru to jako ano", -1)
+#	DialogueBox.create_jakub("Tvým cílem je dostat se v každém levelu vždy ke dveřím. Budeme tě pozorovat z povzdálí.\n\nHodně štěstí", -1)
+#	yield(DialogueBox, "queue_empty")
 	GameState.player_can_move = true
 
 func _submit_callback(_code, _response):
@@ -64,7 +65,13 @@ func handle_event(_source, name):
 		), funcref(self, "_submit_callback"))
 		
 	elif name == "player_outside_play_area":
-		LevelManager.restart_level(level_data)
+		EventReporter.disconnect("event_reported", self, "handle_event")
+		for node in $LevelData.get_children():
+			$LevelData.call_deferred("remove_child", node)
+			node.queue_free()
+		_load_level()
+		GameState.player_can_move = true
+		
 		death_counter += 1
 		if death_counter == 1:
 			GameState.player_can_move = false
@@ -77,7 +84,7 @@ func handle_event(_source, name):
 			yield(DialogueBox, "queue_empty")
 			GameState.player_can_move = true
 
-func _process(delta):
+func _process(_delta):
 	if Input.is_action_just_pressed("ui_reload"):
 		EventReporter.disconnect("event_reported", self, "handle_event")
 		for node in $LevelData.get_children():

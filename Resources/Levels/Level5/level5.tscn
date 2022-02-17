@@ -10,7 +10,7 @@
 [ext_resource path="res://Resources/Entities/DISCO/you_spin_me.mp3" type="AudioStream" id=8]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 30, 100 )
+extents = Vector2( 50, 100 )
 
 [sub_resource type="Animation" id=4]
 length = 0.001
@@ -75,7 +75,7 @@ position = Vector2( 323, 75 )
 scale = Vector2( 2, 2 )
 
 [node name="Area2D" type="Area2D" parent="TV"]
-position = Vector2( 50, 100 )
+position = Vector2( 70, 100 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TV/Area2D"]
 shape = SubResource( 1 )
@@ -85,7 +85,6 @@ position = Vector2( 97.5, 183.5 )
 scale = Vector2( 0.5, 0.5 )
 frames = ExtResource( 6 )
 animation = "jakub_idle"
-frame = 4
 playing = true
 flip_h = true
 

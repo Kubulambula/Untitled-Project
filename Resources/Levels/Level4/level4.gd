@@ -35,6 +35,7 @@ func _ready():
 
 func handle_event(_source, name):
 	if name == "player_reached_door":
-		pass
+		get_tree().change_scene("res://Resources/Levels/Level5/level5.tscn")
+		GameState.current_level = "level5"
 	elif name == "player_outside_play_area":
 		LevelManager.restart_level(level_data)

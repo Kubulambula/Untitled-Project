@@ -28,6 +28,7 @@ func _load_level():
 			"camera_limits": [Rect2(0, 0, 25 * 80, 9 * 80)]
 		}
 	})
+	
 
 func _ready():
 	GameState.player_can_move = false
@@ -36,9 +37,9 @@ func _ready():
 	
 	_load_level()
 	
-	GameState.player_can_move = false
-	
-	yield(DialogueBox, "queue_empty")
+#	GameState.player_can_move = false
+#	# Dialogue goes here
+#	yield(DialogueBox, "queue_empty")
 	GameState.player_can_move = true
 
 func _submit_callback(_code, _response):

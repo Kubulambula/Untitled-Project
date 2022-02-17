@@ -8,7 +8,7 @@ enum COIN_TYPE {
 
 export (COIN_TYPE) var coin_type = COIN_TYPE.Gold setget set_coin_type
 
-var is_collected = false
+var is_collected = false setget set_collected
 
 func _get_coin_value():
 	match coin_type:
@@ -21,6 +21,13 @@ func set_coin_type(new_type):
 
 func _ready():
 	set_coin_type(coin_type)
+
+func set_collected(value: bool):
+	if value:
+		$AnimationPlayer.play("collect")
+	else:
+		$AnimationPlayer.stop(true)
+
 
 func collect():
 	if not is_collected:

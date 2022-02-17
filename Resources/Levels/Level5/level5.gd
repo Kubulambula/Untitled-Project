@@ -65,8 +65,7 @@ func _input(_event):
 				if not $TV/Screen/Pong.ended:
 					GameState.player_can_move = false
 					DialogueBox.create_jakub("Okay... Firt one to [color=red]3 points[/color] wins.", -1)
-					DialogueBox.wait_for_next_request()
-					yield(DialogueBox, "_player_request_next")
+					yield(DialogueBox, "queue_empty")
 					$Player.state = $Player.CUSTOM
 					$Player.get_node("GFX").flip_h = false
 					$Player.get_node("GFX").play("player_turn")
@@ -78,20 +77,17 @@ func _input(_event):
 				else:
 					GameState.player_can_move = false
 					DialogueBox.create_jakub("Better luck next time", -1)
-					DialogueBox.wait_for_next_request()
-					yield(DialogueBox, "_player_request_next")
+					yield(DialogueBox, "queue_empty")
 					GameState.player_can_move = true
 			"DISCO":
 				GameState.player_can_move = false
 				DialogueBox.create_jakub_angry("YOU WERE NOT SUPPOSED TO SEE THAT! WHERE DID YOU FIND THAT?!?!!", -1)
-				DialogueBox.wait_for_next_request()
-				yield(DialogueBox, "_player_request_next")
+				yield(DialogueBox, "queue_empty")
 				GameState.player_can_move = true
 			_:
 				GameState.player_can_move = false
 				DialogueBox.create_jakub("Come on start the [color=red]PONG[/color]!", -1)
-				DialogueBox.wait_for_next_request()
-				yield(DialogueBox, "_player_request_next")
+				yield(DialogueBox, "queue_empty")
 				GameState.player_can_move = true
 
 
@@ -99,18 +95,14 @@ func _on_pong_end(player_win: bool):
 	if player_win:
 		GameState.player_can_move = false
 		DialogueBox.create_jakub_angry("WHAT HAVE YOU DONE??? HOW DID YOU DO THAT?", -1)
-		DialogueBox.wait_for_next_request()
-		yield(DialogueBox, "_player_request_next")
 		DialogueBox.create_jakub_angry("Go to the next level I guess...", -1)
-		DialogueBox.wait_for_next_request()
-		yield(DialogueBox, "_player_request_next")
+		yield(DialogueBox, "queue_empty")
 		GameState.player_can_move = true
 		$InvisibleWall.queue_free()
 	else:
 		GameState.player_can_move = false
 		DialogueBox.create_jakub("Haha!\nLooks like I'm still the champion", -1)
-		DialogueBox.wait_for_next_request()
-		yield(DialogueBox, "_player_request_next")
+		yield(DialogueBox, "queue_empty")
 		GameState.player_can_move = true
 	$Player.state = $Player.IDLE # TODO : Jakub animation reset
 
@@ -152,8 +144,7 @@ func _on_Wall_body_entered(body):
 		wall_visited = true
 		GameState.player_can_move = false
 		DialogueBox.create_jakub("Looks like you hit an invisible wall\nCome play with me and maybe I will let you pass", -1)
-		DialogueBox.wait_for_next_request()
-		yield(DialogueBox, "_player_request_next")
+		yield(DialogueBox, "queue_empty")
 		GameState.player_can_move = true
 
 func handle_event(_source, event):

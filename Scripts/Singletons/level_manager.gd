@@ -110,7 +110,7 @@ func build_tilemaps(root, map):
 					tilemap.set_cell(x, y, map_tiles[character])
 					tilemap.update_bitmask_area(Vector2(x, y))
 					tilemap.update_dirty_quadrants()
-		root.add_child(tilemap)
+		root.call_deferred("add_child", tilemap)
 
 func spawn_entities(root, entities):
 	var scenes = []
@@ -122,7 +122,7 @@ func spawn_entities(root, entities):
 		entity.set_global_position(get_world_position_with_center_offset(entity_data["position"]))
 		entity_data["node"] = entity
 		scenes.append(entity)
-		root.add_child(entity)
+		root.call_deferred("add_child", entity)
 	return scenes
 
 func find_tile(map, tile):
