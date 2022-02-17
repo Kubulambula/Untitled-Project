@@ -15,6 +15,7 @@ var map_entities = {
 	"$": "Coin.tscn",
 	"K": "Box.tscn",
 	"C": "Physics_box.tscn",
+	"?": "TreasureChest.tscn",
 }
 
 var layers = {

@@ -1,7 +1,11 @@
 ; Welcome Stranger!
+;
+;
+; ? - treasure chest
+;
 
 [Map]
-#T            T#
+#              #
 #              #
 #     $$       #
 #    $$$$      #
