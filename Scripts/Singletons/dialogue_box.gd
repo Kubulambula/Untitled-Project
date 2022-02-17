@@ -1,11 +1,12 @@
 extends Node
 
-signal _player_request_next
-signal next_button
+signal queue_empty
 signal hidden
 
 var popup = preload("res://Scenes/Singleton_scenes/popup_box.tscn").instance()
 var timer = Timer.new()
+var cooldown_timer = Timer.new()
+var cooldownt_time: float = .5
 
 const lorem = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam id massa vitae est fermentum accumsan sed ut augue. Aenean a nisi placerat justo volutpat placerat. Aenean mollis pulvinar libero at eleifend. Morbi hendrerit lectus et leo vestibulum placerat. Pellentesque pretium elit a faucibus elementum. Aenean porttitor venenatis enim sit amet fringilla. Nunc eget elit sit amet urna bibendum iaculis a a tellus. In imperdiet ante magna, tempus consectetur erat posuere sed. Fusce in elit vitae ligula fermentum luctus. Proin et finibus metus, in lobortis libero."
 const default_popup_duration: float = 3.5
@@ -44,6 +45,9 @@ var current_item = null
 func _ready():
 	add_child(popup)
 	add_child(timer)
+	add_child(cooldown_timer)
+	cooldown_timer.wait_time = cooldownt_time
+	cooldown_timer.one_shot = true
 	timer.connect("timeout", self, "_timer_timeout")
 	popup.get_node("AnimationPlayer").play("blink")
 
@@ -153,9 +157,10 @@ func _show_popup():
 		item.duration = default_popup_duration
 		timer.start()
 	elif item.duration == -1: # Negative time = wait for player input
+		#cooldown_timer.start()
 		prompt.visible = true
-		yield(self, "_player_request_next")
-		_timer_timeout()
+#		yield(self, "_player_request_next")
+#		_timer_timeout()
 	else:
 		prompt.visible = false
 		timer.wait_time = item.duration
@@ -168,15 +173,24 @@ func _hide_popup():
 	emit_signal("hidden")
 
 
-func player_request_next():
-	emit_signal("_player_request_next")
+#func player_request_next():
+#	emit_signal("_player_request_next")
+#
+#
+#func wait_for_next_request():
+#	yield(self, "next_button")
+#	print("gimme next pls")
+#	emit_signal("_player_request_next")
 
 
-func wait_for_next_request():
-	yield(self, "next_button")
-	emit_signal("_player_request_next")
-
-
-func _input(_event):
+func _process(_delta):
 	if Input.is_action_just_pressed("ui_next_dialogue"):
-		emit_signal("next_button")
+		if current_item:
+			if current_item.duration == -1:# and cooldown_timer.is_stopped():
+				_timer_timeout()
+#		if cooldown_timer.is_stopped():
+#			_timer_timeout()
+#			emit_signal("_player_request_next")
+#			emit_signal("next_button")
+		if len(queue) == 0:
+			emit_signal("queue_empty")

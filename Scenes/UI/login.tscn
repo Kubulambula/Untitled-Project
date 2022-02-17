@@ -124,7 +124,6 @@ tracks/0/keys = {
 [node name="Login" type="CanvasLayer"]
 
 [node name="Login" type="Control" parent="."]
-visible = false
 script = ExtResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -296,8 +295,30 @@ modulate = Color( 1, 1, 1, 0 )
 position = Vector2( 50, 50 )
 frames = ExtResource( 9 )
 animation = "gold"
-frame = 3
+frame = 6
 playing = true
+
+[node name="Offline" type="ColorRect" parent="Login"]
+visible = false
+margin_left = 444.0
+margin_top = 596.0
+margin_right = 844.0
+margin_bottom = 646.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="OfflineButon" type="Button" parent="Login/Offline"]
+margin_left = 25.0
+margin_top = 6.0
+margin_right = 369.0
+margin_bottom = 41.0
+theme = ExtResource( 8 )
+text = "Continue in offline mode"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [connection signal="focus_entered" from="Login/CenterContainer/TextureRect/FocusGroup/Login" to="Login" method="_on_Login_focus_entered"]
 [connection signal="pressed" from="Login/CenterContainer/TextureRect/FocusGroup/Login" to="Login" method="_on_Login_pressed"]
+[connection signal="pressed" from="Login/Offline/OfflineButon" to="Login" method="_on_OfflineButon_pressed"]

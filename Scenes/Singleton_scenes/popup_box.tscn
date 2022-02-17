@@ -71,8 +71,11 @@ margin_top = 560.0
 margin_right = 830.0
 margin_bottom = 670.0
 rect_min_size = Vector2( 676, 110 )
+focus_mode = 2
+custom_colors/selection_color = Color( 0, 0.47451, 0.501961, 1 )
 bbcode_enabled = true
 scroll_following = true
+selection_enabled = true
 __meta__ = {
 "_edit_use_anchors_": false
 }

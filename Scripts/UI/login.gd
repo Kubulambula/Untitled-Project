@@ -55,10 +55,12 @@ func _on_login(code, response):
 		hide()
 	elif code == 401: # Bad credentials or something idk
 		alert("Unsuccessful login")
-	elif code == 0: # No internet
-		alert("No internet")
-	else: # Some random shit I didn't account for
-		alert("GET(" + str(code) + "): " + str(response), 8)
+	else:
+		if code == 0: # No internet
+			alert("No internet")
+		else: # Some random shit I didn't account for
+			alert("GET(" + str(code) + "): " + str(response), 8)
+		show_offline_mode()
 
 
 func _login_from_token(saved_token):
@@ -77,3 +79,13 @@ func _user_info_response(code, response):
 		$CenterContainer/TokenLogin.visible = false
 		GameState.config.set_value("user", "token", "")
 		alert("Could not log in from token\nGET(" + str(code) + "): " + str(response), 8)
+		show_offline_mode()
+
+
+func show_offline_mode():
+	$Offline.visible = true
+
+
+func _on_OfflineButon_pressed():
+	hide()
+	printerr("NOW IN OFFLINE MODE")

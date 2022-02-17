@@ -15,6 +15,7 @@ func _on_Player_back_body_entered(body):
 		jakub_score += 1
 		$BG/JakubScore.text = str(jakub_score)
 		if jakub_score == 3: # Jakub won
+			$BG/Jakub.set_physics_process(false)
 			$BG/PlayerPONG.speed = 0
 			ball.speed = 0
 			emit_signal("end", false)
@@ -28,6 +29,7 @@ func _on_Jakub_back_body_entered(body):
 		player_score += 1
 		$BG/PlayerScore.text = str(player_score)
 		if player_score == 3:
+			$BG/Jakub.set_physics_process(false)
 			$BG/PlayerPONG.speed = 0
 			ball.speed = 0
 			emit_signal("end", true)
