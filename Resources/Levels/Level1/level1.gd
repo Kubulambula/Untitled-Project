@@ -29,19 +29,19 @@ func _ready():
 	
 	_load_level()
 	
-#	GameState.player_can_move = false
-#	DialogueBox.create_adam("C-co...?", -1)
-#	DialogueBox.create_jakub("Hráč?", -1)
-#	DialogueBox.create_adam("Ale ta hra není dodělaná! Vždyť ani nemá název!", -1)
-#	DialogueBox.create_adam("Uvidí jak je zabugovaná a že půlka věcí chybí! [color=red](Zatím opravdu)[/color]", -1)
-#	DialogueBox.create_jakub("Dobře klid... To se nějak zvládne. Ono se to nějak udělá", -1)
-#	DialogueBox.create_jakub("Alespoň nám pomůže tu hru otestovat ne?", -1)
-#	DialogueBox.create_jakub("Pomůžeš nám že?", -1)
-#	DialogueBox.create_jakub("...", -1)
-#	DialogueBox.create_adam_angry("Do háje fix už zase nefungujou dialogy... Vždyť minule to ještě šlo. Se z toho může jeden-", -1)
-#	DialogueBox.create_jakub("Beru to jako ano", -1)
-#	DialogueBox.create_jakub("Tvým cílem je dostat se v každém levelu vždy ke dveřím. Budeme tě pozorovat z povzdálí.\n\nHodně štěstí", -1)
-#	yield(DialogueBox, "queue_empty")
+	GameState.player_can_move = false
+	DialogueBox.create_adam("C-co...?", -1)
+	DialogueBox.create_jakub("Hráč?", -1)
+	DialogueBox.create_adam("Ale ta hra není dodělaná! Vždyť ani nemá název!", -1)
+	DialogueBox.create_adam("Uvidí jak je zabugovaná a že půlka věcí chybí! [color=red](Zatím opravdu)[/color]", -1)
+	DialogueBox.create_jakub("Dobře klid... To se nějak zvládne. Ono se to nějak udělá", -1)
+	DialogueBox.create_jakub("Alespoň nám pomůže tu hru otestovat ne?", -1)
+	DialogueBox.create_jakub("Pomůžeš nám že?", -1)
+	DialogueBox.create_jakub("...", -1)
+	DialogueBox.create_adam_angry("Do háje fix už zase nefungujou dialogy... Vždyť minule to ještě šlo. Se z toho může jeden-", -1)
+	DialogueBox.create_jakub("Beru to jako ano", -1)
+	DialogueBox.create_jakub("Tvým cílem je dostat se v každém levelu vždy ke dveřím. Budeme tě pozorovat z povzdálí.\n\nHodně štěstí", -1)
+	yield(DialogueBox, "queue_empty")
 	GameState.player_can_move = true
 
 func _submit_callback(_code, _response):
