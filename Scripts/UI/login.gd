@@ -3,6 +3,7 @@ extends Control
 var logging_in = true
 
 func _ready():
+	$OfflineMode.visible = false
 	show()
 	$CenterContainer/TextureRect/FocusGroup/Name.grab_focus()
 	var saved_token = GameState.config.get_value("user", "token", "")
@@ -83,9 +84,14 @@ func _user_info_response(code, response):
 
 
 func show_offline_mode():
-	$Offline.visible = true
+	$OfflineMode.visible = true
 
 
-func _on_OfflineButon_pressed():
+func _on_OfflineMode_pressed():
+	$CenterContainer/OfflineModeConfirm.popup()
+
+
+func _on_OfflineModeConfirm_confirmed():
 	hide()
-	printerr("NOW IN OFFLINE MODE")
+	GameState.offline = true
+	printerr("===NOW IN OFFLINE MODE===")
