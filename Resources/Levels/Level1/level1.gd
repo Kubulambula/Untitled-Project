@@ -58,11 +58,14 @@ func handle_event(_source, name):
 		yield(DialogueBox, "queue_empty")
 		GameState.player_can_move = true
 	
-		WebAPI.submit(GameCode.generate(
+		var code = GameCode.generate(
 			"level1", # Challenge Id -> GameCode.CHALLENGE_IDS
 			GameState.score # Collected coins
 			+ 1500 # Level completion bonus
-		), funcref(self, "_submit_callback"))
+		)
+		
+		ResultScreen.show_game_code(code)
+		WebAPI.submit(code, funcref(self, "_submit_callback"))
 		
 	elif name == "player_outside_play_area":
 		EventReporter.disconnect("event_reported", self, "handle_event")

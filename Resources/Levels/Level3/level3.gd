@@ -60,11 +60,14 @@ func _submit_callback(_code, _response):
 func handle_event(_source, name):
 	if name == "player_reached_door":
 		
-		WebAPI.submit(GameCode.generate(
+		var code = GameCode.generate(
 			"level3", # Challenge Id -> GameCode.CHALLENGE_IDS
 			GameState.score # Collected coins
 			+ 1500 # Level completion bonus
-		), funcref(self, "_submit_callback"))
+		)
+		
+		ResultScreen.show_game_code(code)
+		WebAPI.submit(code, funcref(self, "_submit_callback"))
 
 	elif name == "player_outside_play_area":
 		LevelManager.restart_level(level_data)
