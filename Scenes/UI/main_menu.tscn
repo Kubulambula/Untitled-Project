@@ -414,7 +414,7 @@ position = Vector2( -10, 0 )
 scale = Vector2( 1.7, 1.7 )
 frames = ExtResource( 9 )
 animation = "adam_idle"
-frame = 2
+frame = 3
 playing = true
 centered = false
 
@@ -443,7 +443,7 @@ position = Vector2( -10, 0 )
 scale = Vector2( 1.7, 1.7 )
 frames = ExtResource( 9 )
 animation = "jakub_idle"
-frame = 3
+frame = 4
 playing = true
 centered = false
 
@@ -472,7 +472,7 @@ position = Vector2( -10, 0 )
 scale = Vector2( 1.7, 1.7 )
 frames = ExtResource( 9 )
 animation = "martina_idle"
-frame = 2
+frame = 3
 playing = true
 centered = false
 

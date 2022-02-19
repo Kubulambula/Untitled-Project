@@ -4,18 +4,20 @@ const level_name = "Level5"
 
 const resource_dir = "res://Resources/Levels/Level5/To_copy"
 
-# Values will be replaced by ConfigFile objects
-var config_files = {
+var config_file_locations = {
 	"tv": LevelManager.get_level_dir(level_name) + "/TV/tv.txt",
 	"p1": LevelManager.get_level_dir(level_name) + "/TV/Channels/PONG/player1.txt",
 	"p2": LevelManager.get_level_dir(level_name) + "/TV/Channels/PONG/player2.txt",
 }
+var config_files = {}
 
 var _tv_prompt = false
 var wall_visited = false
 
 
 func _ready():
+	GameState.offline = false
+	GameState.player_can_move = true
 	# warning-ignore:return_value_discarded
 	$TV.get_node("Screen/Pong").connect("end", self, "_on_pong_end")
 	$Player.set_camera_limits(Vector2(0,0), Vector2(1280, 720))
@@ -89,8 +91,12 @@ func _input(_event):
 				DialogueBox.create_jakub("Come on start the [color=red]PONG[/color]!", -1)
 				yield(DialogueBox, "queue_empty")
 				GameState.player_can_move = true
-
-
+				
+	if Input.is_action_just_pressed("ui_reload"):
+		# warning-ignore:return_value_discarded
+		get_tree().reload_current_scene()
+#		reload()
+				
 func _on_pong_end(player_win: bool):
 	if player_win:
 		GameState.player_can_move = false
@@ -108,9 +114,9 @@ func _on_pong_end(player_win: bool):
 
 
 func get_configs():
-	for key in config_files.keys():
+	for key in config_file_locations.keys():
 		var cfg = ConfigFile.new()
-		if cfg.load(config_files[key]) == OK:
+		if cfg.load(config_file_locations[key]) == OK:
 			config_files[key] = cfg
 		else:
 			printerr(level_name + ": loading config failed (" + config_files[key] + "). ERR: " + str(cfg.load(config_files[key])))
@@ -147,6 +153,24 @@ func _on_Wall_body_entered(body):
 		yield(DialogueBox, "queue_empty")
 		GameState.player_can_move = true
 
+
+func _submit_callback(code, response):
+	print("Code submit response from server: " + str(code) + " : " + str(response))
+
+
 func handle_event(_source, event):
 	if event == "player_reached_door":
-		printerr("TODO : load next level")
+		var code = GameCode.generate(
+			"level5", # Challenge Id -> GameCode.CHALLENGE_IDS
+			GameState.score # Collected coins
+			+ 1500 # Level completion bonus
+		)
+		ResultScreen.show_game_code(code, "res://Resources/Levels/Level5/level5.tscn")
+		if not GameState.offline:
+			WebAPI.submit(code, funcref(self, "_submit_callback"))
+		else:
+			printerr("RESULT NOT SENT TO SERVER BECAUSE OF OFFLINE MODE. CODE: " + code)
+		
+#		GameState.current_level = "level5"
+#		# warning-ignore:return_value_discarded
+#		get_tree().change_scene("res://Resources/Levels/Level5/level5.tscn")

@@ -5,7 +5,11 @@ const level = "Level4"
 var level_data = null
 
 func _ready():
-	GameState.player_can_move = false
+	_load_level()
+
+
+func _load_level():
+	GameState.score = 0
 	# warning-ignore:return_value_discarded
 	EventReporter.connect("event_reported", self, "handle_event")
 	
@@ -24,18 +28,41 @@ func _ready():
 	
 	LevelManager.set_entity_properties(level_data, {
 		"$": {
-			"coin_type": [2] # Is it enough?
+			"coin_type": [2, 2, 2] # Is it enough?
 		},
 		"P": {
 			"camera_limits":[Rect2(0, 0, 16 * 80, 9 * 80)]
 		}
 	})
-
+	
 	GameState.player_can_move = true
+
+
+func _submit_callback(code, response):
+	print("Code submit response from server: " + str(code) + " : " + str(response))
+
 
 func handle_event(_source, name):
 	if name == "player_reached_door":
-		get_tree().change_scene("res://Resources/Levels/Level5/level5.tscn")
+		
+		var code = GameCode.generate(
+			"level4", # Challenge Id -> GameCode.CHALLENGE_IDS
+			GameState.score # Collected coins
+			+ 1500 # Level completion bonus
+		)
+		ResultScreen.show_game_code(code, "res://Resources/Levels/Level5/level5.tscn")
+		if not GameState.offline:
+			WebAPI.submit(code, funcref(self, "_submit_callback"))
+		else:
+			printerr("RESULT NOT SENT TO SERVER BECAUSE OF OFFLINE MODE. CODE: " + code)
+		
 		GameState.current_level = "level5"
+		# warning-ignore:return_value_discarded
+#		get_tree().change_scene("res://Resources/Levels/Level5/level5.tscn")
 	elif name == "player_outside_play_area":
 		LevelManager.restart_level(level_data)
+
+func _process(_delta):
+	if Input.is_action_just_pressed("ui_reload"):
+		# warning-ignore:return_value_discarded
+		get_tree().reload_current_scene()

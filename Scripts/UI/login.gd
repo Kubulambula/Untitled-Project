@@ -49,6 +49,7 @@ func login(login: String, password: String): #DO THIS WITH TOKEN FFS
 func _on_login(code, response):
 	$AnimationPlayer2.play_backwards("load_indicator")
 	if code == 200: # OK
+		GameState.offline = false
 		print("Successful user login")
 		logging_in = false
 		GameState.config.set_value("user", "token", response["accessToken"])
@@ -73,6 +74,7 @@ func _login_from_token(saved_token):
 func _user_info_response(code, response):
 	$AnimationPlayer2.play_backwards("load_indicator")
 	if code == 200:
+		GameState.offline = false
 		print("Logged in from saved token")
 		hide()
 	else:
@@ -93,5 +95,6 @@ func _on_OfflineMode_pressed():
 
 func _on_OfflineModeConfirm_confirmed():
 	hide()
+	OS.set_window_title("Untitled-Game - Purkiáda 2022 - © Adam Charvát, Jakub Janšta & Martina Prokšová 2022    <=== OFFLINE MODE ===>")
 	GameState.offline = true
 	printerr("===NOW IN OFFLINE MODE===")

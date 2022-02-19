@@ -186,11 +186,7 @@ func _hide_popup():
 func _process(_delta):
 	if Input.is_action_just_pressed("ui_next_dialogue"):
 		if current_item:
-			if current_item.duration == -1:# and cooldown_timer.is_stopped():
+			if current_item.duration == -1 and not tween.is_active():
 				_timer_timeout()
-#		if cooldown_timer.is_stopped():
-#			_timer_timeout()
-#			emit_signal("_player_request_next")
-#			emit_signal("next_button")
 		if len(queue) == 0:
 			emit_signal("queue_empty")

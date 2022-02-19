@@ -9,7 +9,8 @@ var death_counter = 0
 var done = false
 
 func _load_level():
-# warning-ignore:return_value_discarded
+	GameState.score = 0
+	# warning-ignore:return_value_discarded
 	EventReporter.connect("event_reported", self, "handle_event")
 	
 	LevelManager.set_map_dimensions(16, 9)
@@ -36,7 +37,7 @@ func _ready():
 	DialogueBox.create_adam("Ale ta hra není dodělaná! Vždyť ani nemá název!", -1)
 	DialogueBox.create_adam("Uvidí jak je zabugovaná a že půlka věcí chybí!", -1)
 	DialogueBox.create_jakub("Dobře klid... To se nějak zvládne. Ono se to nějak udělá™", -1)
-	DialogueBox.create_jakub("Alespoň nám pomůže tu hru otestovat ne?", -1)
+	DialogueBox.create_jakub("Alespoň nám může tu hru otestovat.", -1)
 	DialogueBox.create_jakub("Pomůžeš nám že?", -1)
 	DialogueBox.create_jakub("...", -1)
 	DialogueBox.create_jakub("...", -1)
@@ -46,10 +47,8 @@ func _ready():
 	yield(DialogueBox, "queue_empty")
 	GameState.player_can_move = true
 
-func _submit_callback(_code, _response):
-	GameState.current_level = "level2"
-	# warning-ignore:return_value_discarded
-	get_tree().change_scene("res://Resources/Levels/Level2/level2.tscn")
+func _submit_callback(code, response):
+	print("Code submit response from server: " + str(code) + " : " + str(response))
 	
 
 func handle_event(_source, name):
@@ -59,12 +58,23 @@ func handle_event(_source, name):
 		DialogueBox.create_adam("Dobrá práce! Teď nám jen dej chvilku, než načteme nový level...", -1)
 		yield(DialogueBox, "queue_empty")
 		GameState.player_can_move = true
-	
-		WebAPI.submit(GameCode.generate(
+		
+		
+		var code = GameCode.generate(
 			"level1", # Challenge Id -> GameCode.CHALLENGE_IDS
 			GameState.score # Collected coins
 			+ 1500 # Level completion bonus
-		), funcref(self, "_submit_callback"))
+		)
+		ResultScreen.show_game_code(code, "res://Resources/Levels/Level2/level2.tscn")
+		if not GameState.offline:
+			WebAPI.submit(code, funcref(self, "_submit_callback"))
+		else:
+			printerr("RESULT NOT SENT TO SERVER BECAUSE OF OFFLINE MODE. CODE: " + code)
+		
+		GameState.current_level = "level2"
+		# warning-ignore:return_value_discarded
+#		get_tree().change_scene("res://Resources/Levels/Level2/level2.tscn")
+		
 		
 	elif name == "player_outside_play_area" and not done:
 		EventReporter.disconnect("event_reported", self, "handle_event")
