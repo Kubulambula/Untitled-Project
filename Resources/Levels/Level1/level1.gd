@@ -6,6 +6,8 @@ var level_data = null
 
 var death_counter = 0
 
+var done = false
+
 func _load_level():
 # warning-ignore:return_value_discarded
 	EventReporter.connect("event_reported", self, "handle_event")
@@ -13,8 +15,8 @@ func _load_level():
 	LevelManager.set_map_dimensions(16, 9)
 	level_data = LevelManager.parse_level_data(LevelManager.read_level_data(level))
 	
-	level_data = LevelManager.apply_immovable_mask(level_data, ["P", "D", "$", "K"])
-	level_data = LevelManager.apply_max_entity_mask(level_data, {"P": 1, "D": 1})
+	level_data = LevelManager.apply_immovable_mask(level_data, ["P", "D", "$", "K", "C"])
+	level_data = LevelManager.apply_max_entity_mask(level_data, {"P": 1, "D": 1, "?": 1})
 	
 	# Insert level specific masks/checks here
 	
@@ -52,9 +54,9 @@ func _submit_callback(_code, _response):
 
 func handle_event(_source, name):
 	if name == "player_reached_door":
+		done = true
 		GameState.player_can_move = false
-		DialogueBox.create_jakub("Výborná práce! Vidím, že rozumíš, že změna v jednom souboru dokáže ovlivnit soubor druhý.", -1)
-		DialogueBox.create_adam("Dej nám jen chviličku, než načteme nový level...", -1)
+		DialogueBox.create_adam("Dobrá práce! Teď nám jen dej chvilku, než načteme nový level...", -1)
 		yield(DialogueBox, "queue_empty")
 		GameState.player_can_move = true
 	
@@ -64,7 +66,7 @@ func handle_event(_source, name):
 			+ 1500 # Level completion bonus
 		), funcref(self, "_submit_callback"))
 		
-	elif name == "player_outside_play_area":
+	elif name == "player_outside_play_area" and not done:
 		EventReporter.disconnect("event_reported", self, "handle_event")
 		for node in $LevelData.get_children():
 			$LevelData.call_deferred("remove_child", node)
@@ -75,12 +77,12 @@ func handle_event(_source, name):
 		death_counter += 1
 		if death_counter == 1:
 			GameState.player_can_move = false
-			DialogueBox.create_adam("No výborně. Další nepřeskočitelná díra. Co zkusit mapu zeditovat a udělat si třeba most?\nMěla by být někde v '[color=black]" + LevelManager.get_level_dir(level) + "[/color]'", -1)
+			DialogueBox.create_adam("No výborně. Další nepřeskočitelná díra. Co zkusit mapu zeditovat a udělat si třeba most?\nMěla by být někde v\n'[color=#003858]" + LevelManager.get_level_dir(level) + "[/color]'", -1)
 			yield(DialogueBox, "queue_empty")
 			GameState.player_can_move = true
 		elif death_counter % 5 == 0:
 			GameState.player_can_move = false
-			DialogueBox.create_adam("Zkus se podívat do '[color=black]" + LevelManager.get_level_dir(level) + "[/color]' jestli něco nevymyslíš s tou mapou", -1)
+			DialogueBox.create_adam("Zkus se podívat do\n'[color=#003858]" + LevelManager.get_level_dir(level) + "[/color]' jestli něco nevymyslíš s tou mapou", -1)
 			yield(DialogueBox, "queue_empty")
 			GameState.player_can_move = true
 

@@ -172,7 +172,7 @@ animations = [ {
 } ]
 
 [sub_resource type="CircleShape2D" id=28]
-radius = 30.0
+radius = 50.0
 
 [node name="Area2D" type="Area2D"]
 script = ExtResource( 1 )
@@ -184,7 +184,7 @@ anims/collect = SubResource( 30 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 26 )
 animation = "gold"
-frame = 1
+frame = 3
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
