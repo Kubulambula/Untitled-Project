@@ -35,10 +35,6 @@ EventReporter="*res://Scripts/Singletons/event_reporter.gd"
 QRCode="*res://Scripts/Singletons/qr_code.gd"
 EscOverlay="*res://Scripts/Singletons/esc_overlay.gd"
 
-[debug]
-
-settings/stdout/verbose_stdout=true
-
 [display]
 
 window/size/width=1280
