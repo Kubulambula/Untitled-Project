@@ -76,13 +76,18 @@ animation = "idle"
 playing = true
 
 [node name="ChestTitle" type="Label" parent="."]
-visible = false
-margin_left = -100.0
-margin_top = -54.0
-margin_right = 106.0
-margin_bottom = -39.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -200.0
+margin_top = -57.0
+margin_right = 200.0
+margin_bottom = -42.0
+rect_min_size = Vector2( 300, 0 )
 theme = ExtResource( 3 )
-text = "Press 'E' to open"
+text = "$interact"
+align = 1
+valign = 1
+autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false
 }

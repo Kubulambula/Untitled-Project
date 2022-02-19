@@ -5,6 +5,7 @@ const level = "Level2"
 var level_data = null
 
 func _load_level():
+	# warning-ignore:return_value_discarded
 	EventReporter.connect("event_reported", self, "handle_event")
 	
 	LevelManager.set_map_dimensions(25, 9)
@@ -59,7 +60,7 @@ func handle_event(_source, name):
 	elif name == "player_outside_play_area":
 		LevelManager.restart_level(level_data)
 
-func _process(delta):
+func _process(_delta):
 	if Input.is_action_just_pressed("ui_reload"):
 		EventReporter.disconnect("event_reported", self, "handle_event")
 		for node in $LevelData.get_children():
