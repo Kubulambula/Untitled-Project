@@ -9,3 +9,8 @@ $keep_on;Nevypínat monitor;Keep screen on
 $language;Jazyk;Language
 $vsync;Vertikální synchronizace;Vertical synchronization
 $vsync_comp;Vsync kompozitor;Vsync compositor
+$lvl_suffix;cze;eng
+$login;Uživatelské jméno;Login
+$password;Heslo;Password
+$offline_confirm_title;Offline mód;Offline mode
+$offline_confirm;Jste si jistli, že chcete spustit offline mód?;Are you sure you want to enter offline mode?

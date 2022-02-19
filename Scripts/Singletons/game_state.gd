@@ -16,6 +16,8 @@ var version = ProjectSettings.get_setting("untitled_project/config/version")
 
 var score = 0
 
+var offline = false
+
 
 onready var SCENE_TREE = get_tree()
 

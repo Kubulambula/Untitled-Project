@@ -2,7 +2,7 @@ extends Node2D
 
 const next_scene_path = "res://Scenes/UI/main_menu.tscn"
 
-var intro = "intro_slow"
+var intro = "intro_middle"
 
 var can_load_next_scene
 var next_scene = null
