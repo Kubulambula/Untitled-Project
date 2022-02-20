@@ -102,9 +102,9 @@ __meta__ = {
 }
 
 [node name="Code" type="Label" parent="Control"]
-margin_left = 513.0
+margin_left = 522.0
 margin_top = 623.0
-margin_right = 978.0
+margin_right = 987.0
 margin_bottom = 717.0
 theme = SubResource( 8 )
 valign = 1
