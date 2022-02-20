@@ -1,9 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=11 format=2]
 
-[sub_resource type="GDScript" id=13]
-script/source = "extends CanvasLayer
-
-"
+[ext_resource path="res://Resources/Themes/Buttons/button_2_hover.png" type="Texture" id=1]
+[ext_resource path="res://Resources/Themes/Buttons/button_2.png" type="Texture" id=2]
+[ext_resource path="res://Resources/Themes/Buttons/button_2_pressed.png" type="Texture" id=3]
+[ext_resource path="res://Resources/Themes/untitled_theme.tres" type="Theme" id=4]
 
 [sub_resource type="DynamicFontData" id=11]
 font_path = "res://Resources/Fonts/8bitOperator/8bitOperatorPlus-Bold.ttf"
@@ -19,10 +19,16 @@ font_path = "res://Resources/Fonts/8bitOperator/8bitOperatorPlusSC-Bold.ttf"
 size = 200
 font_data = SubResource( 14 )
 
+[sub_resource type="DynamicFontData" id=16]
+font_path = "res://Resources/Fonts/8bitOperator/8bitOperatorPlus8-Bold.ttf"
+
+[sub_resource type="DynamicFont" id=17]
+size = 40
+font_data = SubResource( 16 )
+
 [node name="CanvasLayer" type="CanvasLayer"]
 pause_mode = 2
 layer = 10
-script = SubResource( 13 )
 
 [node name="Control" type="Control" parent="."]
 anchor_right = 1.0
@@ -35,7 +41,7 @@ __meta__ = {
 margin_right = 40.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 1280, 720 )
-color = Color( 0.141176, 0.141176, 0.141176, 0.564706 )
+color = Color( 0.141176, 0.141176, 0.141176, 0.784314 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -79,28 +85,65 @@ margin_bottom = 720.0
 rect_min_size = Vector2( 0, 5 )
 mouse_filter = 2
 
-[node name="Paused" type="CenterContainer" parent="Control"]
-margin_right = 1280.0
-margin_bottom = 600.0
-rect_min_size = Vector2( 1280, 720 )
+[node name="PausedLabel" type="Label" parent="Control"]
+margin_left = 226.0
+margin_top = 50.0
+margin_right = 1054.0
+margin_bottom = 329.0
+custom_fonts/font = SubResource( 15 )
+text = "PAUSED"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Control/Paused"]
-margin_left = 226.0
-margin_top = 133.0
-margin_right = 1054.0
-margin_bottom = 586.0
+[node name="MenuButton" type="TextureButton" parent="Control"]
+margin_left = 490.0
+margin_top = 320.0
+margin_right = 690.0
+margin_bottom = 385.0
+rect_scale = Vector2( 1.5, 1.5 )
+texture_normal = ExtResource( 2 )
+texture_pressed = ExtResource( 3 )
+texture_hover = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
 
-[node name="PausedLabel" type="Label" parent="Control/Paused/VBoxContainer"]
-margin_right = 828.0
-margin_bottom = 279.0
-custom_fonts/font = SubResource( 15 )
-text = "PAUSED"
+[node name="Label" type="Label" parent="Control/MenuButton"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 4 )
+custom_fonts/font = SubResource( 17 )
+text = "Menu"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="Spacing" type="Control" parent="Control/Paused/VBoxContainer"]
-margin_top = 283.0
-margin_right = 828.0
-margin_bottom = 453.0
-rect_min_size = Vector2( 0, 170 )
+[node name="ReloadButton" type="TextureButton" parent="Control"]
+margin_left = 490.0
+margin_top = 445.0
+margin_right = 690.0
+margin_bottom = 510.0
+rect_scale = Vector2( 1.5, 1.5 )
+texture_normal = ExtResource( 2 )
+texture_pressed = ExtResource( 3 )
+texture_hover = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Control/ReloadButton"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 4 )
+custom_fonts/font = SubResource( 17 )
+text = "Reload"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}

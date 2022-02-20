@@ -218,9 +218,9 @@ __meta__ = {
 }
 
 [node name="WindowMode" type="OptionButton" parent="GUI/Settings/SettingsTab/Graphics/VBoxContainer/WindowMode"]
-margin_left = 260.0
+margin_left = 312.0
 margin_top = 12.0
-margin_right = 450.0
+margin_right = 502.0
 margin_bottom = 47.0
 rect_min_size = Vector2( 190, 35 )
 rect_scale = Vector2( 1.25, 1.25 )
@@ -252,7 +252,8 @@ __meta__ = {
 }
 
 [node name="KeepScreenOn" type="CheckButton" parent="GUI/Settings/SettingsTab/Graphics/VBoxContainer/KeepScreenOn"]
-margin_right = 500.0
+margin_left = 472.0
+margin_right = 572.0
 margin_bottom = 52.0
 pressed = true
 flat = true
@@ -277,8 +278,8 @@ __meta__ = {
 }
 
 [node name="Vsync" type="CheckButton" parent="GUI/Settings/SettingsTab/Graphics/VBoxContainer/Vsync"]
-margin_left = 400.0
-margin_right = 504.0
+margin_left = 472.0
+margin_right = 572.0
 margin_bottom = 52.0
 pressed = true
 flat = true
@@ -303,8 +304,8 @@ __meta__ = {
 }
 
 [node name="VsyncCompositor" type="CheckButton" parent="GUI/Settings/SettingsTab/Graphics/VBoxContainer/VsyncCompositor"]
-margin_left = 400.0
-margin_right = 504.0
+margin_left = 472.0
+margin_right = 572.0
 margin_bottom = 52.0
 pressed = true
 flat = true
@@ -343,10 +344,10 @@ __meta__ = {
 }
 
 [node name="Language" type="OptionButton" parent="GUI/Settings/SettingsTab/User/VBoxContainer/Locale"]
-margin_left = 260.0
+margin_left = 312.0
 margin_top = 12.0
-margin_right = 310.0
-margin_bottom = 27.0
+margin_right = 502.0
+margin_bottom = 47.0
 rect_min_size = Vector2( 130, 35 )
 rect_scale = Vector2( 1.25, 1.25 )
 text = "čeština"
@@ -413,7 +414,7 @@ position = Vector2( -10, 0 )
 scale = Vector2( 1.7, 1.7 )
 frames = ExtResource( 9 )
 animation = "adam_idle"
-frame = 3
+frame = 5
 playing = true
 centered = false
 
@@ -442,7 +443,6 @@ position = Vector2( -10, 0 )
 scale = Vector2( 1.7, 1.7 )
 frames = ExtResource( 9 )
 animation = "jakub_idle"
-frame = 4
 playing = true
 centered = false
 
@@ -471,7 +471,7 @@ position = Vector2( -10, 0 )
 scale = Vector2( 1.7, 1.7 )
 frames = ExtResource( 9 )
 animation = "martina_idle"
-frame = 3
+frame = 5
 playing = true
 centered = false
 

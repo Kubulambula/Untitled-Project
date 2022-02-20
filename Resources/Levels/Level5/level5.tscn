@@ -85,6 +85,7 @@ position = Vector2( 97.5, 183.5 )
 scale = Vector2( 0.5, 0.5 )
 frames = ExtResource( 6 )
 animation = "jakub_idle"
+frame = 4
 playing = true
 flip_h = true
 
@@ -107,7 +108,7 @@ margin_right = 154.0
 margin_bottom = 182.0
 rect_scale = Vector2( 1.5, 1.5 )
 custom_fonts/font = SubResource( 3 )
-text = "[F]"
+text = "[E]"
 __meta__ = {
 "_edit_use_anchors_": false,
 "_editor_description_": ""

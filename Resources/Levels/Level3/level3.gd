@@ -5,6 +5,8 @@ const level = "Level3"
 var level_data = null
 
 func _load_level():
+	GameState.score = 0
+	# warning-ignore:return_value_discarded
 	EventReporter.connect("event_reported", self, "handle_event")
 	
 	LevelManager.set_map_dimensions(30, 9)
@@ -51,28 +53,33 @@ func _ready():
 
 	GameState.player_can_move = true
 
-func _submit_callback(_code, _response):
-	var next_level = level_data["settings"]["door_destination"]
-	GameState.current_level = next_level
-	# warning-ignore:return_value_discarded
-	get_tree().change_scene(LevelManager.get_level_scene(next_level))
+func _submit_callback(code, response):
+	print("Code submit response from server: " + str(code) + " : " + str(response))
 
 func handle_event(_source, name):
 	if name == "player_reached_door":
+		if level_data["settings"]["door_destination"] == "level4":
+			var code = GameCode.generate(
+				"level3", # Challenge Id -> GameCode.CHALLENGE_IDS
+				GameState.score # Collected coins
+				+ 1500 # Level completion bonus
+			)
+			ResultScreen.show_game_code(code, "res://Resources/Levels/Level4/level4.tscn")
+			if not GameState.offline:
+				WebAPI.submit(code, funcref(self, "_submit_callback"))
+			else:
+				printerr("RESULT NOT SENT TO SERVER BECAUSE OF OFFLINE MODE. CODE: " + code)
+			
+			GameState.current_level = "level4"
+			# warning-ignore:return_value_discarded
+	#		get_tree().change_scene("res://Resources/Levels/Level4/level4.tscn")
+		else:
+			get_tree().reload_current_scene()
 		
-		var code = GameCode.generate(
-			"level3", # Challenge Id -> GameCode.CHALLENGE_IDS
-			GameState.score # Collected coins
-			+ 1500 # Level completion bonus
-		)
-		
-		ResultScreen.show_game_code(code)
-		WebAPI.submit(code, funcref(self, "_submit_callback"))
-
 	elif name == "player_outside_play_area":
 		LevelManager.restart_level(level_data)
 
-func _process(delta):
+func _process(_delta):
 	if Input.is_action_just_pressed("ui_reload"):
 		EventReporter.disconnect("event_reported", self, "handle_event")
 		for node in $LevelData.get_children():

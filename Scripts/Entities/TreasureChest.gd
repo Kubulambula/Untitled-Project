@@ -21,7 +21,7 @@ func _on_Area2D_body_exited(body):
 		$ChestTitle.hide()
 
 func _input(event):
-	if event.is_action_pressed("use_interact"):
+	if event.is_action_pressed("ui_interact"):
 		if _can_open and not is_opened:
 			open_treasure()
 			is_opened = true

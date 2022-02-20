@@ -325,6 +325,7 @@ modulate = Color( 1, 1, 1, 0 )
 position = Vector2( 50, 50 )
 frames = ExtResource( 9 )
 animation = "gold"
+frame = 1
 playing = true
 
 [connection signal="focus_entered" from="Login/CenterContainer/TextureRect/FocusGroup/Login" to="Login" method="_on_Login_focus_entered"]

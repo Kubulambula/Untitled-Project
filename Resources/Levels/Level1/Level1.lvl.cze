@@ -1,10 +1,10 @@
 ; Level1
 ;
-; # - Wall
-; P - Player (limit = 1)
-; D - Door (limit = 1)
-; $ - Coin (limit = 6)
-; ? - Treasure chest (limit = 1)
+; # - Zeď
+; P - Hráč (limit = 1)
+; D - Dveře (limit = 1)
+; $ - Mince (limit = 6)
+; ? - Truhla spokladem (limit = 1)
 ;
 
 [Map]
