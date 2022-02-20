@@ -1,10 +1,32 @@
-; Level1
+; Level 1
+;
+
+; Úkol
+;
+; Tvým úkolem je dostat se ke dvěřím,
+; jako v každém levelu.
+
+; Pravidla
+;
+; Mapa může obsahovat pouze následující znaky:
 ;
 ; # - Wall
-; P - Player (limit = 1)
-; D - Door (limit = 1)
-; $ - Coin (limit = 6)
-; ? - Treasure chest (limit = 1)
+; P - Player         [Limit: 1]
+; D - Door           [Limit: 1]
+; $ - Coin
+; ? - Treasure chest [Limit: 1]
+;
+; Nelze hýbat s mincemi ($), ani měnit jejich počet.
+; Dále také s hráčem (P) a dveřmi (D).
+;
+
+; Upozornění
+;
+; Pokud tento soubor nebude splňovat pravidla uvedená výše,
+; hra ho přepíše. Proto ho VŽDY po upravení ZAVŘETE!
+; (Kliknutím na křížek v pravém horním rohu.)
+;
+; Pro aplikování zmeň provedených v tomto souboru, zmáčkněte VE HŘE klávesu R.
 ;
 
 [Map]
@@ -17,6 +39,3 @@
 #####    #######
 #####    #######
 #####    #######
-
-; [Settings]
-; door_destination=level2

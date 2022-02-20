@@ -1,13 +1,35 @@
-;
-; # - Zeď
-; P - Hráč (limit = 1)
-; D - Dveře (limit = 1)
-; $ - Mince (limit = 3)
+; Level 3
 ;
 
+; Úkol
+;
+; Tvým úkolem je dostat se ke dvěřím,
+; jako v každém levelu.
+
+; Pravidla
+;
+; Mapa může obsahovat pouze následující znaky:
+;
+; # - Wall
+; P - Player   [Limit: 1]
+; D - Door     [Limit: 1]
+; $ - Coin
+;
+; Nelze měnit počet mincí ($), hráčů (P) a dveří (D).
+; S mincemi ($) nelze hýbat.
+;
+
+; Upozornění
+;
+; Pokud tento soubor nebude splňovat pravidla uvedená výše,
+; hra ho přepíše. Proto ho VŽDY po upravení ZAVŘETE!
+; (Kliknutím na křížek v pravém horním rohu.)
+;
+; Pro aplikování zmeň provedených v tomto souboru, zmáčkněte VE HŘE klávesu R.
+;
 
 [Map]
-##############################
+############################
 #         #  $$       #   D#
 #           ####    # # ####
 #  $$  ##           #$#    #
@@ -16,7 +38,3 @@
 #      #      ## ##$#  $$ ##
 #  P   #   ##              #
 #  ##  #           ####  ###
-
-
-[Settings]
-door_destination=level2

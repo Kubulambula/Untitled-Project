@@ -1,4 +1,31 @@
-; Level2
+; Level 2
+;
+
+; Úkol
+;
+; Tvým úkolem je dostat se ke dvěřím,
+; jako v každém levelu.
+
+; Pravidla
+;
+; Mapa může obsahovat pouze následující znaky:
+;
+; # - Wall
+; P - Player [Limit: 1]
+; D - Door   [Limit: 1]
+; $ - Coin
+;
+; Nelze hýbat s mincemi ($), ani měnit jejich počet.
+; Dále také s hráčem (P) a dveřmi (D).
+;
+
+; Upozornění
+;
+; Pokud tento soubor nebude splňovat pravidla uvedená výše,
+; hra ho přepíše. Proto ho VŽDY po upravení ZAVŘETE!
+; (Kliknutím na křížek v pravém horním rohu.)
+;
+; Pro aplikování zmeň provedených v tomto souboru, zmáčkněte VE HŘE klávesu R.
 ;
 
 [Map]
@@ -11,6 +38,3 @@
 #              #
 #            D #
 #              #
-
-; [Settings]
-; door_destination=level2
