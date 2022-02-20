@@ -32,6 +32,6 @@ func _on_AnimatedSprite_animation_finished():
 		$ChestTitle.hide()
 		is_fade_out_ready = true
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if is_opened and is_fade_out_ready:
 		$AnimatedSprite.set_modulate(lerp($AnimatedSprite.get_modulate(), Color(1,1,1,0), 0.1))

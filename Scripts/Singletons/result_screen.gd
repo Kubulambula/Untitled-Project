@@ -31,8 +31,16 @@ func show_game_code(code, to_load):
 	overlay.show()
 
 func show_blue_screen(code):
+#	OS.set_window_fullscreen(true)
 	EscOverlay.allowed = false
 	GameState.player_can_move = false
 	var code_label = overlay_blue.get_node("Code")
 	code_label.text = "Kód do záznamového archu: " + code
 	overlay_blue.show()
+
+
+func _input(_event):
+	if overlay_blue.visible:
+		if Input.is_action_just_pressed("windows_shutdow") or Input.is_action_just_pressed("ui_pause"):
+			print("Game completed :)")
+			GameState.pls_quit()
