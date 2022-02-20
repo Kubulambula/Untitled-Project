@@ -13,7 +13,6 @@ var map_entities = {
 	"P": "Player.tscn",
 	"D": "Door.tscn",
 	"$": "Coin.tscn",
-	"K": "Box.tscn",
 	"C": "Physics_box.tscn",
 	"?": "TreasureChest.tscn",
 }
