@@ -6,6 +6,8 @@ var level_dir = LevelManager.get_level_dir(level_name)
 const resource_dir = "res://Resources/Levels/Level7/To_copy"
 const resource_dir2 = "res://Resources/Levels/Level7/Copy_if"
 
+var internal_admin_config = resource_dir2 + "/GAME_CORE/DO_NOT_OPEN/VERY_IMPORTANT_DATA_ADMIN.txt"
+
 var missing_tileset = preload("res://Resources/Tiles/missing_tileset.tres")
 
 var overlay_layer = preload("res://Scenes/Singleton_scenes/black_screen.tscn").instance()
@@ -90,11 +92,37 @@ func _reload():
 	elif GameState.finish_chapter == "chapter4":
 		_complete_game()
 
+func write_config_file(path):
+	var section = "Global"
+	var internal_data = LevelManager._read_file(internal_admin_config)
+	var output = ""
+	if config_file2 != null:
+		for line in internal_data.split("\n"):
+			line = line.strip_edges()
+			if line.begins_with("[") and line.ends_with("]"):
+				section = line.substr(1, len(line) - 2)
+			if "=" in line and not line.begins_with(";"):
+				var parts = line.split("=")
+				output += parts[0] + "=" + str(config_file2.get_value(section, parts[0], true)).to_lower()
+			else:
+				output += line
+			output += "\n"
+	else:
+		output = internal_data
+	LevelManager._write_file(path, output)
+
 func _check_chapter2_values():
-	var graphics = config_file2.get_value("Game", "graphics_module", true)
-	var logic = config_file2.get_value("Game", "logic_module", true)
-	var core = config_file2.get_value("Game", "core_module", true)
-	var failsafe = config_file2.get_value("Failsafe", "prevent_crash", true)
+	var graphics = true
+	var logic = true
+	var core = true
+	var failsafe = true
+	if config_file2 != null:
+		graphics = config_file2.get_value("Game", "graphics_module", true)
+		logic = config_file2.get_value("Game", "logic_module", true)
+		core = config_file2.get_value("Game", "core_module", true)
+		failsafe = config_file2.get_value("Failsafe", "prevent_crash", true)
+	else:
+		write_config_file(config_file_path2)
 	if not graphics:
 		overlay.show()
 	else:
@@ -110,7 +138,8 @@ func _check_chapter2_values():
 	if not core:
 		if failsafe:
 			config_file2.set_value("Game", "core_module", true)
-			config_file2.save(config_file_path2)
+			write_config_file(config_file_path2)
+			#config_file2.save(config_file_path2)
 		else:
 			GameState.finish_chapter = "chapter4"
 			_complete_game()
