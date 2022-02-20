@@ -5,9 +5,9 @@ const level_name = "Level6"
 const resource_dir = "res://Resources/Levels/Level6/To_copy"
 
 var config_file_locations = {
-	"tv": LevelManager.get_level_dir(level_name) + "/TV/tv.txt",
-	"p1": LevelManager.get_level_dir(level_name) + "/TV/Channels/PONG/player1.txt",
-	"p2": LevelManager.get_level_dir(level_name) + "/TV/Channels/PONG/player2.txt",
+	"tv": [LevelManager.get_level_dir(level_name) + "/TV/tv.txt", ["tv", "channel", "OFF"]],
+	"p1": [LevelManager.get_level_dir(level_name) + "/TV/Channels/PONG/player1.txt", ["config", "speed", 200]],
+	"p2": [LevelManager.get_level_dir(level_name) + "/TV/Channels/PONG/player2.txt", ["config", "speed", 200]],
 }
 var config_files = {}
 
@@ -137,11 +137,12 @@ func _on_pong_end(player_win: bool):
 func get_configs():
 	for key in config_file_locations.keys():
 		var cfg = ConfigFile.new()
-		if cfg.load(config_file_locations[key]) == OK:
+		if cfg.load(config_file_locations[key][0]) == OK:
 			config_files[key] = cfg
 		else:
-			printerr(level_name + ": loading config failed (" + config_files[key] + "). ERR: " + str(cfg.load(config_files[key])))
-			config_files[key] = null
+#			printerr(level_name + ": loading config failed (" + config_files[key] + "). ERR: " + str(cfg.load(config_files[key])))
+			cfg.set_value(config_file_locations[key][1][0], config_file_locations[key][1][1], config_file_locations[key][1][2])
+			config_files[key] = cfg
 
 
 func copy_folder_deep():
