@@ -34,5 +34,5 @@ func show_blue_screen(code):
 	EscOverlay.allowed = false
 	GameState.player_can_move = false
 	var code_label = overlay_blue.get_node("Code")
-	code_label.text = code
+	code_label.text = "Kód do záznamového archu: " + code
 	overlay_blue.show()
