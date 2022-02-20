@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://Resources/Themes/untitled_theme.tres" type="Theme" id=1]
 [ext_resource path="res://Scenes/UI/login.tscn" type="PackedScene" id=2]
@@ -31,6 +31,13 @@ font_path = "res://Resources/Fonts/8bitOperator/8bitOperatorPlus8-Bold.ttf"
 [sub_resource type="DynamicFont" id=23]
 size = 40
 font_data = SubResource( 22 )
+
+[sub_resource type="DynamicFontData" id=24]
+font_path = "res://Resources/Fonts/8bitOperator/8bitOperatorPlusSC-Bold.ttf"
+
+[sub_resource type="DynamicFont" id=25]
+size = 50
+font_data = SubResource( 24 )
 
 [sub_resource type="DynamicFontData" id=13]
 font_path = "res://Resources/Fonts/8bitOperator/8bitOperatorPlus-Bold.ttf"
@@ -414,7 +421,7 @@ position = Vector2( -10, 0 )
 scale = Vector2( 1.7, 1.7 )
 frames = ExtResource( 9 )
 animation = "adam_idle"
-frame = 5
+frame = 3
 playing = true
 centered = false
 
@@ -443,6 +450,7 @@ position = Vector2( -10, 0 )
 scale = Vector2( 1.7, 1.7 )
 frames = ExtResource( 9 )
 animation = "jakub_idle"
+frame = 4
 playing = true
 centered = false
 
@@ -471,7 +479,7 @@ position = Vector2( -10, 0 )
 scale = Vector2( 1.7, 1.7 )
 frames = ExtResource( 9 )
 animation = "martina_idle"
-frame = 5
+frame = 3
 playing = true
 centered = false
 
@@ -484,6 +492,111 @@ rect_scale = Vector2( 1.5, 1.5 )
 text = "Martina Prokšová"
 __meta__ = {
 "_edit_use_anchors_": false
+}
+
+[node name="QRCode Generator" type="Control" parent="GUI/About"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 515.0
+margin_top = 57.0
+margin_right = 515.0
+margin_bottom = 25.0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="GUI/About/QRCode Generator"]
+margin_right = 740.0
+margin_bottom = 470.0
+rect_min_size = Vector2( 740, 470 )
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GUI/About/QRCode Generator/ScrollContainer"]
+margin_right = 740.0
+margin_bottom = 850.0
+rect_min_size = Vector2( 740, 850 )
+
+[node name="QRCode" type="Control" parent="GUI/About/QRCode Generator/ScrollContainer/VBoxContainer"]
+margin_right = 740.0
+margin_bottom = 200.0
+rect_min_size = Vector2( 0, 200 )
+
+[node name="QRCode" type="TextureButton" parent="GUI/About/QRCode Generator/ScrollContainer/VBoxContainer/QRCode"]
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 51.0
+margin_bottom = 51.0
+rect_scale = Vector2( 5, 5 )
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource( 11 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="License" type="Control" parent="GUI/About/QRCode Generator/ScrollContainer/VBoxContainer"]
+margin_top = 204.0
+margin_right = 740.0
+margin_bottom = 619.0
+rect_min_size = Vector2( 740, 415 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="GUI/About/QRCode Generator/ScrollContainer/VBoxContainer/License"]
+margin_right = 740.0
+margin_bottom = 405.0
+size_flags_horizontal = 3
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
+[node name="Spacer" type="Control" parent="GUI/About/QRCode Generator/ScrollContainer/VBoxContainer/License/HBoxContainer"]
+margin_right = 10.0
+margin_bottom = 405.0
+rect_min_size = Vector2( 10, 0 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="QRCodeLicense" type="RichTextLabel" parent="GUI/About/QRCode Generator/ScrollContainer/VBoxContainer/License/HBoxContainer"]
+margin_left = 14.0
+margin_right = 716.0
+margin_bottom = 405.0
+size_flags_horizontal = 3
+bbcode_enabled = true
+bbcode_text = "[color=white]Copyright (c) 2021 Project Nayuki. (MIT License)
+
+[color=aqua][url]https://www.nayuki.io/page/qr-code-generator-library[/url][/color]
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.[/color]"
+text = "Copyright (c) 2021 Project Nayuki. (MIT License)
+
+https://www.nayuki.io/page/qr-code-generator-library
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE."
+fit_content_height = true
+scroll_active = false
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="Spacer2" type="Control" parent="GUI/About/QRCode Generator/ScrollContainer/VBoxContainer/License/HBoxContainer"]
+margin_left = 720.0
+margin_right = 740.0
+margin_bottom = 405.0
+rect_min_size = Vector2( 20, 0 )
+__meta__ = {
+"_editor_description_": ""
 }
 
 [node name="3rdParty2" type="TabContainer" parent="GUI/About"]
@@ -500,6 +613,7 @@ __meta__ = {
 }
 
 [node name="Godot Engine" type="Control" parent="GUI/About/3rdParty2"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = 32.0
@@ -588,13 +702,16 @@ margin_right = 740.0
 margin_bottom = 608.0
 rect_min_size = Vector2( 20, 0 )
 
-[node name="QRCode Generator" type="Control" parent="GUI/About/3rdParty2"]
+[node name="8bitOperator" type="Control" parent="GUI/About/3rdParty2"]
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = 32.0
+__meta__ = {
+"_editor_description_": ""
+}
 
-[node name="ScrollContainer" type="ScrollContainer" parent="GUI/About/3rdParty2/QRCode Generator"]
+[node name="ScrollContainer" type="ScrollContainer" parent="GUI/About/3rdParty2/8bitOperator"]
 margin_right = 740.0
 margin_bottom = 470.0
 rect_min_size = Vector2( 740, 470 )
@@ -603,92 +720,184 @@ __meta__ = {
 "_editor_description_": ""
 }
 
-[node name="VBoxContainer" type="VBoxContainer" parent="GUI/About/3rdParty2/QRCode Generator/ScrollContainer"]
-margin_right = 740.0
-margin_bottom = 850.0
-rect_min_size = Vector2( 740, 850 )
+[node name="VBoxContainer" type="VBoxContainer" parent="GUI/About/3rdParty2/8bitOperator/ScrollContainer"]
+margin_right = 735.0
+margin_bottom = 2580.0
+rect_min_size = Vector2( 735, 700 )
 
-[node name="QRCode" type="Control" parent="GUI/About/3rdParty2/QRCode Generator/ScrollContainer/VBoxContainer"]
-margin_right = 740.0
-margin_bottom = 200.0
-rect_min_size = Vector2( 0, 200 )
-
-[node name="QRCode" type="TextureButton" parent="GUI/About/3rdParty2/QRCode Generator/ScrollContainer/VBoxContainer/QRCode"]
-margin_left = 20.0
-margin_top = 20.0
-margin_right = 51.0
-margin_bottom = 51.0
-rect_scale = Vector2( 5, 5 )
+[node name="Label" type="Label" parent="GUI/About/3rdParty2/8bitOperator/ScrollContainer/VBoxContainer"]
+margin_right = 735.0
+margin_bottom = 71.0
+mouse_filter = 0
 mouse_default_cursor_shape = 2
-texture_normal = ExtResource( 11 )
+custom_fonts/font = SubResource( 25 )
+text = "  8bitOperator"
+valign = 1
+
+[node name="Spacer" type="Control" parent="GUI/About/3rdParty2/8bitOperator/ScrollContainer/VBoxContainer"]
+margin_top = 71.0
+margin_right = 735.0
+margin_bottom = 80.0
+rect_min_size = Vector2( 0, 9 )
+
+[node name="License" type="Control" parent="GUI/About/3rdParty2/8bitOperator/ScrollContainer/VBoxContainer"]
+margin_top = 80.0
+margin_right = 735.0
+margin_bottom = 2580.0
+rect_min_size = Vector2( 735, 2500 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="GUI/About/3rdParty2/8bitOperator/ScrollContainer/VBoxContainer/License"]
+margin_right = 735.0
+margin_bottom = 2489.0
+size_flags_horizontal = 3
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="License" type="Control" parent="GUI/About/3rdParty2/QRCode Generator/ScrollContainer/VBoxContainer"]
-margin_top = 200.0
-margin_right = 740.0
-margin_bottom = 615.0
-rect_min_size = Vector2( 740, 415 )
-__meta__ = {
-"_editor_description_": ""
-}
-
-[node name="HBoxContainer" type="HBoxContainer" parent="GUI/About/3rdParty2/QRCode Generator/ScrollContainer/VBoxContainer/License"]
-margin_right = 740.0
-margin_bottom = 405.0
-size_flags_horizontal = 3
-__meta__ = {
-"_edit_use_anchors_": false,
-"_editor_description_": ""
-}
-
-[node name="Spacer" type="Control" parent="GUI/About/3rdParty2/QRCode Generator/ScrollContainer/VBoxContainer/License/HBoxContainer"]
+[node name="Spacer" type="Control" parent="GUI/About/3rdParty2/8bitOperator/ScrollContainer/VBoxContainer/License/HBoxContainer"]
 margin_right = 10.0
-margin_bottom = 405.0
+margin_bottom = 2489.0
 rect_min_size = Vector2( 10, 0 )
-__meta__ = {
-"_editor_description_": ""
-}
 
-[node name="QRCodeLicense" type="RichTextLabel" parent="GUI/About/3rdParty2/QRCode Generator/ScrollContainer/VBoxContainer/License/HBoxContainer"]
+[node name="RichTextLabel" type="RichTextLabel" parent="GUI/About/3rdParty2/8bitOperator/ScrollContainer/VBoxContainer/License/HBoxContainer"]
 margin_left = 10.0
-margin_right = 720.0
-margin_bottom = 405.0
+margin_right = 715.0
+margin_bottom = 2489.0
 size_flags_horizontal = 3
-bbcode_enabled = true
-bbcode_text = "[color=white]Copyright (c) 2021 Project Nayuki. (MIT License)
+text = "Copyright (c) 2009 - 2014 Grand Chaos Productions (http://grandchaos9000.deviantart.com), with Reserved Font Name 8-bit Operator+.
 
-[color=aqua][url]https://www.nayuki.io/page/qr-code-generator-library[/url][/color]
+This Font Software is licensed under the SIL Open Font License, Version 1.1.
+This license is copied below, and is also available with a FAQ at: http://scripts.sil.org/OFL
 
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+------------------------------------------------------
+SIL OPEN FONT LICENSE Version 1.1 - 26 February 2007
+------------------------------------------------------
 
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+PREAMBLE
+The goals of the Open Font License (OFL) are to stimulate worldwide development of collaborative font projects, to support the font creation efforts of academic and linguistic communities, and to provide a free and open framework in which fonts may be shared and improved in partnership with others.
 
-THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.[/color]"
-text = "Copyright (c) 2021 Project Nayuki. (MIT License)
+The OFL allows the licensed fonts to be used, studied, modified and redistributed freely as long as they are not sold by themselves. The fonts, including any derivative works, can be bundled, embedded, redistributed and/or sold with any software provided that any reserved names are not used by derivative works. The fonts and derivatives, however, cannot be released under any other type of license. The requirement for fonts to remain under this license does not apply to any document created using the fonts or their derivatives.
 
-https://www.nayuki.io/page/qr-code-generator-library
+DEFINITIONS
+\"Font Software\" refers to the set of files released by the Copyright Holder(s) under this license and clearly marked as such. This may include source files, build scripts and documentation.
 
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+\"Reserved Font Name\" refers to any names specified as such after the copyright statement(s).
 
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+\"Original Version\" refers to the collection of Font Software components as distributed by the Copyright Holder(s).
 
-THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE."
+\"Modified Version\" refers to any derivative made by adding to, deleting, or substituting -- in part or in whole -- any of the components of the Original Version, by changing formats or by porting the Font Software to a new environment.
+
+\"Author\" refers to any designer, engineer, programmer, technical writer or other person who contributed to the Font Software.
+
+PERMISSION & CONDITIONS
+Permission is hereby granted, free of charge, to any person obtaining a copy of the Font Software, to use, study, copy, merge, embed, modify, redistribute, and sell modified and unmodified copies of the Font Software, subject to the following conditions:
+
+1) Neither the Font Software nor any of its individual components, in Original or Modified Versions, may be sold by itself.
+
+2) Original or Modified Versions of the Font Software may be bundled, redistributed and/or sold with any software, provided that each copy contains the above copyright notice and this license. These can be included either as stand-alone text files, human-readable headers or in the appropriate machine-readable metadata fields within text or binary files as long as those fields can be easily viewed by the user.
+
+3) No Modified Version of the Font Software may use the Reserved Font Name(s) unless explicit written permission is granted by the corresponding Copyright Holder. This restriction only applies to the primary font name as presented to the users.
+
+4) The name(s) of the Copyright Holder(s) or the Author(s) of the Font Software shall not be used to promote, endorse or advertise any Modified Version, except to acknowledge the contribution(s) of the Copyright Holder(s) and the Author(s) or with their explicit written permission.
+
+5) The Font Software, modified or unmodified, in part or in whole, must be distributed entirely under this license, and must not be distributed under any other license. The requirement for fonts to remain under this license does not apply to any document created using the Font Software.
+
+TERMINATION
+This license becomes null and void if any of the above conditions are not met.
+
+DISCLAIMER
+THE FONT SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO ANY WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT OF COPYRIGHT, PATENT, TRADEMARK, OR OTHER RIGHT. IN NO EVENT SHALL THE COPYRIGHT HOLDER BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, INCLUDING ANY GENERAL, SPECIAL, INDIRECT, INCIDENTAL, OR CONSEQUENTIAL DAMAGES, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF THE USE OR INABILITY TO USE THE FONT SOFTWARE OR FROM OTHER DEALINGS IN THE FONT SOFTWARE.
+"
 fit_content_height = true
 scroll_active = false
 __meta__ = {
 "_editor_description_": ""
 }
 
-[node name="Spacer2" type="Control" parent="GUI/About/3rdParty2/QRCode Generator/ScrollContainer/VBoxContainer/License/HBoxContainer"]
-margin_left = 720.0
-margin_right = 740.0
-margin_bottom = 405.0
+[node name="Spacer2" type="Control" parent="GUI/About/3rdParty2/8bitOperator/ScrollContainer/VBoxContainer/License/HBoxContainer"]
+margin_left = 715.0
+margin_right = 735.0
+margin_bottom = 2489.0
 rect_min_size = Vector2( 20, 0 )
+
+[node name="CRT Shader" type="Control" parent="GUI/About/3rdParty2"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 32.0
 __meta__ = {
 "_editor_description_": ""
 }
+
+[node name="ScrollContainer" type="ScrollContainer" parent="GUI/About/3rdParty2/CRT Shader"]
+margin_right = 740.0
+margin_bottom = 470.0
+rect_min_size = Vector2( 740, 470 )
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GUI/About/3rdParty2/CRT Shader/ScrollContainer"]
+margin_right = 735.0
+margin_bottom = 468.0
+rect_min_size = Vector2( 735, 468 )
+
+[node name="CRTLabel" type="Label" parent="GUI/About/3rdParty2/CRT Shader/ScrollContainer/VBoxContainer"]
+margin_right = 735.0
+margin_bottom = 71.0
+mouse_filter = 0
+mouse_default_cursor_shape = 2
+custom_fonts/font = SubResource( 25 )
+text = "  VHS & CRT Shader"
+valign = 1
+
+[node name="Spacer" type="Control" parent="GUI/About/3rdParty2/CRT Shader/ScrollContainer/VBoxContainer"]
+margin_top = 71.0
+margin_right = 735.0
+margin_bottom = 80.0
+rect_min_size = Vector2( 0, 9 )
+
+[node name="License" type="Control" parent="GUI/About/3rdParty2/CRT Shader/ScrollContainer/VBoxContainer"]
+margin_top = 80.0
+margin_right = 735.0
+margin_bottom = 380.0
+rect_min_size = Vector2( 735, 300 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="GUI/About/3rdParty2/CRT Shader/ScrollContainer/VBoxContainer/License"]
+margin_right = 735.0
+margin_bottom = 300.0
+size_flags_horizontal = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Spacer" type="Control" parent="GUI/About/3rdParty2/CRT Shader/ScrollContainer/VBoxContainer/License/HBoxContainer"]
+margin_right = 10.0
+margin_bottom = 300.0
+rect_min_size = Vector2( 10, 0 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="GUI/About/3rdParty2/CRT Shader/ScrollContainer/VBoxContainer/License/HBoxContainer"]
+margin_left = 10.0
+margin_right = 715.0
+margin_bottom = 300.0
+size_flags_horizontal = 3
+text = "Shader from Godot Shaders - the free shader library.
+godotshaders.com/shader/VHS-and-CRT-monitor-effect
+
+This shader is under CC0 license. Feel free to use, improve and 
+change this shader according to your needs and consider sharing 
+the modified result to godotshaders.com."
+fit_content_height = true
+scroll_active = false
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="Spacer2" type="Control" parent="GUI/About/3rdParty2/CRT Shader/ScrollContainer/VBoxContainer/License/HBoxContainer"]
+margin_left = 715.0
+margin_right = 735.0
+margin_bottom = 300.0
+rect_min_size = Vector2( 20, 0 )
 
 [node name="Login" parent="." instance=ExtResource( 2 )]
 
@@ -752,6 +961,8 @@ mouse_filter = 2
 [connection signal="toggled" from="GUI/Settings/SettingsTab/Graphics/VBoxContainer/Vsync/Vsync" to="." method="_on_Vsync_toggled"]
 [connection signal="toggled" from="GUI/Settings/SettingsTab/Graphics/VBoxContainer/VsyncCompositor/VsyncCompositor" to="." method="_on_VsyncCompositor_toggled"]
 [connection signal="item_selected" from="GUI/Settings/SettingsTab/User/VBoxContainer/Locale/Language" to="." method="_on_Language_item_selected"]
+[connection signal="pressed" from="GUI/About/QRCode Generator/ScrollContainer/VBoxContainer/QRCode/QRCode" to="." method="_on_QRCode_pressed"]
+[connection signal="meta_clicked" from="GUI/About/QRCode Generator/ScrollContainer/VBoxContainer/License/HBoxContainer/QRCodeLicense" to="." method="_on_QRCodeLicense_meta_clicked"]
 [connection signal="pressed" from="GUI/About/3rdParty2/Godot Engine/ScrollContainer/VBoxContainer/Logo/GodotLogo" to="." method="_on_GodotLogo_pressed"]
-[connection signal="pressed" from="GUI/About/3rdParty2/QRCode Generator/ScrollContainer/VBoxContainer/QRCode/QRCode" to="." method="_on_QRCode_pressed"]
-[connection signal="meta_clicked" from="GUI/About/3rdParty2/QRCode Generator/ScrollContainer/VBoxContainer/License/HBoxContainer/QRCodeLicense" to="." method="_on_QRCodeLicense_meta_clicked"]
+[connection signal="gui_input" from="GUI/About/3rdParty2/8bitOperator/ScrollContainer/VBoxContainer/Label" to="." method="_on_Label_gui_input"]
+[connection signal="gui_input" from="GUI/About/3rdParty2/CRT Shader/ScrollContainer/VBoxContainer/CRTLabel" to="." method="_on_CRTLabel_gui_input"]

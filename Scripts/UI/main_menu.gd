@@ -174,3 +174,15 @@ func _on_VsyncCompositor_toggled(button_pressed):
 func _on_Language_item_selected(index):
 	GameState.config.set_value("user", "locale", languages[index])
 	GameState.config.apply()
+
+
+func _on_Label_gui_input(event):
+	if event is InputEventMouseButton and event.button_index == BUTTON_LEFT and event.pressed:
+		# warning-ignore:return_value_discarded
+		OS.shell_open("https://fonts2u.com/8bitoperator-regular.font")
+
+
+func _on_CRTLabel_gui_input(event):
+	if event is InputEventMouseButton and event.button_index == BUTTON_LEFT and event.pressed:
+		# warning-ignore:return_value_discarded
+		OS.shell_open("https://godotshaders.com/shader/VHS-and-CRT-monitor-effect/")
