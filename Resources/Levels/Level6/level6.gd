@@ -162,7 +162,7 @@ func _submit_callback(code, response):
 func handle_event(_source, event):
 	if event == "player_reached_door":
 		var code = GameCode.generate(
-			"level6", # Challenge Id -> GameCode.CHALLENGE_IDS
+			"reserve2", # Challenge Id -> GameCode.CHALLENGE_IDS
 			GameState.score # Collected coins
 			+ 1500 # Level completion bonus
 		)
