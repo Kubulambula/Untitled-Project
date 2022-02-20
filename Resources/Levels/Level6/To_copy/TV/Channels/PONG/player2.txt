@@ -1,2 +1,2 @@
 [config]
-speed=300
+speed=200

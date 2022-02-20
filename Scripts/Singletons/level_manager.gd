@@ -331,8 +331,11 @@ func restart_level(level_data):
 		player["node"].set_global_position(start_position)
 	var coins = LevelManager.find_entities(level_data, "$")
 	for coin in coins:
-		coin["node"].set("is_collected", false)
-		coin["node"].show()
+		coin["node"].set_collected(false)
+#	var boxes = LevelManager.find_entities(level_data, "C")
+#	for box in boxes:
+#		printerr(box)
+#		box["node"].reset(box["position"])
 
 func get_internal_option(level, option):
 	var internal_level_data = _load_internal_level_data_from_cache(level)

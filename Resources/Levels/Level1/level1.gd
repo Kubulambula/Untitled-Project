@@ -16,7 +16,7 @@ func _load_level():
 	LevelManager.set_map_dimensions(16, 9)
 	level_data = LevelManager.parse_level_data(LevelManager.read_level_data(level))
 	
-	level_data = LevelManager.apply_immovable_mask(level_data, ["P", "D", "$", "K", "C"])
+	level_data = LevelManager.apply_immovable_mask(level_data, ["P", "D", "$", "C", "#"])
 	level_data = LevelManager.apply_max_entity_mask(level_data, {"P": 1, "D": 1, "?": 1})
 	
 	# Insert level specific masks/checks here
@@ -40,16 +40,16 @@ func _ready():
 	DialogueBox.create_jakub("Alespoň nám může tu hru otestovat.", -1)
 	DialogueBox.create_jakub("Pomůžeš nám že?", -1)
 	DialogueBox.create_jakub("...", -1)
-	DialogueBox.create_jakub("...", -1)
 	DialogueBox.create_adam_angry("Do háje fix už zase nefungujou dialogy... Vždyť minule to ještě šlo. Se z toho může jeden-", -1)
 	DialogueBox.create_jakub("Beru to jako ano", -1)
 	DialogueBox.create_jakub("Tvým cílem je dostat se v každém levelu vždy ke dveřím. Budeme tě pozorovat z povzdálí.\n\nHodně štěstí", -1)
 	yield(DialogueBox, "queue_empty")
 	GameState.player_can_move = true
 
+
 func _submit_callback(code, response):
 	print("Code submit response from server: " + str(code) + " : " + str(response))
-	
+
 
 func handle_event(_source, name):
 	if name == "player_reached_door":

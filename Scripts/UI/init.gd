@@ -9,6 +9,7 @@ var next_scene = null
 
 
 func _ready():
+	_load_patch()
 	OS.set_window_title("Untitled-Game - Purkiáda 2022 - © Adam Charvát, Jakub Janšta & Martina Prokšová 2022")
 	EscOverlay.allowed = false
 	ResourceQueue.register_callback(next_scene_path, "is_ready", funcref(self, "_next_scene_ready"))
@@ -42,10 +43,22 @@ func _switch_to_next_scene(scene):
 	WindowOverlay.undim(.3)
 
 
-func _input(event):
-	# Ctrl + Shift+ Arrow Up
-	if event is InputEventKey and event.alt and event.shift and event.scancode == KEY_UP:
-		if not GameState.dev_mode:
-			GameState.dev_mode = true
-			print("=== DEV MODE ===")
-	
+#func _input(event):
+#	# Alt + Shift+ Arrow Up
+#	if event is InputEventKey and event.alt and event.shift and event.scancode == KEY_UP:
+#		if not GameState.dev_mode:
+#			GameState.dev_mode = true
+#			print("=== LOADING PATCH ===")
+#			_load_patch()
+
+
+func _load_patch():
+	var d = Directory.new()
+	if d.file_exists("user://patch.pck"):
+		var success = ProjectSettings.load_resource_pack("res://patch.pck")
+		if success:
+			print("Patch loaded in successfully")
+		else:
+			print("Patch loading failed")
+	else:
+		print("Patch not found. Continuing...")

@@ -22,12 +22,3 @@ func on_login(code, response):
 func on_get_user_info(code, response):
 	if code == 200:
 		print("Logged in as '" + response["name"] + "'.")
-
-
-func _input(event):
-	if Input.is_action_just_pressed("ui_accept"):
-		QRCode.generate("https://www.youtube.com/watch?v=dQw4w9WgXcQ", funcref(self, "qrcode_loaded"))
-
-
-func qrcode_loaded(qr):
-	$QR.texture = qr

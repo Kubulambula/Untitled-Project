@@ -1,0 +1,143 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://Resources/Levels/Level6/level6.gd" type="Script" id=1]
+[ext_resource path="res://Resources/Tiles/tileset.tres" type="TileSet" id=2]
+[ext_resource path="res://Scenes/Entities/Player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/Other/Background.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/Entities/TV/tv.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Resources/Entities/characters.tres" type="SpriteFrames" id=6]
+[ext_resource path="res://Scenes/Entities/Door.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Resources/Entities/DISCO/you_spin_me.mp3" type="AudioStream" id=8]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 50, 100 )
+
+[sub_resource type="Animation" id=4]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Prompt/Label:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "blink"
+length = 2.5
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Prompt/Label:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0.392157 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.392157 ) ]
+}
+
+[sub_resource type="DynamicFontData" id=2]
+font_path = "res://Resources/Fonts/8bitOperator/8bitOperatorPlus8-Bold.ttf"
+
+[sub_resource type="DynamicFont" id=3]
+size = 20
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+font_data = SubResource( 2 )
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 10, 200 )
+
+[sub_resource type="RectangleShape2D" id=7]
+extents = Vector2( 10, 100 )
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="Background" parent="." instance=ExtResource( 4 )]
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource( 2 )
+cell_size = Vector2( 80, 80 )
+format = 1
+tile_data = PoolIntArray( 131071, 0, 786440, 65536, 0, 786443, 65551, 0, 524296, 65552, 0, 11, 196607, 0, 589832, 131072, 0, 393227, 131087, 0, 327688, 131088, 0, 917515, 262143, 0, 327688, 196608, 0, 393227, 196623, 0, 589832, 196624, 0, 917515, 327679, 0, 851976, 262144, 0, 655371, 262159, 0, 327688, 262160, 0, 393227, 393215, 0, 327688, 327680, 0, 917515, 327695, 0, 589832, 327696, 0, 393227, 458751, 0, 327688, 393216, 0, 589830, 393217, 0, 786442, 393218, 0, 262154, 393219, 0, 786442, 393220, 0, 524298, 393221, 0, 786442, 393222, 0, 524298, 393223, 0, 10, 393224, 0, 786442, 393225, 0, 786442, 393226, 0, 524298, 393227, 0, 524298, 393228, 0, 524298, 393229, 0, 262154, 393230, 0, 262154, 393231, 0, 851973, 393232, 0, 655371, 524287, 0, 65544, 458752, 0, 393225, 458753, 0, 393225, 458754, 0, 917513, 458755, 0, 131081, 458756, 0, 393225, 458757, 0, 131081, 458758, 0, 917513, 458759, 0, 917513, 458760, 0, 917513, 458761, 0, 917513, 458762, 0, 393225, 458763, 0, 393225, 458764, 0, 393225, 458765, 0, 393225, 458766, 0, 393225, 458767, 0, 393225, 458768, 0, 917515, 589823, 0, 327688, 524288, 0, 393225, 524289, 0, 655369, 524290, 0, 917513, 524291, 0, 655369, 524292, 0, 393225, 524293, 0, 917513, 524294, 0, 655369, 524295, 0, 393225, 524296, 0, 393225, 524297, 0, 393225, 524298, 0, 655369, 524299, 0, 917513, 524300, 0, 917513, 524301, 0, 917513, 524302, 0, 917513, 524303, 0, 917513, 524304, 0, 131083, 655359, 0, 458760, 589824, 0, 983049, 589825, 0, 458761, 589826, 0, 458761, 589827, 0, 458761, 589828, 0, 720905, 589829, 0, 983049, 589830, 0, 983049, 589831, 0, 196617, 589832, 0, 720905, 589833, 0, 720905, 589834, 0, 458761, 589835, 0, 720905, 589836, 0, 983049, 589837, 0, 720905, 589838, 0, 458761, 589839, 0, 458761, 589840, 0, 458763 )
+
+[node name="TV" parent="." instance=ExtResource( 5 )]
+position = Vector2( 323, 75 )
+scale = Vector2( 2, 2 )
+
+[node name="Area2D" type="Area2D" parent="TV"]
+position = Vector2( 70, 100 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TV/Area2D"]
+shape = SubResource( 1 )
+
+[node name="Jakub" type="AnimatedSprite" parent="TV"]
+position = Vector2( 97.5, 183.5 )
+scale = Vector2( 0.5, 0.5 )
+frames = ExtResource( 6 )
+animation = "jakub_idle"
+frame = 5
+playing = true
+flip_h = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="TV"]
+autoplay = "blink"
+anims/RESET = SubResource( 4 )
+anims/blink = SubResource( 5 )
+
+[node name="Prompt" type="Control" parent="TV"]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="TV/Prompt"]
+margin_left = 114.0
+margin_top = 167.0
+margin_right = 154.0
+margin_bottom = 182.0
+rect_scale = Vector2( 1.5, 1.5 )
+custom_fonts/font = SubResource( 3 )
+text = "[E]"
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
+[node name="YouSpinMe" type="AudioStreamPlayer2D" parent="TV"]
+position = Vector2( 127, 100 )
+stream = ExtResource( 8 )
+
+[node name="Player" parent="." instance=ExtResource( 3 )]
+position = Vector2( 229, 434 )
+
+[node name="Area2D" parent="." instance=ExtResource( 7 )]
+position = Vector2( 1167, 439 )
+
+[node name="InvisibleWall" type="Node2D" parent="."]
+
+[node name="WallHitBox" type="StaticBody2D" parent="InvisibleWall"]
+position = Vector2( 1112, 298 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InvisibleWall/WallHitBox"]
+shape = SubResource( 6 )
+
+[node name="Wall" type="Area2D" parent="InvisibleWall"]
+position = Vector2( 1089, 388 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InvisibleWall/Wall"]
+shape = SubResource( 7 )
+
+[connection signal="body_entered" from="TV/Area2D" to="." method="_on_Area2D_body_entered"]
+[connection signal="body_exited" from="TV/Area2D" to="." method="_on_Area2D_body_exited"]
+[connection signal="body_entered" from="InvisibleWall/Wall" to="." method="_on_Wall_body_entered"]

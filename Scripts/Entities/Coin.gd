@@ -23,10 +23,11 @@ func _ready():
 	set_coin_type(coin_type)
 
 func set_collected(value: bool):
+	is_collected = value
 	if value:
 		$AnimationPlayer.play("collect")
 	else:
-		$AnimationPlayer.stop(true)
+		$AnimationPlayer.play("RESET")
 
 
 func collect():
@@ -37,5 +38,6 @@ func collect():
 #		self.hide()
 
 func _on_Area2D_body_entered(body):
-	if body.name == "Player":
+#	print("colision")
+	if body.name == "Player" or body is KinematicBody2D:
 		collect()
