@@ -41,8 +41,8 @@ func _ready():
 	DialogueBox.create_jakub("Pomůžeš nám že?", -1)
 	DialogueBox.create_jakub("...", -1)
 	DialogueBox.create_adam_angry("Do háje fix už zase nefungujou dialogy... Vždyť minule to ještě šlo. Se z toho může jeden-", -1)
-	DialogueBox.create_jakub("Beru to jako ano", -1)
-	DialogueBox.create_jakub("Tvým cílem je dostat se v každém levelu vždy ke dveřím. Budeme tě pozorovat z povzdálí.\n\nHodně štěstí", -1)
+	DialogueBox.create_jakub("Beru to jako ano.", -1)
+	DialogueBox.create_jakub("Tvým cílem je dostat se v každém levelu vždy ke dveřím. Budeme tě pozorovat z povzdálí.\n\nHodně štěstí.", -1)
 	yield(DialogueBox, "queue_empty")
 	GameState.player_can_move = true
 

@@ -32,10 +32,10 @@ func _ready():
 	_load_level()
 	
 	GameState.player_can_move = false
-	DialogueBox.create_adam("Tak a je to - Level2", -1)
+	DialogueBox.create_adam("Tak a je to - Level2.", -1)
 	DialogueBox.create_adam("Hmmm...", -1)
 	DialogueBox.create_adam_angry("Co kdyby ALESPOŇ NĚCO FUNGOVALO?", -1)
-	DialogueBox.create_jakub_angry("Proč je ta podlaha zase v úplně jiný úrovni, než má být?\nTo není možný... Ta Purkiáda se FAKT nestihne", -1)
+	DialogueBox.create_jakub_angry("Proč je ta podlaha zase v úplně jiný úrovni, než má být?\nTo není možný... Ta Purkiáda se FAKT nestihne.", -1)
 	DialogueBox.create_jakub("Zedituj si prosímtě nějak tu mapu, ať můžeš do dalšího levelu...", -1)
 	yield(DialogueBox, "queue_empty")
 	GameState.player_can_move = true
