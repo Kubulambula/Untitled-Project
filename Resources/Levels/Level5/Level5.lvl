@@ -1,0 +1,15 @@
+; Welcome Stranger!
+
+[Map]
+#########      #
+#$ C  ###  #  $#
+####    #  #####
+#$ #          D#
+## # # #####  ##
+## #          ##
+#PC     C      #
+###  ######    #
+################
+
+[Settings]
+door_destination=level3
