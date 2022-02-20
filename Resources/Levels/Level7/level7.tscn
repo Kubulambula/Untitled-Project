@@ -1,0 +1,67 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Scenes/Other/Background.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Resources/Tiles/tileset.tres" type="TileSet" id=2]
+[ext_resource path="res://Resources/Entities/characters.tres" type="SpriteFrames" id=3]
+[ext_resource path="res://Scenes/Entities/Player.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Resources/Levels/Level7/level7.gd" type="Script" id=5]
+
+[sub_resource type="StreamTexture" id=3]
+flags = 6
+load_path = "res://.import/missing_background_2_80x80.png-9394983b75dc10f6e98ab0a821550015.stex"
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 10, 200 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 10, 209 )
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource( 5 )
+
+[node name="Background" parent="." instance=ExtResource( 1 )]
+position = Vector2( 284, 89 )
+
+[node name="MissingBackground" type="Node2D" parent="."]
+visible = false
+
+[node name="Sprite" type="Sprite" parent="MissingBackground"]
+position = Vector2( 600, 419 )
+texture = SubResource( 3 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 2000, 1000 )
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource( 2 )
+cell_size = Vector2( 80, 80 )
+format = 1
+tile_data = PoolIntArray( 131071, 0, 524296, 65536, 0, 11, 65551, 0, 786440, 65552, 0, 524299, 196607, 0, 589832, 131072, 0, 393227, 131087, 0, 327688, 131088, 0, 655371, 262143, 0, 327688, 196608, 0, 393227, 196623, 0, 589832, 196624, 0, 917515, 327679, 0, 851976, 262144, 0, 655371, 262159, 0, 327688, 262160, 0, 393227, 393215, 0, 327688, 327680, 0, 917515, 327695, 0, 65544, 327696, 0, 393227, 458751, 0, 327688, 393216, 0, 655371, 393231, 0, 327688, 393232, 0, 655371, 524287, 0, 65544, 458752, 0, 655371, 458767, 0, 589832, 458768, 0, 655371, 589823, 0, 327688, 524288, 0, 589830, 524289, 0, 262154, 524290, 0, 10, 524291, 0, 10, 524292, 0, 524298, 524293, 0, 524298, 524294, 0, 524298, 524295, 0, 262154, 524296, 0, 786442, 524297, 0, 262154, 524298, 0, 524298, 524299, 0, 262154, 524300, 0, 524298, 524301, 0, 786442, 524302, 0, 10, 524303, 0, 851973, 524304, 0, 131083, 655359, 0, 458760, 589824, 0, 983049, 589825, 0, 458761, 589826, 0, 458761, 589827, 0, 458761, 589828, 0, 720905, 589829, 0, 983049, 589830, 0, 983049, 589831, 0, 196617, 589832, 0, 720905, 589833, 0, 720905, 589834, 0, 458761, 589835, 0, 720905, 589836, 0, 983049, 589837, 0, 720905, 589838, 0, 458761, 589839, 0, 458761, 589840, 0, 458763 )
+
+[node name="Adam" type="AnimatedSprite" parent="."]
+position = Vector2( 1128, 491 )
+scale = Vector2( 3.7375, 3.7375 )
+frames = ExtResource( 3 )
+animation = "adam_idle"
+frame = 1
+playing = true
+flip_h = true
+
+[node name="Player" parent="." instance=ExtResource( 4 )]
+position = Vector2( 124, 602 )
+
+[node name="InvisibleWall" type="Node2D" parent="."]
+
+[node name="WallHitBox" type="StaticBody2D" parent="InvisibleWall"]
+position = Vector2( 1112, 298 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InvisibleWall/WallHitBox"]
+position = Vector2( -28, 137 )
+shape = SubResource( 1 )
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( 208, 436 )
+shape = SubResource( 2 )
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]

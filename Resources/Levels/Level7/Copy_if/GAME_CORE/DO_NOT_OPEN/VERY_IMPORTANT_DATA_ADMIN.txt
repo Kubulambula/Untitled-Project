@@ -1,0 +1,17 @@
+; Hlavní konfigurace - Admin/Superuser
+
+[Game]
+
+; Grafický modul, zobrazování textur, entit, ...
+graphics_module=true
+
+; Logika hry, pohyb hráče, přehrávání animací, ...
+logic_module=true
+
+; Jádro hry, v žádném případě nevypínat!!!
+core_module=true
+
+[Failsafe]
+; Zabránit spadnutí hry při špatném nastavení
+prevent_crash=true
+

@@ -1,0 +1,11 @@
+; Hlavní konfigurace
+
+; Upozornění: Některá nastavení byla pro bezpečnost odstraněna.
+
+; Nastavení, které udává jestli se mají načítat textury hry.
+[Textures]
+load=true
+
+; Poznámka vývojáře: Adame oprav to už konečně,
+;     víš přece o té chybě, že když vypnou textury hry,
+;     tak nad ní získají větší kontrolu!

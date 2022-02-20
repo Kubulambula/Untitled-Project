@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Resources/Entities/portraits.tres" type="SpriteFrames" id=1]
 [ext_resource path="res://Resources/Themes/textbox_adam.png" type="Texture" id=2]
 [ext_resource path="res://Resources/Themes/textbox_kuba.png" type="Texture" id=3]
 [ext_resource path="res://Resources/Themes/untitled_theme.tres" type="Theme" id=4]
+[ext_resource path="res://Resources/Themes/textbox_adam_missing.png" type="Texture" id=5]
 
 [sub_resource type="Animation" id=1]
 resource_name = "blink"
@@ -21,6 +22,27 @@ tracks/0/keys = {
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.392157 ), Color( 1, 1, 1, 1 ) ]
 }
+
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 2 )
+region = Rect2( 0, 0, 820, 190 )
+
+[sub_resource type="AtlasTexture" id=5]
+atlas = ExtResource( 5 )
+region = Rect2( 0, 0, 820, 190 )
+
+[sub_resource type="SpriteFrames" id=6]
+animations = [ {
+"frames": [ SubResource( 4 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 5 ) ],
+"loop": true,
+"name": "missing",
+"speed": 5.0
+} ]
 
 [sub_resource type="DynamicFontData" id=2]
 font_path = "res://Resources/Fonts/8bitOperator/8bitOperatorPlus8-Bold.ttf"
@@ -50,8 +72,8 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="AdamBox" type="Sprite" parent="Window"]
-texture = ExtResource( 2 )
+[node name="AdamBox" type="AnimatedSprite" parent="Window"]
+frames = SubResource( 6 )
 centered = false
 offset = Vector2( 30, 500 )
 

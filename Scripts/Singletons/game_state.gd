@@ -11,6 +11,7 @@ const map_tile_size: Vector2 = Vector2(16, 9)
 var player_can_move = true
 
 var current_level = null
+var finish_chapter = null
 
 var version = ProjectSettings.get_setting("untitled_project/config/version")
 
@@ -27,6 +28,7 @@ func _init():
 	# warning-ignore:return_value_discarded
 	config.load_data()
 	current_level = config.get_value("game", "current_level", "level1")
+	finish_chapter = config.get_value("game", "finish_chapter", "chapter1")
 
 func _ready():
 	config.apply()
@@ -45,6 +47,7 @@ func pls_quit():
 	print("[QUIT REQUEST]")
 	# warning-ignore:return_value_discarded
 	config.set_value("game", "current_level", current_level)
+	config.set_value("game", "finish_chapter", finish_chapter)
 	config.save_data()
 	print("[QUITTING]")
 	get_tree().quit()
