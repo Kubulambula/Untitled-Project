@@ -108,7 +108,6 @@ margin_right = 987.0
 margin_bottom = 717.0
 theme = SubResource( 8 )
 valign = 1
-autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
