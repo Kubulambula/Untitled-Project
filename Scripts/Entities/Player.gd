@@ -107,6 +107,9 @@ func _physics_process(delta):
 	
 
 	match state:
+		CUSTOM:
+			GFX.stop()
+		
 		IDLE:
 			GFX.play("player_idle")
 			if direction:

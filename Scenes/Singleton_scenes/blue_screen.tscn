@@ -1,0 +1,114 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Resources/Fonts/8bitOperator/8bitOperatorPlus8-Bold.ttf" type="DynamicFontData" id=1]
+
+[sub_resource type="DynamicFont" id=5]
+size = 128
+font_data = ExtResource( 1 )
+
+[sub_resource type="Theme" id=6]
+default_font = SubResource( 5 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 48
+font_data = ExtResource( 1 )
+
+[sub_resource type="Theme" id=4]
+default_font = SubResource( 3 )
+
+[sub_resource type="DynamicFont" id=7]
+size = 28
+font_data = ExtResource( 1 )
+
+[sub_resource type="Theme" id=8]
+default_font = SubResource( 7 )
+
+[node name="Control" type="CanvasLayer"]
+layer = 128
+
+[node name="Control" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="ColorRect" parent="Control"]
+margin_right = 1280.0
+margin_bottom = 720.0
+rect_min_size = Vector2( 1280, 720 )
+color = Color( 0, 0.462745, 1, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="Control"]
+margin_left = -8.0
+margin_top = 47.0
+margin_right = 233.0
+margin_bottom = 137.0
+theme = SubResource( 6 )
+text = ":)"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label3" type="Label" parent="Control"]
+margin_left = 61.0
+margin_top = 152.0
+margin_right = 546.0
+margin_bottom = 201.0
+theme = SubResource( 4 )
+text = "Hra se zhroutila"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label4" type="Label" parent="Control"]
+margin_left = 61.0
+margin_top = 218.0
+margin_right = 1246.0
+margin_bottom = 623.0
+theme = SubResource( 8 )
+text = "A problem has been detected and Untitled Game has been shut down to prevent damage to your computer.
+
+MEMORY_MANAGEMENT
+
+If this is the first time you've seen this Stop error screen, restart your computer. If this screen appears again, follow these steps:
+
+Check to make sure any new hardware or software is properly installed. If this is a new installation, ask your hardware or software manufacturer for any Untitled Game updates you might need.
+
+If problems continue, disable or remove any newly installed hardware or software. Disable BIOS memory options such as caching or shadowing. If you need to use Safe Mode to remove or disable components, restart your computer, press F8 to select Advanced Startup Options, and then select Safe Mode."
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label5" type="Label" parent="Control"]
+margin_left = 61.0
+margin_top = 623.0
+margin_right = 526.0
+margin_bottom = 717.0
+theme = SubResource( 8 )
+text = "Kód do záznamového archu: "
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Code" type="Label" parent="Control"]
+margin_left = 513.0
+margin_top = 623.0
+margin_right = 978.0
+margin_bottom = 717.0
+theme = SubResource( 8 )
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
