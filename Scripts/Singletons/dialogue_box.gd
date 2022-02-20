@@ -125,6 +125,13 @@ func create_adam_angry(text: String=lorem, duration: float=-0):
 		"type": ADAM
 	})
 
+func create_adam_missing(text: String=lorem, duration: float=-0):
+	_create_helper({
+		"text": text,
+		"image": "adam_angry_missing",
+		"duration": duration,
+		"type": ADAM
+	})
 
 func create_jakub_angry(text: String=lorem, duration: float=-0):
 	_create_helper({
@@ -144,6 +151,11 @@ func _show_popup():
 	elif item.type == JAKUB:
 		jakub.show()
 		adam.hide()
+	
+	if item.image == "adam_angry_missing":
+		adam.animation = "missing"
+	else:
+		adam.animation = "default"
 	
 	portrait.animation = item.image
 	text_label.bbcode_text = item.text
