@@ -67,7 +67,15 @@ func _input(_event):
 			"PONG":
 				if not $TV/Screen/Pong.ended:
 					GameState.player_can_move = false
-					DialogueBox.create_jakub("Okay... Firt one to [color=red]3 points[/color] wins.", -1)
+					$TV/Jakub.play("jakub_talk")
+					DialogueBox.create_jakub("Dobře... Vítěz bere vše.", -1)
+					DialogueBox.create_jakub("Když vyhraješ, tak tě nechám být a hrát dál...", -1)
+					yield(DialogueBox, "queue_empty")
+					$TV/Jakub.play("jakub_talk_angry")
+					DialogueBox.create_jakub_angry("Když ale prohraješ, tak tě utopím v moři memory leaků", -1)
+					yield(DialogueBox, "queue_empty")
+					$TV/Jakub.play("jakub_talk")
+					DialogueBox.create_jakub("Aby to bylo fér tak ten, kdo první bude mít [color=#003858]3 body[/color] vyhrává.", -1)
 					yield(DialogueBox, "queue_empty")
 					$Player.state = $Player.CUSTOM
 					$Player.get_node("GFX").flip_h = false
@@ -79,19 +87,25 @@ func _input(_event):
 					$TV.start_pong()
 				else:
 					GameState.player_can_move = false
-					DialogueBox.create_jakub("Better luck next time", -1)
+					$TV/Jakub.play("jakub_talk_angry")
+					DialogueBox.create_jakub("Doufám, že umíš dobře plavat v pointerech", -1)
 					yield(DialogueBox, "queue_empty")
 					GameState.player_can_move = true
+					$TV/Jakub.play("jakub_idle")
 			"DISCO":
 				GameState.player_can_move = false
-				DialogueBox.create_jakub_angry("YOU WERE NOT SUPPOSED TO SEE THAT! WHERE DID YOU FIND THAT?!?!!", -1)
+				$TV/Jakub.play("jakub_talk_angry")
+				DialogueBox.create_jakub_angry("JAK JSI TO NAŠEL? TO JSI NEMĚL VIDĚT! TO NIKDO NIKDY NEMĚL VIDĚT!!!", -1)
 				yield(DialogueBox, "queue_empty")
 				GameState.player_can_move = true
+				$TV/Jakub.play("jakub_idle_angry")
 			_:
 				GameState.player_can_move = false
-				DialogueBox.create_jakub("Come on start the [color=red]PONG[/color]!", -1)
+				$TV/Jakub.play("jakub_talk")
+				DialogueBox.create_jakub("Zapneš ten [color=#003858]PONG[/color]?", -1)
 				yield(DialogueBox, "queue_empty")
 				GameState.player_can_move = true
+				$TV/Jakub.play("jakub_idle")
 				
 	if Input.is_action_just_pressed("ui_reload"):
 		# warning-ignore:return_value_discarded
@@ -99,17 +113,23 @@ func _input(_event):
 #		reload()
 				
 func _on_pong_end(player_win: bool):
+	$TV/Jakub.play("jakub_turn", true)
+	yield($TV/Jakub, "animation_finished")
 	if player_win:
 		GameState.player_can_move = false
-		DialogueBox.create_jakub_angry("WHAT HAVE YOU DONE??? HOW DID YOU DO THAT?", -1)
-		DialogueBox.create_jakub_angry("Go to the next level I guess...", -1)
+		$TV/Jakub.play("jakub_talk_angry")
+		DialogueBox.create_jakub_angry("JAK JSI TO UDĚLAL? VŽDYŤ JÁ JSEM MISTR PONGU!", -1)
+		DialogueBox.create_jakub_angry("No tak si běž do dalšího levelu...", -1)
 		yield(DialogueBox, "queue_empty")
+		$TV/Jakub.play("jakub_idle_angry")
 		GameState.player_can_move = true
 		$InvisibleWall.queue_free()
 	else:
 		GameState.player_can_move = false
-		DialogueBox.create_jakub("Haha!\nLooks like I'm still the champion", -1)
+		$TV/Jakub.play("jakub_talk")
+		DialogueBox.create_jakub("Pořád velkým šampiónem!", -1)
 		yield(DialogueBox, "queue_empty")
+		$TV/Jakub.play("jakub_idle")
 		GameState.player_can_move = true
 	$Player.state = $Player.IDLE # TODO : Jakub animation reset
 
@@ -149,9 +169,11 @@ func _copy_dir(from, to):
 func _on_Wall_body_entered(body):
 	if body.name == "Player" and not wall_visited:
 		wall_visited = true
+		$TV/Jakub.play("jakub_talk")
 		GameState.player_can_move = false
-		DialogueBox.create_jakub("Looks like you hit an invisible wall\nCome play with me and maybe I will let you pass", -1)
+		DialogueBox.create_jakub("Vypadá to jako kdyby jsi narazil na neviditelnou zeď... Co takhle si se mnou zahrát a když vyhraješ, tak ti otevřu?", -1)
 		yield(DialogueBox, "queue_empty")
+		$TV/Jakub.play("jakub_idle")
 		GameState.player_can_move = true
 
 

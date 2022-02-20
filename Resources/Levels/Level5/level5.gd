@@ -10,11 +10,12 @@ func _ready():
 	_load_level()
 	
 	GameState.player_can_move = false
-	DialogueBox.create_jakub_angry("Uvěznil jsi Adama v rekurzivním paradoxu? Jak jsi mohl?", -1)
+	DialogueBox.create_jakub_angry("Ty jsi uvěznil Adama v rekurzivním paradoxu? Jak jsi mohl?", -1)
 	DialogueBox.create_jakub_angry("To TY můžeš za všchno to, co nefunguje. to TY nám to tu určitě celou dobu kazíš.", -1)
-	DialogueBox.create_jakub_angry("Ale zádná sabotáž nedokáže zničit hru mistrů. Tímto tě vyzívám na 1v1", -1)
-	DialogueBox.create_jakub_angry("Jde o hru tak jednoduchou a dokonalou, že nezná chyb. Je to...", -1)
+	DialogueBox.create_jakub_angry("Ale zádná sabotáž, nebo vražda vývojáře nedokáže zničit hru mistrů. Tímto tě vyzívám na 1v1!", -1)
+	DialogueBox.create_jakub_angry("Jde o hru tak jednoduchou a dokonalou, že nezná chyb. Nestárnoucí klasika žijící v srdcích mnoha hráčů Je to...", -1)
 	DialogueBox.create_jakub("PONG", -1)
+	DialogueBox.create_jakub_angry("Počkám na tebe v dalším levelu. Zatím nám nachystám svou starou konzoli...", -1)
 	yield(DialogueBox, "queue_empty")
 	GameState.player_can_move = true
 
