@@ -43,6 +43,7 @@ var current_item = null
 
 
 func _ready():
+	set_process(false)
 	add_child(popup)
 	add_child(timer)
 	add_child(cooldown_timer)
@@ -100,6 +101,7 @@ func clear_queue(include_current = true):
 
 
 func create_adam(text: String=lorem, duration: float=-0):
+	set_process(true)
 	EscOverlay.allowed = false
 	_create_helper({
 		"text": text,
@@ -110,6 +112,7 @@ func create_adam(text: String=lorem, duration: float=-0):
 
 
 func create_jakub(text: String=lorem, duration: float=-0):
+	set_process(true)
 	EscOverlay.allowed = false
 	_create_helper({
 		"text": text,
@@ -120,6 +123,7 @@ func create_jakub(text: String=lorem, duration: float=-0):
 
 
 func create_adam_angry(text: String=lorem, duration: float=-0):
+	set_process(true)
 	EscOverlay.allowed = false
 	_create_helper({
 		"text": text,
@@ -129,6 +133,7 @@ func create_adam_angry(text: String=lorem, duration: float=-0):
 	})
 
 func create_adam_missing(text: String=lorem, duration: float=-0):
+	set_process(true)
 	EscOverlay.allowed = false
 	_create_helper({
 		"text": text,
@@ -138,6 +143,7 @@ func create_adam_missing(text: String=lorem, duration: float=-0):
 	})
 
 func create_jakub_angry(text: String=lorem, duration: float=-0):
+	set_process(true)
 	EscOverlay.allowed = false
 	_create_helper({
 		"text": text,
@@ -206,5 +212,6 @@ func _process(_delta):
 			if current_item.duration == -1 and not tween.is_active():
 				_timer_timeout()
 		if len(queue) == 0:
-			EscOverlay.allowed = true
+			set_process(false)
 			emit_signal("queue_empty")
+			EscOverlay.allowed = true

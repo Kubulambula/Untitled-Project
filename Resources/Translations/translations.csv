@@ -14,3 +14,4 @@ $login;Uživatelské jméno;Login
 $password;Heslo;Password
 $offline_confirm_title;Offline mód;Offline mode
 $offline_confirm;Jste si jistli, že chcete spustit offline mód?;Are you sure you want to enter offline mode?
+$interact;Stiskni [E]; Press [E]

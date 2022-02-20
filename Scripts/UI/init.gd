@@ -9,6 +9,7 @@ var next_scene = null
 
 
 func _ready():
+	EscOverlay.allowed = false
 	_load_patch()
 	OS.set_window_title("Untitled-Game - Purkiáda 2022 - © Adam Charvát, Jakub Janšta & Martina Prokšová 2022")
 	EscOverlay.allowed = false
