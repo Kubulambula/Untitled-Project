@@ -14,7 +14,7 @@ func _ready():
 	DialogueBox.create_jakub_angry("To TY můžeš za všchno to, co nefunguje. to TY nám to tu určitě celou dobu kazíš.", -1)
 	DialogueBox.create_jakub_angry("Ale zádná sabotáž nedokáže zničit hru mistrů. Tímto tě vyzívám na 1v1", -1)
 	DialogueBox.create_jakub_angry("Jde o hru tak jednoduchou a dokonalou, že nezná chyb. Je to...", -1)
-	DialogueBox.create_jakub("PONG")
+	DialogueBox.create_jakub("PONG", -1)
 	yield(DialogueBox, "queue_empty")
 	GameState.player_can_move = true
 

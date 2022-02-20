@@ -100,6 +100,7 @@ func clear_queue(include_current = true):
 
 
 func create_adam(text: String=lorem, duration: float=-0):
+	EscOverlay.allowed = false
 	_create_helper({
 		"text": text,
 		"image": "adam",
@@ -109,6 +110,7 @@ func create_adam(text: String=lorem, duration: float=-0):
 
 
 func create_jakub(text: String=lorem, duration: float=-0):
+	EscOverlay.allowed = false
 	_create_helper({
 		"text": text,
 		"image": "jakub",
@@ -118,6 +120,7 @@ func create_jakub(text: String=lorem, duration: float=-0):
 
 
 func create_adam_angry(text: String=lorem, duration: float=-0):
+	EscOverlay.allowed = false
 	_create_helper({
 		"text": text,
 		"image": "adam_angry",
@@ -126,6 +129,7 @@ func create_adam_angry(text: String=lorem, duration: float=-0):
 	})
 
 func create_adam_missing(text: String=lorem, duration: float=-0):
+	EscOverlay.allowed = false
 	_create_helper({
 		"text": text,
 		"image": "adam_angry_missing",
@@ -134,6 +138,7 @@ func create_adam_missing(text: String=lorem, duration: float=-0):
 	})
 
 func create_jakub_angry(text: String=lorem, duration: float=-0):
+	EscOverlay.allowed = false
 	_create_helper({
 		"text": text,
 		"image": "jakub_angry",
@@ -201,4 +206,5 @@ func _process(_delta):
 			if current_item.duration == -1 and not tween.is_active():
 				_timer_timeout()
 		if len(queue) == 0:
+			EscOverlay.allowed = true
 			emit_signal("queue_empty")
