@@ -166,7 +166,7 @@ func handle_event(_source, event):
 			GameState.score # Collected coins
 			+ 1500 # Level completion bonus
 		)
-		ResultScreen.show_game_code(code, "res://Resources/Levels/Level6/level6.tscn")
+		ResultScreen.show_game_code(code, "res://Resources/Levels/Level7/level7.tscn")
 		if not GameState.offline:
 			WebAPI.submit(code, funcref(self, "_submit_callback"))
 		else:
