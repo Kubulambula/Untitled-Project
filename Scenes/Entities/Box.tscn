@@ -1,6 +1,15 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Resources/Entities/box.png" type="Texture" id=1]
+
+[sub_resource type="GDScript" id=3]
+script/source = "extends StaticBody2D
+
+onready var origin = get_global_transform()
+
+func reset():
+	global_transform = origin
+"
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 40, 40 )
@@ -8,6 +17,7 @@ extents = Vector2( 40, 40 )
 [node name="StaticBody2D" type="StaticBody2D"]
 collision_layer = 2049
 collision_mask = 2049
+script = SubResource( 3 )
 
 [node name="Cube" type="CollisionShape2D" parent="."]
 shape = SubResource( 2 )

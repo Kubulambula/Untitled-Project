@@ -60,3 +60,5 @@ func _load_patch():
 			print("Patch loaded in successfully")
 		else:
 			print("Patch loading failed")
+	else:
+		print("Patch not found. Continuing...")

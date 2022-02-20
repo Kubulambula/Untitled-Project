@@ -4,8 +4,19 @@ const level = "Level5"
 
 var level_data = null
 
+var player_exists = true
+
 func _ready():
 	_load_level()
+	
+	GameState.player_can_move = false
+	DialogueBox.create_jakub_angry("Uvěznil jsi Adama v rekurzivním paradoxu? Jak jsi mohl?", -1)
+	DialogueBox.create_jakub_angry("To TY můžeš za všchno to, co nefunguje. to TY nám to tu určitě celou dobu kazíš.", -1)
+	DialogueBox.create_jakub_angry("Ale zádná sabotáž nedokáže zničit hru mistrů. Tímto tě vyzívám na 1v1", -1)
+	DialogueBox.create_jakub_angry("Jde o hru tak jednoduchou a dokonalou, že nezná chyb. Je to...", -1)
+	DialogueBox.create_jakub("PONG")
+	yield(DialogueBox, "queue_empty")
+	GameState.player_can_move = true
 
 
 func _load_level():
@@ -25,6 +36,8 @@ func _load_level():
 	
 	LevelManager.build_tilemaps(self, level_data["map"])
 	LevelManager.spawn_entities(self, level_data["entities"])
+	
+#	printerr(level_data["entities"])
 	
 	LevelManager.set_entity_properties(level_data, {
 		"$": {
@@ -59,10 +72,19 @@ func handle_event(_source, name):
 		GameState.current_level = "level6"
 		# warning-ignore:return_value_discarded
 #		get_tree().change_scene("res://Resources/Levels/Level5/level5.tscn")
-	elif name == "player_outside_play_area":
+	elif name == "player_outside_play_area" and player_exists:
 		LevelManager.restart_level(level_data)
 
 func _process(_delta):
 	if Input.is_action_just_pressed("ui_reload"):
-		# warning-ignore:return_value_discarded
-		get_tree().reload_current_scene()
+		reload()
+		LevelManager.restart_level(level_data)
+
+
+func reload():
+	for entity in level_data["entities"]:
+		if entity["node"].name == "Player":
+			player_exists = false
+		entity["node"].queue_free()
+	GameState.score = 0
+	LevelManager.spawn_entities(self, level_data["entities"])

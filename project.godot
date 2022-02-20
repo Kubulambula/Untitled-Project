@@ -32,7 +32,6 @@ LevelManager="*res://Scripts/Singletons/level_manager.gd"
 DialogueBox="*res://Scripts/Singletons/dialogue_box.gd"
 GameCode="*res://Scripts/Singletons/game_code.gd"
 EventReporter="*res://Scripts/Singletons/event_reporter.gd"
-QRCode="*res://Scripts/Singletons/qr_code.gd"
 EscOverlay="*res://Scripts/Singletons/esc_overlay.gd"
 ResultScreen="*res://Scripts/Singletons/result_screen.gd"
 

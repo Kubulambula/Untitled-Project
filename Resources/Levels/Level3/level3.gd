@@ -9,7 +9,7 @@ func _load_level():
 	# warning-ignore:return_value_discarded
 	EventReporter.connect("event_reported", self, "handle_event")
 	
-	LevelManager.set_map_dimensions(25, 9)
+	LevelManager.set_map_dimensions(28, 9)
 	level_data = LevelManager.parse_level_data(LevelManager.read_level_data(level))
 	
 	level_data = LevelManager.apply_immovable_mask(level_data, ["#", "D", "$", "K", "C", "?"])
@@ -27,7 +27,7 @@ func _load_level():
 			"coin_type": [1, 2, 2]
 		},
 		"P": {
-			"camera_limits": [Rect2(0, 0, 25 * 80, 9 * 80)]
+			"camera_limits": [Rect2(0, 0, 28 * 80, 9 * 80)]
 		}
 	})
 	
@@ -39,9 +39,10 @@ func _ready():
 	
 	_load_level()
 	
-#	GameState.player_can_move = false
-#	# Dialogue goes here
-#	yield(DialogueBox, "queue_empty")
+	GameState.player_can_move = false
+	DialogueBox.create_jakub("Krása! Tenhle level vypadá v pořádku", -1)
+	DialogueBox.create_jakub_angry("Level v pořádku, ale spawnpoint není! Já to vážně vzdávám...", -1)
+	yield(DialogueBox, "queue_empty")
 	GameState.player_can_move = true
 
 func _submit_callback(code, response):
@@ -50,6 +51,12 @@ func _submit_callback(code, response):
 
 func handle_event(_source, name):
 	if name == "player_reached_door":
+		
+		GameState.player_can_move = false
+		DialogueBox.create_adam("Dobrá práce... Na to, že jsi ten level, viděl popvý, tak jsi si vedl dobře", -1)
+		DialogueBox.create_adam_angry("Možná až moc dobře", -1)
+		yield(DialogueBox, "queue_empty")
+		GameState.player_can_move = true
 		
 		var code = GameCode.generate(
 			"level3", # Challenge Id -> GameCode.CHALLENGE_IDS
@@ -67,7 +74,12 @@ func handle_event(_source, name):
 #		get_tree().change_scene("res://Resources/Levels/Level3/level3.tscn")
 		
 	elif name == "player_outside_play_area":
-		LevelManager.restart_level(level_data)
+		EventReporter.disconnect("event_reported", self, "handle_event")
+		for node in $LevelData.get_children():
+			$LevelData.remove_child(node)
+			node.queue_free()
+		_load_level()
+		GameState.player_can_move = true
 
 func _process(_delta):
 	if Input.is_action_just_pressed("ui_reload"):

@@ -4,6 +4,9 @@ const level = "Level4"
 
 var level_data = null
 
+
+onready var container = $LevelData
+
 func _load_level():
 	GameState.score = 0
 	# warning-ignore:return_value_discarded
@@ -20,8 +23,8 @@ func _load_level():
 	
 	LevelManager.write_level_data(level, LevelManager.serialize_level_data(level_data))
 	
-	LevelManager.build_tilemaps($LevelData, level_data["map"])
-	LevelManager.spawn_entities($LevelData, level_data["entities"])
+	LevelManager.build_tilemaps(container, level_data["map"])
+	LevelManager.spawn_entities(container, level_data["entities"])
 	
 	LevelManager.set_entity_properties(level_data, {
 		"$": {
@@ -50,7 +53,10 @@ func _ready():
 	# warning-ignore:return_value_discarded
 
 	_load_level()
-
+	
+	GameState.player_can_move = false
+	DialogueBox.create_adam("Zvláštní... Jako kdybys tenhle level už hrál...", -1)
+	yield(DialogueBox, "queue_empty")
 	GameState.player_can_move = true
 
 func _submit_callback(code, response):
@@ -59,6 +65,7 @@ func _submit_callback(code, response):
 func handle_event(_source, name):
 	if name == "player_reached_door":
 		if level_data["settings"]["door_destination"] == "level5":
+			
 			var code = GameCode.generate(
 				"level4", # Challenge Id -> GameCode.CHALLENGE_IDS
 				GameState.score # Collected coins
@@ -77,7 +84,13 @@ func handle_event(_source, name):
 			get_tree().reload_current_scene()
 		
 	elif name == "player_outside_play_area":
-		LevelManager.restart_level(level_data)
+		EventReporter.disconnect("event_reported", self, "handle_event")
+		for node in $LevelData.get_children():
+			$LevelData.call_deferred("remove_child", node)
+			node.queue_free()
+		_load_level()
+		GameState.player_can_move = true
+#		LevelManager.restart_level(level_data)
 
 func _process(_delta):
 	if Input.is_action_just_pressed("ui_reload"):

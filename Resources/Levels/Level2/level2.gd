@@ -4,7 +4,6 @@ const level = "Level2"
 
 var level_data = null
 
-var death_counter = 0
 
 var done = false
 
@@ -26,25 +25,19 @@ func _load_level():
 	LevelManager.build_tilemaps($LevelData, level_data["map"])
 	LevelManager.spawn_entities($LevelData, level_data["entities"])
 
+
 func _ready():
 	GameState.player_can_move = false
 	
 	_load_level()
 	
 	GameState.player_can_move = false
-#	DialogueBox.create_adam("C-co...?", -1)
-#	DialogueBox.create_jakub("Hráč?", -1)
-#	DialogueBox.create_adam("Ale ta hra není dodělaná! Vždyť ani nemá název!", -1)
-#	DialogueBox.create_adam("Uvidí jak je zabugovaná a že půlka věcí chybí!", -1)
-#	DialogueBox.create_jakub("Dobře klid... To se nějak zvládne. Ono se to nějak udělá™", -1)
-#	DialogueBox.create_jakub("Alespoň nám může tu hru otestovat.", -1)
-#	DialogueBox.create_jakub("Pomůžeš nám že?", -1)
-#	DialogueBox.create_jakub("...", -1)
-#	DialogueBox.create_jakub("...", -1)
-#	DialogueBox.create_adam_angry("Do háje fix už zase nefungujou dialogy... Vždyť minule to ještě šlo. Se z toho může jeden-", -1)
-#	DialogueBox.create_jakub("Beru to jako ano", -1)
-#	DialogueBox.create_jakub("Tvým cílem je dostat se v každém levelu vždy ke dveřím. Budeme tě pozorovat z povzdálí.\n\nHodně štěstí", -1)
-#	yield(DialogueBox, "queue_empty")
+	DialogueBox.create_adam("Tak a je to - Level2", -1)
+	DialogueBox.create_adam("Hmmm...", -1)
+	DialogueBox.create_adam_angry("Co kdyby ALESPOŇ NĚCO FUNGOVALO?", -1)
+	DialogueBox.create_jakub_angry("Proč je ta podlaha zase v úplně jiný úrovni, než má být?\nTo není možný... Ta Purkiáda se FAKT nestihne", -1)
+	DialogueBox.create_jakub("Zedituj si prosímtě nějak tu mapu, ať můžeš do dalšího levelu...", -1)
+	yield(DialogueBox, "queue_empty")
 	GameState.player_can_move = true
 
 func _submit_callback(code, response):
@@ -55,7 +48,7 @@ func handle_event(_source, name):
 	if name == "player_reached_door":
 		done = true
 		GameState.player_can_move = false
-		DialogueBox.create_adam("Dobrá práce! Teď nám jen dej chvilku, než načteme nový level...", -1)
+		DialogueBox.create_jakub("Další level prosím! Snad tenhle už bude fungovat", -1)
 		yield(DialogueBox, "queue_empty")
 		GameState.player_can_move = true
 		
@@ -83,18 +76,7 @@ func handle_event(_source, name):
 			node.queue_free()
 		_load_level()
 		GameState.player_can_move = true
-		
-		death_counter += 1
-		if death_counter == 1:
-			GameState.player_can_move = false
-			DialogueBox.create_adam_angry("No výborně. Další nepřeskočitelná díra. Co zkusit mapu zeditovat a udělat si třeba most?\nMěla by být někde v\n'[color=#003858]" + LevelManager.get_level_dir(level) + "[/color]'", -1)
-			yield(DialogueBox, "queue_empty")
-			GameState.player_can_move = true
-		elif death_counter % 5 == 0:
-			GameState.player_can_move = false
-			DialogueBox.create_adam("Zkus se podívat do\n'[color=#003858]" + LevelManager.get_level_dir(level) + "[/color]' jestli něco nevymyslíš s tou mapou", -1)
-			yield(DialogueBox, "queue_empty")
-			GameState.player_can_move = true
+
 
 func _process(_delta):
 	if Input.is_action_just_pressed("ui_reload"):

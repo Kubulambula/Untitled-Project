@@ -421,7 +421,7 @@ position = Vector2( -10, 0 )
 scale = Vector2( 1.7, 1.7 )
 frames = ExtResource( 9 )
 animation = "adam_idle"
-frame = 3
+frame = 4
 playing = true
 centered = false
 
@@ -450,7 +450,7 @@ position = Vector2( -10, 0 )
 scale = Vector2( 1.7, 1.7 )
 frames = ExtResource( 9 )
 animation = "jakub_idle"
-frame = 4
+frame = 5
 playing = true
 centered = false
 
@@ -479,7 +479,7 @@ position = Vector2( -10, 0 )
 scale = Vector2( 1.7, 1.7 )
 frames = ExtResource( 9 )
 animation = "martina_idle"
-frame = 3
+frame = 4
 playing = true
 centered = false
 
@@ -613,7 +613,6 @@ __meta__ = {
 }
 
 [node name="Godot Engine" type="Control" parent="GUI/About/3rdParty2"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = 32.0
@@ -821,6 +820,7 @@ margin_bottom = 2489.0
 rect_min_size = Vector2( 20, 0 )
 
 [node name="CRT Shader" type="Control" parent="GUI/About/3rdParty2"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = 32.0

@@ -16,6 +16,7 @@ var wall_visited = false
 
 
 func _ready():
+	GameState.score = 0
 	GameState.offline = false
 	GameState.player_can_move = true
 	# warning-ignore:return_value_discarded

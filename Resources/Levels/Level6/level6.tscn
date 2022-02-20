@@ -85,7 +85,7 @@ position = Vector2( 97.5, 183.5 )
 scale = Vector2( 0.5, 0.5 )
 frames = ExtResource( 6 )
 animation = "jakub_idle"
-frame = 3
+frame = 5
 playing = true
 flip_h = true
 
