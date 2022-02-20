@@ -1,7 +1,7 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Resources/Fonts/8bitOperator/8bitOperatorPlus8-Bold.ttf" type="DynamicFontData" id=1]
-[ext_resource path="res://Resources/Themes/result_overlay.tres" type="Theme" id=2]
+[ext_resource path="res://Resources/Themes/untitled_theme.tres" type="Theme" id=2]
 
 [sub_resource type="DynamicFont" id=1]
 size = 55
@@ -10,12 +10,12 @@ font_data = ExtResource( 1 )
 [sub_resource type="Theme" id=2]
 default_font = SubResource( 1 )
 
-[sub_resource type="DynamicFont" id=7]
+[sub_resource type="DynamicFont" id=3]
 size = 48
 font_data = ExtResource( 1 )
 
 [sub_resource type="Theme" id=4]
-default_font = SubResource( 7 )
+default_font = SubResource( 3 )
 
 [sub_resource type="DynamicFont" id=5]
 size = 27
@@ -23,6 +23,20 @@ font_data = ExtResource( 1 )
 
 [sub_resource type="Theme" id=6]
 default_font = SubResource( 5 )
+
+[sub_resource type="DynamicFontData" id=11]
+font_path = "res://Resources/Fonts/8bitOperator/8bitOperatorPlus8-Bold.ttf"
+
+[sub_resource type="DynamicFont" id=10]
+size = 32
+font_data = SubResource( 11 )
+
+[sub_resource type="DynamicFontData" id=7]
+font_path = "res://Resources/Fonts/8bitOperator/8bitOperatorPlus8-Bold.ttf"
+
+[sub_resource type="DynamicFont" id=8]
+size = 55
+font_data = SubResource( 7 )
 
 [node name="Control" type="CanvasLayer"]
 layer = 128
@@ -70,12 +84,13 @@ __meta__ = {
 }
 
 [node name="Label3" type="Label" parent="Control"]
-self_modulate = Color( 0.00784314, 0.25098, 0.34902, 1 )
-margin_left = 441.0
+self_modulate = Color( 0.141176, 0.141176, 0.141176, 1 )
+margin_left = 383.0
 margin_top = 278.0
-margin_right = 864.0
+margin_right = 897.0
 margin_bottom = 302.0
 theme = SubResource( 6 )
+custom_fonts/font = SubResource( 10 )
 text = "Kód do záznamového archu:"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -87,6 +102,7 @@ margin_top = 559.0
 margin_right = 889.0
 margin_bottom = 671.0
 theme = ExtResource( 2 )
+custom_fonts/font = SubResource( 8 )
 text = "Pokračovat"
 __meta__ = {
 "_edit_use_anchors_": false
