@@ -172,6 +172,6 @@ func handle_event(_source, event):
 		else:
 			printerr("RESULT NOT SENT TO SERVER BECAUSE OF OFFLINE MODE. CODE: " + code)
 		
-#		GameState.current_level = "level7"
+		GameState.current_level = "level7"
 #		# warning-ignore:return_value_discarded
 #		get_tree().change_scene("res://Resources/Levels/Level5/level5.tscn")
