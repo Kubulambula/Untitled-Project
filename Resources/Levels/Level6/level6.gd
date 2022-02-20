@@ -72,7 +72,7 @@ func _input(_event):
 					DialogueBox.create_jakub("Když vyhraješ, tak tě nechám být a hrát dál...", -1)
 					yield(DialogueBox, "queue_empty")
 					$TV/Jakub.play("jakub_talk_angry")
-					DialogueBox.create_jakub_angry("Když ale prohraješ, tak tě utopím v moři memory leaků", -1)
+					DialogueBox.create_jakub_angry("Když ale prohraješ, tak tě utopím v moři memory leaků.", -1)
 					yield(DialogueBox, "queue_empty")
 					$TV/Jakub.play("jakub_talk")
 					DialogueBox.create_jakub("Aby to bylo fér tak ten, kdo první bude mít [color=#003858]3 body[/color] vyhrává.", -1)
@@ -88,7 +88,7 @@ func _input(_event):
 				else:
 					GameState.player_can_move = false
 					$TV/Jakub.play("jakub_talk_angry")
-					DialogueBox.create_jakub("Doufám, že umíš dobře plavat v pointerech", -1)
+					DialogueBox.create_jakub("Doufám, že umíš dobře plavat v pointerech.", -1)
 					yield(DialogueBox, "queue_empty")
 					GameState.player_can_move = true
 					$TV/Jakub.play("jakub_idle")

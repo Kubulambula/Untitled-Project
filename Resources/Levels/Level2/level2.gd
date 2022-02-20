@@ -48,7 +48,7 @@ func handle_event(_source, name):
 	if name == "player_reached_door":
 		done = true
 		GameState.player_can_move = false
-		DialogueBox.create_jakub("Další level prosím! Snad tenhle už bude fungovat", -1)
+		DialogueBox.create_jakub("Další level prosím! Snad tenhle už bude fungovat.", -1)
 		yield(DialogueBox, "queue_empty")
 		GameState.player_can_move = true
 		

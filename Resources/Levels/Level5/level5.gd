@@ -88,4 +88,7 @@ func reload():
 			player_exists = false
 		entity["node"].queue_free()
 	GameState.score = 0
+	level_data = LevelManager.parse_level_data(LevelManager.read_level_data(level))
+	level_data = LevelManager.apply_immovable_mask(level_data, ["P", "#", "D", "$", "?", "K"])
+	level_data = LevelManager.apply_max_entity_mask(level_data, {"P": 1, "D": 1, "C": 3})
 	LevelManager.spawn_entities(self, level_data["entities"])

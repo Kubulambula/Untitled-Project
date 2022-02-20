@@ -36,7 +36,7 @@ func _ready():
 	DialogueBox.create_jakub("Hráč?", -1)
 	DialogueBox.create_adam("Ale ta hra není dodělaná! Vždyť ani nemá název!", -1)
 	DialogueBox.create_adam("Uvidí jak je zabugovaná a že půlka věcí chybí!", -1)
-	DialogueBox.create_jakub("Dobře klid... To se nějak zvládne. Ono se to nějak udělá™", -1)
+	DialogueBox.create_jakub("Dobře klid... To se nějak zvládne. Ono se to nějak udělá™.", -1)
 	DialogueBox.create_jakub("Alespoň nám může tu hru otestovat.", -1)
 	DialogueBox.create_jakub("Pomůžeš nám že?", -1)
 	DialogueBox.create_jakub("...", -1)
@@ -87,12 +87,12 @@ func handle_event(_source, name):
 		death_counter += 1
 		if death_counter == 1:
 			GameState.player_can_move = false
-			DialogueBox.create_adam_angry("No výborně. Další nepřeskočitelná díra. Co zkusit mapu zeditovat a udělat si třeba most?\nMěla by být někde v\n'[color=#003858]" + LevelManager.get_level_dir(level) + "[/color]'", -1)
+			DialogueBox.create_adam_angry("No výborně. Další nepřeskočitelná díra. Co zkusit mapu zeditovat a udělat si třeba most? Měla by být někde v '[color=#003858]" + LevelManager.get_level_dir(level) + "[/color]'.", -1)
 			yield(DialogueBox, "queue_empty")
 			GameState.player_can_move = true
 		elif death_counter % 5 == 0:
 			GameState.player_can_move = false
-			DialogueBox.create_adam("Zkus se podívat do\n'[color=#003858]" + LevelManager.get_level_dir(level) + "[/color]' jestli něco nevymyslíš s tou mapou", -1)
+			DialogueBox.create_adam("Zkus se podívat do '[color=#003858]" + LevelManager.get_level_dir(level) + "[/color]' jestli něco nevymyslíš s tou mapou.", -1)
 			yield(DialogueBox, "queue_empty")
 			GameState.player_can_move = true
 

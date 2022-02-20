@@ -9,6 +9,10 @@ var _can_open = false
 func open_treasure():
 	GameState.score += 500
 
+func _ready():
+	$ChestTitle.hide()
+
+
 func _on_Area2D_body_entered(body):
 	if body.name == "Player":
 		_can_open = true

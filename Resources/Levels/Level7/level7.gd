@@ -57,6 +57,7 @@ func _play_chapter_two():
 	DialogueBox.create_adam_missing("K... Kam? Kam zmizely textury?", -1)
 	DialogueBox.create_adam_missing("Co jsi to udělal?! Okamžitě to vrať zpátky!", -1)
 	yield(DialogueBox, "queue_empty")
+	$Adam.play("adam_missing_idle")
 	_dialogue_playing = false
 	GameState.player_can_move = true
 
