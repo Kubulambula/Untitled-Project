@@ -3,7 +3,7 @@ extends Control
 var logging_in = true
 
 func _ready():
-	$OfflineMode.visible = false
+#	$OfflineMode.visible = false
 	show()
 	$CenterContainer/TextureRect/FocusGroup/Name.grab_focus()
 	var saved_token = GameState.config.get_value("user", "token", "")
