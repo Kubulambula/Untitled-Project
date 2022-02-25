@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Resources/Levels/Level6/level6.gd" type="Script" id=1]
 [ext_resource path="res://Resources/Tiles/tileset.tres" type="TileSet" id=2]
@@ -53,6 +53,9 @@ outline_size = 2
 outline_color = Color( 0, 0, 0, 1 )
 font_data = SubResource( 2 )
 
+[sub_resource type="RectangleShape2D" id=8]
+extents = Vector2( 24.5, 202 )
+
 [sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 10, 200 )
 
@@ -68,6 +71,7 @@ script = ExtResource( 1 )
 position = Vector2( 11, 82 )
 frames = ExtResource( 6 )
 animation = "martina_sneaky"
+frame = 1
 playing = true
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -124,6 +128,37 @@ __meta__ = {
 position = Vector2( 127, 100 )
 stream = ExtResource( 8 )
 
+[node name="MartinaWall" type="Node2D" parent="."]
+
+[node name="Area2D2" type="Area2D" parent="MartinaWall"]
+position = Vector2( 115, 373 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MartinaWall/Area2D2"]
+position = Vector2( -11, -92 )
+shape = SubResource( 8 )
+
+[node name="Prompt" type="Control" parent="MartinaWall"]
+margin_left = 93.0
+margin_top = 75.0
+margin_right = 133.0
+margin_bottom = 115.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="MartinaWall/Prompt"]
+margin_left = 6.0
+margin_top = 25.0
+margin_right = 46.0
+margin_bottom = 40.0
+rect_scale = Vector2( 1.5, 1.5 )
+custom_fonts/font = SubResource( 3 )
+text = "[E]"
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
 [node name="Player" parent="." instance=ExtResource( 3 )]
 position = Vector2( 229, 434 )
 
@@ -146,4 +181,6 @@ shape = SubResource( 7 )
 
 [connection signal="body_entered" from="TV/Area2D" to="." method="_on_Area2D_body_entered"]
 [connection signal="body_exited" from="TV/Area2D" to="." method="_on_Area2D_body_exited"]
+[connection signal="body_entered" from="MartinaWall/Area2D2" to="." method="_on_Area2D2_body_entered"]
+[connection signal="body_exited" from="MartinaWall/Area2D2" to="." method="_on_Area2D2_body_exited"]
 [connection signal="body_entered" from="InvisibleWall/Wall" to="." method="_on_Wall_body_entered"]

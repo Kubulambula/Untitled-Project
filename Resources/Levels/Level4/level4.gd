@@ -55,7 +55,7 @@ func _ready():
 	_load_level()
 	
 	GameState.player_can_move = false
-	DialogueBox.create_adam("Zvláštní... Jako kdybys tenhle level už hrál...", -1)
+	DialogueBox.create_adam(TranslationServer.translate("$Lev4Dia1"), -1)
 	yield(DialogueBox, "queue_empty")
 	GameState.player_can_move = true
 

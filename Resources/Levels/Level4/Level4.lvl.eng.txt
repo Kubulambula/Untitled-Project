@@ -1,15 +1,11 @@
-; Level 1
+; Level 4
 ;
 
 ; Task
 ;
-; Your task is to edit the map in such a way
-; allowing you to get to the other side
-;
-Task
-;
 ; Your task is to get to the door...
 ; Just like in the other levels.
+;
 
 ; Rules
 ;
@@ -19,10 +15,9 @@ Task
 ; P - Player              [Limit: 1]
 ; D - Door                [Limit: 1]
 ; $ - Coin
-; ? - Treasure chest      [Limit: 1]
 ;
-; It is not possible to move the coins ($), nor change their quantity.
-; You also cannot move the player (P) and the door (D).
+; It is not possible to move any of the symbols,
+; nor change their quantity.
 ;
 
 ; Warning
@@ -35,12 +30,15 @@ Task
 ;
 
 [Map]
-#              #
-#              #
-#     $$       #
-#    $$$$      #
-# P          D #
-#####    #######
-#####    #######
-#####    #######
-#####    #######
+##############################
+#  P          #              #
+# ###       $ # $ ###  ####  #
+#     #$$   $ # $    #      ##
+##    ####    #              #
+#                        ##$##
+###$       $            ## $ #
+#  $             ###   ### D #
+# ### # ### ###       ########
+
+[Settings]
+door_destination=level4

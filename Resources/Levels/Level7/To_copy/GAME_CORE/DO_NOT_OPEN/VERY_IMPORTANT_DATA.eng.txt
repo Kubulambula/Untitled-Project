@@ -1,0 +1,35 @@
+; Level 7 - Hlavní konfigurace
+;
+
+; Task
+;
+; Your task is to edit the following file in such a way,
+; unlocking you the secret settings.
+;
+
+; Rules
+;
+; Set values only as true/false,
+; or else the'll get overwrited.
+;
+
+; Warning
+;
+; If this file does not comply with the rules written above,
+; the game will overwrite it. That's why you MUST SAVE AND CLOSE it every time.
+; (Click on the cross in the upper right corner)
+;
+; To apply your changes, push the key "R" while IN THE GAME.
+;
+
+; Dev note: Some settings have been removed for safety reasons. 
+
+[Textures]
+
+; Settings, which set whether textures are supposed to load in and be visible.
+load=true
+
+; Dev note: Adam, just fix it already!
+;     You do know that when textures get turned off, 
+;     THEY will get even more control of the game!
+

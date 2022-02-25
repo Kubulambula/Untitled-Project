@@ -1,0 +1,28 @@
+; Level 6
+;
+
+; Úkol
+;
+; Tvým úkolem je upravit následující soubor tak,
+; aby si s tebou Kuba mohl zahrát Pong.
+;
+
+; Pravidla
+;
+; Televizní kanál funguje pouze na určité kanály,
+; při zadání špatného kanálu, se nic neděje.
+;
+
+; Upozornění
+;
+; Pokud tento soubor nebude splňovat pravidla uvedená výše,
+; hra ho přepíše. Proto ho VŽDY po upravení ZAVŘETE!
+; (Kliknutím na křížek v pravém horním rohu.)
+;
+; Pro aplikování zmeň provedených v tomto souboru, zmáčkněte VE HŘE klávesu R.
+;
+
+[tv]
+
+; Televizní kanál
+channel="OFF"

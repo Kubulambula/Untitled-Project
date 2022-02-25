@@ -80,13 +80,13 @@ func _set_settings_from_saved_config():
 	$GUI/Settings/SettingsTab/Graphics/VBoxContainer/Vsync/Vsync.pressed = GameState.config.get_value("graphics", "vsync", true)
 	$GUI/Settings/SettingsTab/Graphics/VBoxContainer/VsyncCompositor/VsyncCompositor.pressed = GameState.config.get_value("graphics", "vsync_via_compositor", true)
 	
-#	$GUI/Settings/SettingsTab/User/VBoxContainer/Locale/Language.select(languages.find(GameState.config.get_value("user", "locale", "cs")))
+	$GUI/Settings/SettingsTab/User/VBoxContainer/Locale/Language.select(languages.find(GameState.config.get_value("user", "locale", "cs")))
 
 
 func translate():
 	$Version/VBoxContainer/HBoxContainer/Version.text = version_format % [TranslationServer.translate("$version"), GameState.version]
 	$GUI/Settings/SettingsTab.set_tab_title(0, TranslationServer.translate("$graphics"))
-#	$GUI/Settings/SettingsTab.set_tab_title(1, TranslationServer.translate("$user"))
+	$GUI/Settings/SettingsTab.set_tab_title(1, TranslationServer.translate("$user"))
 
 # Button fun stuff
 

@@ -1,10 +1,10 @@
-; Level 1
+; Level 2
 ;
 
 ; Úkol
 ;
 ; Tvým úkolem je upravit mapu tak,
-; aby jsi se dostal na druhou stranu.
+; aby jsi se dostal ke dveřím.
 ;
 
 ; Pravidla
@@ -12,10 +12,9 @@
 ; Mapa může obsahovat pouze následující znaky:
 ;
 ; # - Zeď
-; P - Hráč              [Limit: 1]
-; D - Dveře             [Limit: 1]
+; P - Hráč    [Limit: 1]
+; D - Dveře   [Limit: 1]
 ; $ - Mince
-; ? - Truhla s pokladem [Limit: 1]
 ;
 ; Nelze hýbat s mincemi ($), ani měnit jejich počet.
 ; Dále také s hráčem (P) a dveřmi (D).
@@ -31,12 +30,12 @@
 ;
 
 [Map]
+################
+#$$            #
 #              #
 #              #
-#     $$       #
-#    $$$$      #
-# P          D #
-#####    #######
-#####    #######
-#####    #######
-#####    #######
+#      P       #
+################
+#              #
+#            D #
+#              #

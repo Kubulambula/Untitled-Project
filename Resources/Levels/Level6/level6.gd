@@ -12,7 +12,9 @@ var config_file_locations = {
 var config_files = {}
 
 var _tv_prompt = false
+var _martina_prompt = false
 var wall_visited = false
+var martina_visited = false
 
 
 func _ready():
@@ -25,6 +27,7 @@ func _ready():
 # warning-ignore:return_value_discarded
 	EventReporter.connect("event_reported", self, "handle_event")
 	$TV/Prompt.visible = false
+	$MartinaWall/Prompt.visible = false
 	reload()
 
 
@@ -68,14 +71,14 @@ func _input(_event):
 				if not $TV/Screen/Pong.ended:
 					GameState.player_can_move = false
 					$TV/Jakub.play("jakub_talk")
-					DialogueBox.create_jakub("Dobře... Vítěz bere vše.", -1)
-					DialogueBox.create_jakub("Když vyhraješ, tak tě nechám být a hrát dál...", -1)
+					DialogueBox.create_jakub(TranslationServer.translate("$Lev6Dia1"), -1)
+					DialogueBox.create_jakub(TranslationServer.translate("$Lev6Dia2"), -1)
 					yield(DialogueBox, "queue_empty")
 					$TV/Jakub.play("jakub_talk_angry")
-					DialogueBox.create_jakub_angry("Když ale prohraješ, tak tě utopím v moři memory leaků.", -1)
+					DialogueBox.create_jakub_angry(TranslationServer.translate("$Lev6Dia3"), -1)
 					yield(DialogueBox, "queue_empty")
 					$TV/Jakub.play("jakub_talk")
-					DialogueBox.create_jakub("Aby to bylo fér tak ten, kdo první bude mít [color=#003858]3 body[/color] vyhrává.", -1)
+					DialogueBox.create_jakub(TranslationServer.translate("$Lev6Dia4"), -1)
 					yield(DialogueBox, "queue_empty")
 					$Player.state = $Player.CUSTOM
 					$Player.get_node("GFX").flip_h = false
@@ -88,25 +91,47 @@ func _input(_event):
 				else:
 					GameState.player_can_move = false
 					$TV/Jakub.play("jakub_talk_angry")
-					DialogueBox.create_jakub("Doufám, že umíš dobře plavat v pointerech.", -1)
+					DialogueBox.create_jakub(TranslationServer.translate("$Lev6Dia5"), -1)
 					yield(DialogueBox, "queue_empty")
 					GameState.player_can_move = true
 					$TV/Jakub.play("jakub_idle")
 			"DISCO":
 				GameState.player_can_move = false
 				$TV/Jakub.play("jakub_talk_angry")
-				DialogueBox.create_jakub_angry("JAK JSI TO NAŠEL? TO JSI NEMĚL VIDĚT! TO NIKDO NIKDY NEMĚL VIDĚT!!!", -1)
+				DialogueBox.create_jakub_angry(TranslationServer.translate("$Lev6Dia6"), -1)
 				yield(DialogueBox, "queue_empty")
 				GameState.player_can_move = true
 				$TV/Jakub.play("jakub_idle_angry")
 			_:
 				GameState.player_can_move = false
 				$TV/Jakub.play("jakub_talk")
-				DialogueBox.create_jakub("Zapneš ten [color=#003858]PONG[/color]?", -1)
+				DialogueBox.create_jakub(TranslationServer.translate("$Lev6Dia7"), -1)
 				yield(DialogueBox, "queue_empty")
 				GameState.player_can_move = true
-				$TV/Jakub.play("jakub_idle")
+				$TV/Jakub.play("jakub_idle")			
 				
+	if _martina_prompt and Input.is_action_just_pressed("ui_interact"):
+		martina_visited = true
+		_martina_prompt = false
+		$MartinaWall/Prompt.visible = false
+		GameState.player_can_move = false
+		$TV/Jakub.play("jakub_idle")
+		DialogueBox.create_martina(TranslationServer.translate("$Lev6Dia12"), -1)
+		DialogueBox.create_martina(TranslationServer.translate("$Lev6Dia13"), -1)
+		DialogueBox.create_martina_angry(TranslationServer.translate("$Lev6Dia14"), -1)
+		yield(DialogueBox, "queue_empty")
+		$TV/Jakub.play("jakub_talk_angry")
+		DialogueBox.create_jakub_angry(TranslationServer.translate("$Lev6Dia15"), -1)
+		DialogueBox.create_martina_surprised(TranslationServer.translate("$Lev6Dia16"), -1)
+		yield(DialogueBox, "queue_empty")
+		$Martina.visible = false
+		$TV/Jakub.play("jakub_talk")
+		DialogueBox.create_jakub(TranslationServer.translate("$Lev6Dia17"), -1)
+		yield(DialogueBox, "queue_empty")
+		$TV/Jakub.play("jakub_idle")
+		GameState.player_can_move = true
+		
+	
 	if Input.is_action_just_pressed("ui_reload"):
 		# warning-ignore:return_value_discarded
 		get_tree().reload_current_scene()
@@ -118,8 +143,8 @@ func _on_pong_end(player_win: bool):
 	if player_win:
 		GameState.player_can_move = false
 		$TV/Jakub.play("jakub_talk_angry")
-		DialogueBox.create_jakub_angry("JAK JSI TO UDĚLAL? VŽDYŤ JÁ JSEM MISTR PONGU!", -1)
-		DialogueBox.create_jakub_angry("No tak si běž do dalšího levelu...", -1)
+		DialogueBox.create_jakub_angry(TranslationServer.translate("$Lev6Dia8"), -1)
+		DialogueBox.create_jakub_angry(TranslationServer.translate("$Lev6Dia9"), -1)
 		yield(DialogueBox, "queue_empty")
 		$TV/Jakub.play("jakub_idle_angry")
 		GameState.player_can_move = true
@@ -127,7 +152,7 @@ func _on_pong_end(player_win: bool):
 	else:
 		GameState.player_can_move = false
 		$TV/Jakub.play("jakub_talk")
-		DialogueBox.create_jakub("Pořád velkým šampiónem!", -1)
+		DialogueBox.create_jakub(TranslationServer.translate("$Lev6Dia10"), -1)
 		yield(DialogueBox, "queue_empty")
 		$TV/Jakub.play("jakub_idle")
 		GameState.player_can_move = true
@@ -172,11 +197,10 @@ func _on_Wall_body_entered(body):
 		wall_visited = true
 		$TV/Jakub.play("jakub_talk")
 		GameState.player_can_move = false
-		DialogueBox.create_jakub("Vypadá to jako kdyby jsi narazil na neviditelnou zeď... Co takhle si se mnou zahrát a když vyhraješ, tak ti otevřu?", -1)
+		DialogueBox.create_jakub(TranslationServer.translate("$Lev6Dia11"), -1)
 		yield(DialogueBox, "queue_empty")
 		$TV/Jakub.play("jakub_idle")
 		GameState.player_can_move = true
-
 
 func _submit_callback(code, response):
 	print("Code submit response from server: " + str(code) + " : " + str(response))
@@ -198,3 +222,15 @@ func handle_event(_source, event):
 		GameState.current_level = "level7"
 #		# warning-ignore:return_value_discarded
 #		get_tree().change_scene("res://Resources/Levels/Level5/level5.tscn")
+
+
+func _on_Area2D2_body_entered(body):
+	if body.name == "Player" and not martina_visited:
+		_martina_prompt = true
+		$MartinaWall/Prompt.visible = true
+
+
+func _on_Area2D2_body_exited(body):
+	if body.name == "Player":
+		_martina_prompt = false
+		$MartinaWall/Prompt.visible = false

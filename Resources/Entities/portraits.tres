@@ -1,7 +1,18 @@
-[gd_resource type="SpriteFrames" load_steps=8 format=2]
+[gd_resource type="SpriteFrames" load_steps=14 format=2]
 
 [ext_resource path="res://Resources/Entities/portraits.png" type="Texture" id=1]
 [ext_resource path="res://Resources/Entities/adam_angry_portrait_missing.png" type="Texture" id=2]
+[ext_resource path="res://Resources/Entities/martina_portret_angry.png" type="Texture" id=3]
+[ext_resource path="res://Resources/Entities/martina_portret_happy.png" type="Texture" id=4]
+[ext_resource path="res://Resources/Entities/martina_portret_surprised.png" type="Texture" id=5]
+
+[sub_resource type="AtlasTexture" id=6]
+atlas = ExtResource( 4 )
+region = Rect2( 0, 0, 80, 80 )
+
+[sub_resource type="AtlasTexture" id=7]
+atlas = ExtResource( 3 )
+region = Rect2( 0, 0, 80, 80 )
 
 [sub_resource type="AtlasTexture" id=5]
 atlas = ExtResource( 2 )
@@ -23,8 +34,22 @@ region = Rect2( 0, 0, 80, 80 )
 atlas = ExtResource( 1 )
 region = Rect2( 160, 0, 80, 80 )
 
+[sub_resource type="AtlasTexture" id=8]
+atlas = ExtResource( 5 )
+region = Rect2( 0, 0, 80, 80 )
+
 [resource]
 animations = [ {
+"frames": [ SubResource( 6 ) ],
+"loop": true,
+"name": "martina",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 7 ) ],
+"loop": true,
+"name": "martina_angry",
+"speed": 5.0
+}, {
 "frames": [ SubResource( 5 ) ],
 "loop": true,
 "name": "adam_angry_missing",
@@ -49,4 +74,9 @@ animations = [ {
 "loop": false,
 "name": "adam",
 "speed": 1.0
+}, {
+"frames": [ SubResource( 8 ) ],
+"loop": true,
+"name": "martina_surprised",
+"speed": 5.0
 } ]

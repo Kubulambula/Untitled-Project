@@ -1,0 +1,28 @@
+; Level 6
+;
+
+; Úkol
+;
+; Tvým úkolem je upravit následující soubor tak,
+; aby jsi porazil Kubu v pongu.
+;
+
+; Pravidla
+;
+; Nevím jaké jsou povolené hodnoty Kubo...
+; Dopiš to sem, děkuji.
+;
+
+; Upozornění
+;
+; Pokud tento soubor nebude splňovat pravidla uvedená výše,
+; hra ho přepíše. Proto ho VŽDY po upravení ZAVŘETE!
+; (Kliknutím na křížek v pravém horním rohu.)
+;
+; Pro aplikování zmeň provedených v tomto souboru, zmáčkněte VE HŘE klávesu R.
+;
+
+[config]
+
+; Rychlost hráče 1 (Ty)
+speed=200

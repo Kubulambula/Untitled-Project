@@ -1,0 +1,28 @@
+; Level 6
+;
+
+; Task
+;
+; Your task is to edit this file in such a way
+; allowing Kuba to play Pong with you.
+;
+
+; Rules
+;
+; A television channel works only on specific channels,
+; if a wrong one is given, nothing happens.
+;
+
+; Warning
+;
+; If this file does not comply with the rules written above,
+; the game will overwrite it. That's why you MUST SAVE AND CLOSE it every time.
+; (Click on the cross in the upper right corner)
+;
+; To apply your changes, push the key "R" while IN THE GAME.
+;
+
+[tv]
+
+; Television channel
+channel="OFF"

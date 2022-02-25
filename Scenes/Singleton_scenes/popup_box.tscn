@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Resources/Entities/portraits.tres" type="SpriteFrames" id=1]
 [ext_resource path="res://Resources/Themes/textbox_adam.png" type="Texture" id=2]
 [ext_resource path="res://Resources/Themes/textbox_kuba.png" type="Texture" id=3]
 [ext_resource path="res://Resources/Themes/untitled_theme.tres" type="Theme" id=4]
 [ext_resource path="res://Resources/Themes/textbox_adam_missing.png" type="Texture" id=5]
+[ext_resource path="res://Resources/Themes/textbox_martina.png" type="Texture" id=6]
 
 [sub_resource type="Animation" id=1]
 resource_name = "blink"
@@ -82,9 +83,14 @@ texture = ExtResource( 3 )
 centered = false
 offset = Vector2( 30, 500 )
 
+[node name="MartinaBox" type="Sprite" parent="Window"]
+texture = ExtResource( 6 )
+centered = false
+offset = Vector2( 30, 500 )
+
 [node name="Portrait" type="AnimatedSprite" parent="Window"]
 frames = ExtResource( 1 )
-animation = "adam"
+animation = "martina"
 offset = Vector2( 84, 595 )
 
 [node name="Text" type="RichTextLabel" parent="Window"]

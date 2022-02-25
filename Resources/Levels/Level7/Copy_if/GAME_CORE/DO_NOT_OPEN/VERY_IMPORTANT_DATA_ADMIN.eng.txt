@@ -1,0 +1,38 @@
+; Level 7 - Main configurations - Admin/Superuser
+;
+
+; Task
+;
+; Your task is to edit the following file in such a way,
+; alowing you to break the game and beat Adam
+;
+
+; Rules
+;
+; Set values only as true/false,
+; or else the'll get overwrited.
+;
+
+; Warning
+;
+; If this file does not comply with the rules written above,
+; the game will overwrite it. That's why you MUST SAVE AND CLOSE it every time.
+; (Click on the cross in the upper right corner)
+;
+; To apply your changes, push the key "R" while IN THE GAME.
+;
+
+[Game]
+
+; Graphic module, texture display, entits,...
+graphics_module=true
+
+; Game logic, player movement, animations,...
+logic_module=true
+
+; Game core, in no circumstances must get turned off!!!
+core_module=true
+
+[Failsafe]
+; Prevents the game to crash if wrong settings are used
+prevent_crash=true

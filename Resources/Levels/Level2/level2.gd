@@ -32,11 +32,11 @@ func _ready():
 	_load_level()
 	
 	GameState.player_can_move = false
-	DialogueBox.create_adam("Tak a je to - Level2.", -1)
-	DialogueBox.create_adam("Hmmm...", -1)
-	DialogueBox.create_adam_angry("Co kdyby ALESPOŇ NĚCO FUNGOVALO?", -1)
-	DialogueBox.create_jakub_angry("Proč je ta podlaha zase v úplně jiný úrovni, než má být?\nTo není možný... Ta Purkiáda se FAKT nestihne.", -1)
-	DialogueBox.create_jakub("Zedituj si prosímtě nějak tu mapu, ať můžeš do dalšího levelu...", -1)
+	DialogueBox.create_adam(TranslationServer.translate("$Lev2Dia1"), -1)
+	DialogueBox.create_adam(TranslationServer.translate("$Lev2Dia2"), -1)
+	DialogueBox.create_adam_angry(TranslationServer.translate("$Lev2Dia3"), -1)
+	DialogueBox.create_jakub_angry(TranslationServer.translate("$Lev2Dia4"), -1)
+	DialogueBox.create_jakub(TranslationServer.translate("$Lev2Dia5"), -1)
 	yield(DialogueBox, "queue_empty")
 	GameState.player_can_move = true
 
@@ -48,7 +48,7 @@ func handle_event(_source, name):
 	if name == "player_reached_door":
 		done = true
 		GameState.player_can_move = false
-		DialogueBox.create_jakub("Další level prosím! Snad tenhle už bude fungovat.", -1)
+		DialogueBox.create_jakub(TranslationServer.translate("$Lev2Dia6"), -1)
 		yield(DialogueBox, "queue_empty")
 		GameState.player_can_move = true
 		

@@ -1,0 +1,38 @@
+; Level 7 - Hlavní konfigurace - Admin/Superuser
+;
+
+; Úkol
+;
+; Tvým úkolem je upravit následující soubor tak,
+; aby jsi hru rozbil a porazil tím Adama.
+;
+
+; Pravidla
+;
+; Hodnoty nastavujte pouze jako true/false,
+; jinak se přepíší.
+;
+
+; Upozornění
+;
+; Pokud tento soubor nebude splňovat pravidla uvedená výše,
+; hra ho přepíše. Proto ho VŽDY po upravení ZAVŘETE!
+; (Kliknutím na křížek v pravém horním rohu.)
+;
+; Pro aplikování zmeň provedených v tomto souboru, zmáčkněte VE HŘE klávesu R.
+;
+
+[Game]
+
+; Grafický modul, zobrazování textur, entit, ...
+graphics_module=true
+
+; Logika hry, pohyb hráče, přehrávání animací, ...
+logic_module=true
+
+; Jádro hry, v žádném případě nevypínat!!!
+core_module=true
+
+[Failsafe]
+; Zabránit spadnutí hry při špatném nastavení
+prevent_crash=true

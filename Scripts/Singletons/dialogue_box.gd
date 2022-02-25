@@ -11,12 +11,13 @@ var cooldownt_time: float = .5
 const lorem = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam id massa vitae est fermentum accumsan sed ut augue. Aenean a nisi placerat justo volutpat placerat. Aenean mollis pulvinar libero at eleifend. Morbi hendrerit lectus et leo vestibulum placerat. Pellentesque pretium elit a faucibus elementum. Aenean porttitor venenatis enim sit amet fringilla. Nunc eget elit sit amet urna bibendum iaculis a a tellus. In imperdiet ante magna, tempus consectetur erat posuere sed. Fusce in elit vitae ligula fermentum luctus. Proin et finibus metus, in lobortis libero."
 const default_popup_duration: float = 3.5
 
-enum {ADAM, JAKUB}
+enum {ADAM, JAKUB, MARTINA}
 
 onready var tween = popup.get_node("Tween")
 onready var window  = popup.get_node("Window")
 onready var adam  = popup.get_node("Window/AdamBox")
 onready var jakub = popup.get_node("Window/JakubBox")
+onready var martina = popup.get_node("Window/MartinaBox")
 onready var portrait = popup.get_node("Window/Portrait")
 onready var text_label = popup.get_node("Window/Text")
 onready var prompt = popup.get_node("Window/Prompt")
@@ -80,6 +81,7 @@ func pause_process(hide_current = true):
 	if hide_current:
 		adam.hide()
 		jakub.hide()
+		martina.hide()
 	timer.paused = true
 	timer.wait_time = current_item.duration if current_item else default_popup_duration
 
@@ -92,6 +94,8 @@ func resume_process():
 		adam.show()
 	elif current_item.type == JAKUB:
 		jakub.show()
+	elif current_item.type == MARTINA:
+		martina.show()
 
 
 func clear_queue(include_current = true):
@@ -121,6 +125,15 @@ func create_jakub(text: String=lorem, duration: float=-0):
 		"type": JAKUB
 	})
 
+func create_martina(text: String=lorem, duration: float=-0):
+	set_process(true)
+	EscOverlay.allowed = false
+	_create_helper({
+		"text": text,
+		"image": "martina",
+		"duration": duration,
+		"type": MARTINA
+	})
 
 func create_adam_angry(text: String=lorem, duration: float=-0):
 	set_process(true)
@@ -152,6 +165,25 @@ func create_jakub_angry(text: String=lorem, duration: float=-0):
 		"type": JAKUB
 	})
 
+func create_martina_angry(text: String=lorem, duration: float=-0):
+	set_process(true)
+	EscOverlay.allowed = false
+	_create_helper({
+		"text": text,
+		"image": "martina_angry",
+		"duration": duration,
+		"type": MARTINA
+	})
+	
+func create_martina_surprised(text: String=lorem, duration: float=-0):
+	set_process(true)
+	EscOverlay.allowed = false
+	_create_helper({
+		"text": text,
+		"image": "martina_surprised",
+		"duration": duration,
+		"type": MARTINA
+	})
 
 func _show_popup():
 	var item = queue.front()
@@ -159,8 +191,14 @@ func _show_popup():
 	if item.type == ADAM:
 		adam.show()
 		jakub.hide()
+		martina.hide()
 	elif item.type == JAKUB:
 		jakub.show()
+		adam.hide()
+		martina.hide()
+	elif item.type == MARTINA:
+		martina.show()
+		jakub.hide()
 		adam.hide()
 	
 	if item.image == "adam_angry_missing":

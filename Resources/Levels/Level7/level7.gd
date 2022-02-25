@@ -38,24 +38,24 @@ func _timer_timeout():
 func _play_chapter_one():
 	GameState.player_can_move = false
 	$Adam.play("adam_talk_angry")
-	DialogueBox.create_adam_angry("Dál už ani krok!", -1)
-	DialogueBox.create_adam_angry("Co to má znamenat?! Jak jsi se dostal až sem?", -1)
-	DialogueBox.create_adam_angry("Tenhle level ještě není dokončený, tady nemůžeš být. Okamžitě ...", -1)
-	DialogueBox.create_adam_angry("I když...", -1)
+	DialogueBox.create_adam_angry(TranslationServer.translate("$Lev7Dia1"), -1)
+	DialogueBox.create_adam_angry(TranslationServer.translate("$Lev7Dia2"), -1)
+	DialogueBox.create_adam_angry(TranslationServer.translate("$Lev7Dia3"), -1)
+	DialogueBox.create_adam_angry(TranslationServer.translate("$Lev7Dia4"), -1)
 	yield(DialogueBox, "queue_empty")
 	$Adam.play("adam_talk")
-	DialogueBox.create_adam("To vlastně není tak špatné, že tu jsi. Aspoň už nebudeš dělat problémy a vrtat se nám v kódu hry.", -1)
-	DialogueBox.create_adam("Jsem zvědavý, jak se odtud dostaneš a hru dokončíš ;)", -1)
-	DialogueBox.create_adam("Hodně štěstí. :p", -1)
+	DialogueBox.create_adam(TranslationServer.translate("$Lev7Dia5"), -1)
+	DialogueBox.create_adam(TranslationServer.translate("$Lev7Dia6"), -1)
+	DialogueBox.create_adam(TranslationServer.translate("$Lev7Dia7"), -1)
 	yield(DialogueBox, "queue_empty")
 	$Adam.play("adam_idle")
 	GameState.player_can_move = true
 
 func _play_chapter_two():
 	GameState.player_can_move = false
-	DialogueBox.create_adam_missing("Co to?", -1)
-	DialogueBox.create_adam_missing("K... Kam? Kam zmizely textury?", -1)
-	DialogueBox.create_adam_missing("Co jsi to udělal?! Okamžitě to vrať zpátky!", -1)
+	DialogueBox.create_adam_missing(TranslationServer.translate("$Lev7Dia8"), -1)
+	DialogueBox.create_adam_missing(TranslationServer.translate("$Lev7Dia9"), -1)
+	DialogueBox.create_adam_missing(TranslationServer.translate("$Lev7Dia10"), -1)
 	yield(DialogueBox, "queue_empty")
 	$Adam.play("adam_missing_idle")
 	_dialogue_playing = false

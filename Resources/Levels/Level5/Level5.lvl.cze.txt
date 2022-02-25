@@ -1,21 +1,21 @@
-; Level 1
+; Level 5
 ;
 
 ; Úkol
 ;
-; Tvým úkolem je upravit mapu tak,
-; aby jsi se dostal na druhou stranu.
+; Tvým úkolem je dostat se ke dvěřím,
+; jako v každém levelu.
 ;
 
 ; Pravidla
 ;
 ; Mapa může obsahovat pouze následující znaky:
 ;
-; # - Zeď
-; P - Hráč              [Limit: 1]
-; D - Dveře             [Limit: 1]
-; $ - Mince
-; ? - Truhla s pokladem [Limit: 1]
+; # - Wall
+; P - Player   [Limit: 1]
+; D - Door     [Limit: 1]
+; $ - Coin
+; C - Krabice  [Limit: 3]
 ;
 ; Nelze hýbat s mincemi ($), ani měnit jejich počet.
 ; Dále také s hráčem (P) a dveřmi (D).
@@ -31,12 +31,12 @@
 ;
 
 [Map]
-#              #
-#              #
-#     $$       #
-#    $$$$      #
-# P          D #
-#####    #######
-#####    #######
-#####    #######
-#####    #######
+#########      #
+#$ C  ###  #  $#
+####    #  #####
+#$ #          D#
+## # # #####  ##
+## #          ##
+#PC     C      #
+###  ######    #
+################

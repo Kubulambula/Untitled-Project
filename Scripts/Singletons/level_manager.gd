@@ -53,8 +53,8 @@ func _create_level_header(level):
 	return ";" + level + "\n"
 
 func _get_level_internal_path(level: String):
-	return "res://Resources/Levels/" + level + "/" + level + ".lvl"
-#	return "res://Resources/Levels/" + level + "/" + level + ".lvl." + TranslationServer.translate("$lvl_suffix")
+#	return "res://Resources/Levels/" + level + "/" + level + ".lvl"
+	return "res://Resources/Levels/" + level + "/" + level + ".lvl." + TranslationServer.translate("$lvl_suffix")
 
 func _get_level_external_path(level):
 	return get_level_dir(level) + "/level.txt"

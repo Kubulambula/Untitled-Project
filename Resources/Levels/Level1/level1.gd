@@ -32,17 +32,17 @@ func _ready():
 	_load_level()
 	
 	GameState.player_can_move = false
-	DialogueBox.create_adam("C-co...?", -1)
-	DialogueBox.create_jakub("Hráč?", -1)
-	DialogueBox.create_adam("Ale ta hra není dodělaná! Vždyť ani nemá název!", -1)
-	DialogueBox.create_adam("Uvidí jak je zabugovaná a že půlka věcí chybí!", -1)
-	DialogueBox.create_jakub("Dobře klid... To se nějak zvládne. Ono se to nějak udělá™.", -1)
-	DialogueBox.create_jakub("Alespoň nám může tu hru otestovat.", -1)
-	DialogueBox.create_jakub("Pomůžeš nám že?", -1)
-	DialogueBox.create_jakub("...", -1)
-	DialogueBox.create_adam_angry("Do háje fix už zase nefungujou dialogy... Vždyť minule to ještě šlo. Se z toho může jeden-", -1)
-	DialogueBox.create_jakub("Beru to jako ano.", -1)
-	DialogueBox.create_jakub("Tvým cílem je dostat se v každém levelu vždy ke dveřím. Budeme tě pozorovat z povzdálí.\n\nHodně štěstí.", -1)
+	DialogueBox.create_adam(TranslationServer.translate("$Lev1Dia1"), -1)
+	DialogueBox.create_jakub(TranslationServer.translate("$Lev1Dia2"), -1)
+	DialogueBox.create_adam(TranslationServer.translate("$Lev1Dia3"), -1)
+	DialogueBox.create_adam(TranslationServer.translate("$Lev1Dia4"), -1)
+	DialogueBox.create_jakub(TranslationServer.translate("$Lev1Dia5"), -1)
+	DialogueBox.create_jakub(TranslationServer.translate("$Lev1Dia6"), -1)
+	DialogueBox.create_jakub(TranslationServer.translate("$Lev1Dia7"), -1)
+	DialogueBox.create_jakub(TranslationServer.translate("$Lev1Dia8"), -1)
+	DialogueBox.create_adam_angry(TranslationServer.translate("$Lev1Dia9"), -1)
+	DialogueBox.create_jakub(TranslationServer.translate("$Lev1Dia10"), -1)
+	DialogueBox.create_jakub(TranslationServer.translate("$Lev1Dia11"), -1)
 	yield(DialogueBox, "queue_empty")
 	GameState.player_can_move = true
 
@@ -55,7 +55,7 @@ func handle_event(_source, name):
 	if name == "player_reached_door":
 		done = true
 		GameState.player_can_move = false
-		DialogueBox.create_adam("Dobrá práce! Teď nám jen dej chvilku, než načteme nový level...", -1)
+		DialogueBox.create_adam(TranslationServer.translate("$Lev1Dia12"), -1)
 		yield(DialogueBox, "queue_empty")
 		GameState.player_can_move = true
 		
@@ -87,12 +87,12 @@ func handle_event(_source, name):
 		death_counter += 1
 		if death_counter == 1:
 			GameState.player_can_move = false
-			DialogueBox.create_adam_angry("No výborně. Další nepřeskočitelná díra. Co zkusit mapu zeditovat a udělat si třeba most? Měla by být někde v '[color=#003858]" + LevelManager.get_level_dir(level) + "[/color]'.", -1)
+			DialogueBox.create_adam_angry(TranslationServer.translate("$Lev1Dia13") + LevelManager.get_level_dir(level) + "[/color]'.", -1)
 			yield(DialogueBox, "queue_empty")
 			GameState.player_can_move = true
 		elif death_counter % 5 == 0:
 			GameState.player_can_move = false
-			DialogueBox.create_adam("Zkus se podívat do '[color=#003858]" + LevelManager.get_level_dir(level) + "[/color]' jestli něco nevymyslíš s tou mapou.", -1)
+			DialogueBox.create_adam(TranslationServer.translate("$Lev1Dia14") + LevelManager.get_level_dir(level) + TranslationServer.translate("$Lev1Dia15"), -1)
 			yield(DialogueBox, "queue_empty")
 			GameState.player_can_move = true
 

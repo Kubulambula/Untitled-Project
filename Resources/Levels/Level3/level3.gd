@@ -40,8 +40,8 @@ func _ready():
 	_load_level()
 	
 	GameState.player_can_move = false
-	DialogueBox.create_jakub("Krása! Tenhle level vypadá v pořádku.", -1)
-	DialogueBox.create_jakub_angry("Level v pořádku, ale spawnpoint není! Já to vážně vzdávám...", -1)
+	DialogueBox.create_jakub(TranslationServer.translate("$Lev3Dia1"), -1)
+	DialogueBox.create_jakub_angry(TranslationServer.translate("$Lev3Dia2"), -1)
 	yield(DialogueBox, "queue_empty")
 	GameState.player_can_move = true
 
@@ -53,8 +53,8 @@ func handle_event(_source, name):
 	if name == "player_reached_door":
 		
 		GameState.player_can_move = false
-		DialogueBox.create_adam("Dobrá práce... Na to, že jsi ten level, viděl popvý, tak jsi si vedl dobře.", -1)
-		DialogueBox.create_adam_angry("Možná až moc dobře.", -1)
+		DialogueBox.create_adam(TranslationServer.translate("$Lev3Dia3"), -1)
+		DialogueBox.create_adam_angry(TranslationServer.translate("$Lev3Dia4"), -1)
 		yield(DialogueBox, "queue_empty")
 		GameState.player_can_move = true
 		
