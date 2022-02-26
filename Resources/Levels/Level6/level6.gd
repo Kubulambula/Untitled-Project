@@ -152,9 +152,12 @@ func _on_pong_end(player_win: bool):
 	else:
 		GameState.player_can_move = false
 		$TV/Jakub.play("jakub_talk")
+		$TV/Jakub/Fireworks.play("default")
 		DialogueBox.create_jakub(TranslationServer.translate("$Lev6Dia10"), -1)
 		yield(DialogueBox, "queue_empty")
 		$TV/Jakub.play("jakub_idle")
+		$TV/Jakub/Fireworks.stop()
+		$TV/Jakub/Fireworks.frame = 0
 		GameState.player_can_move = true
 	$Player.state = $Player.IDLE # TODO : Jakub animation reset
 
@@ -196,10 +199,12 @@ func _on_Wall_body_entered(body):
 	if body.name == "Player" and not wall_visited:
 		wall_visited = true
 		$TV/Jakub.play("jakub_talk")
+		$TV/Jakub.flip_h = false
 		GameState.player_can_move = false
 		DialogueBox.create_jakub(TranslationServer.translate("$Lev6Dia11"), -1)
 		yield(DialogueBox, "queue_empty")
 		$TV/Jakub.play("jakub_idle")
+		$TV/Jakub.flip_h = true
 		GameState.player_can_move = true
 
 func _submit_callback(code, response):

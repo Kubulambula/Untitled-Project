@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Resources/Levels/Level6/level6.gd" type="Script" id=1]
 [ext_resource path="res://Resources/Tiles/tileset.tres" type="TileSet" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://Resources/Entities/characters.tres" type="SpriteFrames" id=6]
 [ext_resource path="res://Scenes/Entities/Door.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Resources/Entities/DISCO/you_spin_me.mp3" type="AudioStream" id=8]
+[ext_resource path="res://Resources/Entities/fireworks.tres" type="SpriteFrames" id=9]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 50, 100 )
@@ -71,6 +72,7 @@ script = ExtResource( 1 )
 position = Vector2( 11, 82 )
 frames = ExtResource( 6 )
 animation = "martina_sneaky"
+frame = 1
 playing = true
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -94,9 +96,13 @@ position = Vector2( 97.5, 183.5 )
 scale = Vector2( 0.5, 0.5 )
 frames = ExtResource( 6 )
 animation = "jakub_idle"
-frame = 3
+frame = 5
 playing = true
 flip_h = true
+
+[node name="Fireworks" type="AnimatedSprite" parent="TV/Jakub"]
+position = Vector2( 3, 1 )
+frames = ExtResource( 9 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="TV"]
 autoplay = "blink"
