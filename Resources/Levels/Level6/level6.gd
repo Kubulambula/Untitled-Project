@@ -152,7 +152,7 @@ func _on_pong_end(player_win: bool):
 	else:
 		GameState.player_can_move = false
 		$TV/Jakub.play("jakub_talk")
-		$TV/Jakub/Fireworks.play("default")
+		$TV/Jakub/Fireworks.play("fireworks")
 		DialogueBox.create_jakub(TranslationServer.translate("$Lev6Dia10"), -1)
 		yield(DialogueBox, "queue_empty")
 		$TV/Jakub.play("jakub_idle")

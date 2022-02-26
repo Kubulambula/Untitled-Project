@@ -2,6 +2,7 @@ extends Control
 
 const version_format = "%s: %s"
 onready var login_panel = $Login
+var stars = preload("res://Scenes/Other/Fireworks.tscn")
 
 const screens = [640, 1920, 3200]
 var screen = 1
@@ -186,3 +187,15 @@ func _on_CRTLabel_gui_input(event):
 	if event is InputEventMouseButton and event.button_index == BUTTON_LEFT and event.pressed:
 		# warning-ignore:return_value_discarded
 		OS.shell_open("https://godotshaders.com/shader/VHS-and-CRT-monitor-effect/")
+
+func _physics_process(_delta):
+	var position
+	if Input.is_action_just_pressed("l_click"):
+		var hvezdicky = stars.instance()
+		add_child(hvezdicky)
+		position = get_global_mouse_position()
+		hvezdicky.global_position = position
+		hvezdicky.play("default")
+		hvezdicky.frame = 0
+		yield(hvezdicky, "animation_finished")
+		hvezdicky.connect("animation_finished" , self, "queue_free")
