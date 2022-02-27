@@ -3,6 +3,7 @@ extends Control
 const version_format = "%s: %s"
 onready var login_panel = $Login
 var stars = preload("res://Scenes/Other/Fireworks.tscn")
+var rng = RandomNumberGenerator.new()
 
 const screens = [640, 1920, 3200]
 var screen = 1
@@ -197,5 +198,6 @@ func _physics_process(_delta):
 		hvezdicky.global_position = position
 		hvezdicky.play("default")
 		hvezdicky.frame = 0
-		yield(hvezdicky, "animation_finished")
-		hvezdicky.connect("animation_finished" , self, "queue_free")
+		hvezdicky.set_speed_scale(rng.randi_range(1,3.5))
+		hvezdicky.connect("animation_finished" , hvezdicky, "queue_free")
+
