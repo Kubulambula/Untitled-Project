@@ -1,0 +1,34 @@
+; Level 7 - Hlavní konfigurace
+;
+
+; Úkol
+;
+; Tvým úkolem je upravit následující soubor tak,
+; aby jsi odemčel skrytá nastavení.
+;
+
+; Pravidla
+;
+; Hodnoty nastavujte pouze jako true/false,
+; jinak se přepíší.
+;
+
+; Upozornění
+;
+; Pokud tento soubor nebude splňovat pravidla uvedená výše,
+; hra ho přepíše. Proto ho VŽDY po upravení ZAVŘETE!
+; (Kliknutím na křížek v pravém horním rohu.)
+;
+; Pro aplikování zmeň provedených v tomto souboru, zmáčkněte VE HŘE klávesu R.
+;
+
+; Poznámka vývojáře: Některá nastavení byla pro bezpečnost odstraněna.
+
+[Textures]
+
+; Nastavení, které udává jestli se mají načítat textury hry.
+load=true
+
+; Poznámka vývojáře: Adame oprav to už konečně,
+;     víš přece o té chybě, že když vypnou textury hry,
+;     tak nad ní získají větší kontrolu!

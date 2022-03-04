@@ -2,7 +2,7 @@ extends Node2D
 
 const level_name = "Level6"
 
-const resource_dir = "res://Resources/Levels/Level6/To_copy"
+var resource_dir = "res://Resources/Levels/Level6/To_copy." + TranslationServer.translate("$lvl_suffix")
 
 var config_file_locations = {
 	"tv": [LevelManager.get_level_dir(level_name) + "/TV/tv.txt", ["tv", "channel", "OFF"]],

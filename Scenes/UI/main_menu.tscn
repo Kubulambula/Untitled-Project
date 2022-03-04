@@ -1,7 +1,6 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://Resources/Themes/untitled_theme.tres" type="Theme" id=1]
-[ext_resource path="res://Scenes/UI/login.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scripts/UI/main_menu.gd" type="Script" id=3]
 [ext_resource path="res://Resources/Menu/title.tres" type="SpriteFrames" id=4]
 [ext_resource path="res://Scenes/Other/Menu_background.tscn" type="PackedScene" id=5]
@@ -421,6 +420,7 @@ position = Vector2( -10, 0 )
 scale = Vector2( 1.7, 1.7 )
 frames = ExtResource( 9 )
 animation = "adam_idle"
+frame = 4
 playing = true
 centered = false
 
@@ -449,7 +449,7 @@ position = Vector2( -10, 0 )
 scale = Vector2( 1.7, 1.7 )
 frames = ExtResource( 9 )
 animation = "jakub_idle"
-frame = 1
+frame = 5
 playing = true
 centered = false
 
@@ -478,6 +478,7 @@ position = Vector2( -10, 0 )
 scale = Vector2( 1.7, 1.7 )
 frames = ExtResource( 9 )
 animation = "martina_idle"
+frame = 4
 playing = true
 centered = false
 
@@ -896,8 +897,6 @@ margin_left = 715.0
 margin_right = 735.0
 margin_bottom = 300.0
 rect_min_size = Vector2( 20, 0 )
-
-[node name="Login" parent="." instance=ExtResource( 2 )]
 
 [node name="MenuBackground" parent="." instance=ExtResource( 5 )]
 

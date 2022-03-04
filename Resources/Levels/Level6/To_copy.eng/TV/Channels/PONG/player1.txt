@@ -1,0 +1,28 @@
+; Level 6
+;
+
+; Task
+;
+; Your task is to edit the following file in such a way,
+; helping you win Pong against Kuba.
+;
+
+; Rules
+;
+; I don't know what values are allowed, Kuba...
+; Please don't forget to fill it in here. Thanks.
+;
+
+; Warning
+;
+; If this file does not comply with the rules written above,
+; the game will overwrite it. That's why you MUST SAVE AND CLOSE it every time.
+; (Click on the cross in the upper right corner)
+;
+; To apply your changes, push the key "R" while IN THE GAME.
+;
+
+[config]
+
+; Speed of player 1 (You)
+speed=200

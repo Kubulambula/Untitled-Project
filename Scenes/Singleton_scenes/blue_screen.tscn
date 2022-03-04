@@ -61,7 +61,7 @@ margin_top = 152.0
 margin_right = 546.0
 margin_bottom = 201.0
 theme = SubResource( 4 )
-text = "Hra se zhroutila"
+text = "The game crashed"
 align = 1
 valign = 1
 __meta__ = {
@@ -83,19 +83,6 @@ If this is the first time you've seen this Stop error screen, restart your compu
 Check to make sure any new hardware or software is properly installed. If this is a new installation, ask your hardware or software manufacturer for any Untitled Game updates you might need.
 
 If problems continue, disable or remove any newly installed hardware or software. Disable BIOS memory options such as caching or shadowing. If you need to use Safe Mode to remove or disable components, restart your computer, press F8 to select Advanced Startup Options, and then select Safe Mode."
-autowrap = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Code" type="Label" parent="Control"]
-margin_left = 61.0
-margin_top = 623.0
-margin_right = 1280.0
-margin_bottom = 717.0
-theme = SubResource( 8 )
-text = "Kód do záznamového archu: "
-valign = 1
 autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false

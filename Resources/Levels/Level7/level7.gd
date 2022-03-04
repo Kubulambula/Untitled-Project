@@ -3,8 +3,8 @@ extends Node
 const level_name = "Level7"
 var level_dir = LevelManager.get_level_dir(level_name)
 
-const resource_dir = "res://Resources/Levels/Level7/To_copy"
-const resource_dir2 = "res://Resources/Levels/Level7/Copy_if"
+var resource_dir = "res://Resources/Levels/Level7/To_copy." + TranslationServer.translate("$lvl_suffix")
+var resource_dir2 = "res://Resources/Levels/Level7/Copy_if." + TranslationServer.translate("$lvl_suffix")
 
 var internal_admin_config = resource_dir2 + "/GAME_CORE/DO_NOT_OPEN/VERY_IMPORTANT_DATA_ADMIN.txt"
 

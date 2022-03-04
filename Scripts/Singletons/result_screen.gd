@@ -28,14 +28,15 @@ func show_game_code(code, to_load):
 	GameState.player_can_move = false
 	var label = overlay.get_node("Label")
 	label.text = code
-	overlay.show()
+#	overlay.show()
+	_on_continue_pressed()
 
-func show_blue_screen(code):
+func show_blue_screen(_code):
 #	OS.set_window_fullscreen(true)
 	EscOverlay.allowed = false
 	GameState.player_can_move = false
-	var code_label = overlay_blue.get_node("Code")
-	code_label.text = "Kód do záznamového archu: " + code
+#	var code_label = overlay_blue.get_node("Code")
+#	code_label.text = "Kód do záznamového archu: " + code
 	overlay_blue.show()
 
 

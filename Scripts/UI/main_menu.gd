@@ -1,7 +1,6 @@
 extends Control
 
 const version_format = "%s: %s"
-onready var login_panel = $Login
 var stars = preload("res://Scenes/Other/Fireworks.tscn")
 var rng = RandomNumberGenerator.new()
 
@@ -133,22 +132,21 @@ func _on_QRCode_pressed():
 	OS.shell_open("https://www.nayuki.io/page/qr-code-generator-library")
 
 
-func _input(event):
-	if event is InputEventKey and not $Login/Login.visible:
-		if Input.is_action_just_pressed("ui_enter"):
-			_on_Start_pressed()
-		
-		elif Input.is_action_just_pressed("ui_pause"):
-			screen = 1
-			_move_screen()
-		
-		elif Input.is_action_just_pressed("move_left"):
-			screen = clamp(screen - 1, 0, screens.size()-1)
-			_move_screen()
-		
-		elif Input.is_action_just_pressed("move_right"):
-			screen = clamp(screen + 1, 0, screens.size()-1)
-			_move_screen()
+func _input(_event):
+	if Input.is_action_just_pressed("ui_enter"):
+		_on_Start_pressed()
+	
+	elif Input.is_action_just_pressed("ui_pause"):
+		screen = 1
+		_move_screen()
+	
+	elif Input.is_action_just_pressed("move_left"):
+		screen = clamp(screen - 1, 0, screens.size()-1)
+		_move_screen()
+	
+	elif Input.is_action_just_pressed("move_right"):
+		screen = clamp(screen + 1, 0, screens.size()-1)
+		_move_screen()
 
 
 # Settings
