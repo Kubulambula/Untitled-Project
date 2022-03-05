@@ -43,7 +43,7 @@ func alert(message: String, duration: float = 2.5): # Oh my god...
 
 func login(login: String, password: String): #DO THIS WITH TOKEN FFS
 	$AnimationPlayer2.play("load_indicator")
-	WebAPI.login(login, password, funcref(self, "_on_login"))
+#	WebAPI.login(login, password, funcref(self, "_on_login"))
 
 
 func _on_login(code, response):
@@ -68,7 +68,7 @@ func _on_login(code, response):
 func _login_from_token(saved_token):
 	$AnimationPlayer2.play("load_indicator")
 	WebAPI._access_token = saved_token
-	WebAPI.get_user_info(funcref(self, "_user_info_response"))
+#	WebAPI.get_user_info(funcref(self, "_user_info_response"))
 
 
 func _user_info_response(code, response):

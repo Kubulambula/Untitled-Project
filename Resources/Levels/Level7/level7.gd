@@ -171,10 +171,10 @@ func _complete_game():
 	)
 	
 	ResultScreen.show_blue_screen(code)
-	if not GameState.offline:
-		WebAPI.submit(code, funcref(self, "_submit_callback"))
-	else:
-		printerr("RESULT NOT SENT TO SERVER BECAUSE OF OFFLINE MODE. CODE: " + code)
+#	if not GameState.offline:
+#		WebAPI.submit(code, funcref(self, "_submit_callback"))
+#	else:
+#		printerr("RESULT NOT SENT TO SERVER BECAUSE OF OFFLINE MODE. CODE: " + code)
 
 # Ctrl + C & Ctrl + V from Level 5 :P
 func _copy_dir(from, to):

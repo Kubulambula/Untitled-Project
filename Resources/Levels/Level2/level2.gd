@@ -59,10 +59,10 @@ func handle_event(_source, name):
 			+ 1500 # Level completion bonus
 		)
 		ResultScreen.show_game_code(code, "res://Resources/Levels/Level3/level3.tscn")
-		if not GameState.offline:
-			WebAPI.submit(code, funcref(self, "_submit_callback"))
-		else:
-			printerr("RESULT NOT SENT TO SERVER BECAUSE OF OFFLINE MODE. CODE: " + code)
+#		if not GameState.offline:
+#			WebAPI.submit(code, funcref(self, "_submit_callback"))
+#		else:
+#			printerr("RESULT NOT SENT TO SERVER BECAUSE OF OFFLINE MODE. CODE: " + code)
 		
 		GameState.current_level = "level3"
 		# warning-ignore:return_value_discarded

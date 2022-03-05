@@ -8,9 +8,9 @@ extends Node
 
 #const API_URL = "https://www.skulaurun.eu/untitled-project/api"
 
-func _init():
-	if is_permitted():
-		initialize()
+#func _init():
+#	if is_permitted():
+#		initialize()
 
 func initialize():
 	pass
