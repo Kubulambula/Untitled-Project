@@ -16,8 +16,8 @@
 ; D - Door                [Limit: 1]
 ; $ - Coin
 ;
-; It is not possible to change the quantity of coins ($), players (P) and doors (#).
-; You also cannot move the coins ($).
+; It is not possible to change the quantity of coins ($), doors (D) and  players (P).
+; You also cannot move the coins ($), the doors (D) nor the walls (#).
 ;
 
 ; Warning

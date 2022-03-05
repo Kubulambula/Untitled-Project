@@ -16,8 +16,8 @@
 ; D - Dveře     [Limit: 1]
 ; $ - Mince
 ;
-; Nelze měnit počet mincí ($), hráčů (P) a dveří (D).
-; S mincemi ($) nelze hýbat.
+; Nelze měnit počet mincí ($), dveří (D) a hráčů (P).
+; S mincemi ($), dveřmi (D) a zdmi (#) nelze hýbat.
 ;
 
 ; Upozornění

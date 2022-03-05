@@ -17,8 +17,8 @@
 ; $ - Coin
 ; C - Krabice  [Limit: 3]
 ;
-; Nelze hýbat s mincemi ($), ani měnit jejich počet.
-; Dále také s hráčem (P) a dveřmi (D).
+; Nelze měnit počet, či hýbat s mincemi ($), hráčem (P), dveřmi (D), ani zdmi (#).
+;
 ;
 
 ; Upozornění

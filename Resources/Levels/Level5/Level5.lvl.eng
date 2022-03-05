@@ -17,8 +17,7 @@
 ; $ - Coin
 ; C - Crates              [Limit: 3]
 ;
-; It is not possible to move the coins ($), nor change their quantity.
-; You also cannot move the player (P) and the door (D).
+; It is not possible to move, nor change the quantity of the coins ($), the player (P), the door (D) or the walls (#).
 ;
 
 ; Warning
