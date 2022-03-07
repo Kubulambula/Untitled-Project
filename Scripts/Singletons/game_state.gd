@@ -123,7 +123,12 @@ class _Config:
 				OS.set_window_fullscreen(false)
 				OS.set_borderless_window(false)
 		# Locale
-		var lang = self.get_value("user", "locale", "cs")
+		var lang = self.get_value("user", "locale", "_")
+		if lang == "_":
+			lang = OS.get_locale_language()
+		
 		if lang in TranslationServer.get_loaded_locales():
 			TranslationServer.set_locale(lang)
-			GameState.SCENE_TREE.call_group("translateable", "translate")
+		else:
+			TranslationServer.set_locale("en")
+		GameState.SCENE_TREE.call_group("translateable", "translate")
